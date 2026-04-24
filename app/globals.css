@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 40 25% 88%;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 37 40% 54%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink text-bone font-sans antialiased;
+    font-feature-settings: "ss01", "ss02", "liga";
+  }
+
+  ::selection {
+    background: theme("colors.gold.DEFAULT");
+    color: theme("colors.ink.DEFAULT");
+  }
+
+  /* Hide scrollbar chrome but keep functionality */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: theme("colors.ink.DEFAULT");
+  }
+  ::-webkit-scrollbar-thumb {
+    background: theme("colors.ink.muted");
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme("colors.bone.dim");
+  }
+}
+
+@layer components {
+  .container-acred {
+    @apply mx-auto w-full max-w-[1440px] px-6 md:px-10 lg:px-16;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-widest2 text-bone-muted;
+  }
+
+  .rule {
+    @apply h-px w-full bg-bone/10;
+  }
+
+  .link-underline {
+    @apply relative inline-flex items-center gap-2 text-bone transition-colors hover:text-gold;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-500;
+  }
+  .link-underline:hover::after {
+    @apply origin-left scale-x-100;
+  }
+
+  .grain::before {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    animation: grain 8s steps(6) infinite;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
