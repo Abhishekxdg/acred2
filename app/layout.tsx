@@ -1,11 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
-import { FloatingDock } from "@/components/floating-dock";
-import { Footer } from "@/components/footer";
 import { AmbientCanvas } from "@/components/ambient-canvas";
 import { GsapProvider } from "@/components/gsap-provider";
+import { LayoutShell } from "@/components/layout-shell";
 import { site } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -59,10 +57,7 @@ export default function RootLayout({
       <body className="grain min-h-screen flex flex-col">
         <GsapProvider>
           <AmbientCanvas />
-          <Navbar />
-          <main className="relative z-[2] flex-1">{children}</main>
-          <FloatingDock />
-          <Footer />
+          <LayoutShell>{children}</LayoutShell>
         </GsapProvider>
       </body>
     </html>

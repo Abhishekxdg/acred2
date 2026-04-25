@@ -122,7 +122,7 @@ export function Navbar() {
           aria-label={`${site.name} — home`}
         >
           <Image
-            src={useLightAssets ? "/white_textlogo.png" : "/black_text_logo.png"}
+            src={useLightAssets ? "/white_text_logo.png" : "/black_text_logo.png"}
             alt={`${site.name} — home`}
             width={88}
             height={28}
@@ -189,7 +189,7 @@ export function Navbar() {
                     aria-label={`${site.name} — home`}
                   >
                     <Image
-                      src="/white_textlogo.png"
+                      src="/white_text_logo.png"
                       alt={`${site.name} — home`}
                       width={104}
                       height={34}

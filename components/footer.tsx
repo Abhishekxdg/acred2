@@ -13,7 +13,7 @@ import Image from "next/image";
 export function Footer() {
   const pathname = usePathname();
   const isHomepage = pathname === "/";
-  const year = new Date().getFullYear();
+  const year = 2025;
   const footerRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const colsRef = useRef<HTMLDivElement>(null);
@@ -144,11 +144,22 @@ export function Footer() {
               className="h-8 w-auto object-contain"
             />
             <div className="space-y-3 sm:space-y-4">
-              <p className="eyebrow">Address</p>
-              <p className="text-sm leading-relaxed text-bone-soft">
-                {site.contact.address}
-              </p>
+              <p className="eyebrow">Contact</p>
               <p className="text-sm text-bone-soft">{site.contact.phone}</p>
+              <a
+                href={`mailto:${site.contact.email}`}
+                className="text-sm text-bone-soft hover:text-gold transition-colors cursor-hover"
+              >
+                {site.contact.email}
+              </a>
+              <a
+                href={`https://${site.contact.website}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-bone-soft hover:text-gold transition-colors cursor-hover"
+              >
+                {site.contact.website}
+              </a>
             </div>
           </div>
 
