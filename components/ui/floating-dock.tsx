@@ -42,51 +42,22 @@ const FloatingDockMobile = ({
   items: { title: string; icon: React.ReactNode; href: string }[];
   className?: string;
 }) => {
-  const [open, setOpen] = useState(false);
   return (
     <div className={cn("fixed bottom-4 left-1/2 -translate-x-1/2 z-50 block md:hidden", className)}>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            layoutId="nav"
-            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 flex flex-row gap-2 items-center"
-          >
-            {items.map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                }}
-                exit={{
-                  opacity: 0,
-                  y: 10,
-                  scale: 0.9,
-                  transition: {
-                    delay: idx * 0.05,
-                  },
-                }}
-                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-              >
-                <a
-                  href={item.href}
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-ink border border-ink-line shadow-lg"
-                >
-                  <div className="h-5 w-5">{item.icon}</div>
-                </a>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-ink border border-ink-line shadow-lg"
+      <motion.div
+        className="flex items-center gap-4 rounded-3xl border border-ink-line bg-ink/95 px-6 py-2 backdrop-blur-xl shadow-2xl"
       >
-        <IconLayoutNavbarCollapse className="h-6 w-6 text-bone-muted" />
-      </button>
+        {items.map((item) => (
+          <a
+            key={item.title}
+            href={item.href}
+            className="group relative flex h-10 w-14 flex-col items-center justify-center gap-1 rounded-2xl backdrop-blur-sm transition-all active:scale-95"
+          >
+            <div className="h-5 w-5 text-bone">{item.icon}</div>
+            <span className="text-[9px] text-bone-muted">{item.title}</span>
+          </a>
+        ))}
+      </motion.div>
     </div>
   );
 };
