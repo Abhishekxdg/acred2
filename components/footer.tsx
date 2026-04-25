@@ -72,7 +72,7 @@ export function Footer() {
   );
 
   return (
-    <footer ref={footerRef} className="border-t border-ink-line bg-ink-muted pb-24">
+    <footer ref={footerRef} className="relative z-50 border-t border-ink-line bg-ink-muted pb-24">
       <div className="container-acred py-16 sm:py-20">
         {/* CTA Section - only on homepage */}
         {isHomepage && (

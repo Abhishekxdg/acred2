@@ -56,11 +56,11 @@ export default function RootLayout({
       lang="en"
       className={cn(serif.variable, mono.variable, "font-sans", sans.variable)}
     >
-      <body className="grain">
+      <body className="grain min-h-screen flex flex-col">
         <GsapProvider>
           <AmbientCanvas />
           <Navbar />
-          <main className="relative z-[2]">{children}</main>
+          <main className="relative z-[2] flex-1">{children}</main>
           <FloatingDock />
           <Footer />
         </GsapProvider>
