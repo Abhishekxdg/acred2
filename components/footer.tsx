@@ -205,14 +205,15 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="pointer-events-none relative mx-auto -mt-2 w-full max-w-[1440px] px-0 sm:-mt-8 sm:px-6 md:px-10 lg:px-16">
+      <div className="pointer-events-none relative mx-auto -mt-2 w-full max-w-[1440px] overflow-hidden px-0 sm:-mt-8 sm:px-6 md:px-10 lg:px-16">
         <Image
           src="/footer_big_text.png"
           alt=""
           width={1613}
           height={512}
           sizes="100vw"
-          className="mx-auto h-auto w-[150vw] max-w-none -translate-x-[18vw] opacity-85 sm:w-full sm:max-w-[1200px] sm:translate-x-0"
+          style={{ width: '100%', height: 'auto' }}
+          className="mx-auto opacity-85 sm:max-w-[1200px]"
         />
       </div>
     </footer>

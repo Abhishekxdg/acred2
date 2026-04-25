@@ -58,7 +58,7 @@
 
   @media (max-width: 640px) {
     body {
-      padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
+      padding-bottom: env(safe-area-inset-bottom);
     }
   }
 
