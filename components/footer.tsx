@@ -89,34 +89,44 @@ export function Footer() {
         {/* CTA Section - only on homepage */}
         {isHomepage && (
           <>
-            <div ref={ctaRef} className="mb-10 grid items-center gap-8 sm:mb-12 lg:grid-cols-2 lg:gap-20">
-              <div>
-                <p className="eyebrow mb-4 sm:mb-6">Start your project</p>
-                <h2 className="text-balance">
-                  <span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">Have a vision,</span>
-                  <span className="block font-serif italic text-display-md sm:text-display-lg leading-[1.05] text-bone/85">a property, or a blueprint?</span>
-                </h2>
-                <p className="mt-4 max-w-lg font-serif text-lg text-bone-muted sm:mt-6 sm:text-xl">
-                  Let&apos;s engineer the reality.
-                </p>
-                <a
-                  href={`mailto:${site.contact.email}`}
-                  className="mt-6 inline-flex max-w-full items-center gap-3 break-all font-mono text-[10px] uppercase tracking-widest2 text-bone transition-colors hover:text-gold cursor-hover sm:mt-8"
-                >
-                  {site.contact.email}
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </div>
+            <div ref={ctaRef} className="mb-10 sm:mb-12">
+              <div className="relative overflow-hidden rounded-sm border border-ink-line bg-ink-soft p-8 sm:p-12 md:p-16 lg:p-20">
+                <div className="relative z-10 max-w-3xl">
+                  <p className="eyebrow mb-4 sm:mb-6">Start your project</p>
+                  <h2 className="text-balance">
+                    <span className="block font-sans font-bold text-display-lg sm:text-display-xl leading-[0.95] tracking-tight text-bone">Have a vision,</span>
+                    <span className="block font-serif italic text-display-lg sm:text-display-xl leading-[1.05] text-bone/85">a property, or a blueprint?</span>
+                  </h2>
+                  <p className="mt-5 max-w-lg font-serif text-lg text-bone-muted sm:mt-7 sm:text-xl">
+                    Tell us what you are building. We will map the path from site to handover.
+                  </p>
+                  <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:items-center">
+                    <Link
+                      href="/contact"
+                      className="group inline-flex items-center gap-2.5 rounded-full border border-bone/20 bg-bone px-7 py-3.5 font-sans text-[13px] font-medium text-night backdrop-blur-sm transition-all hover:bg-gold hover:text-night hover:border-gold cursor-hover"
+                    >
+                      Start your project
+                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </Link>
+                    <a
+                      href={`mailto:${site.contact.email}`}
+                      className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest2 text-bone-muted transition-colors hover:text-gold cursor-hover"
+                    >
+                      {site.contact.email}
+                    </a>
+                  </div>
+                </div>
 
-              {/* ACRED Logo */}
-              <div className="hidden lg:flex items-center justify-center min-h-[320px]">
-                <Image
-                  src="/black_text_logo.png"
-                  alt="ACRED Logo"
-                  width={320}
-                  height={320}
-                  className="object-contain"
-                />
+                {/* Accent logo watermark */}
+                <div className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 lg:block">
+                  <Image
+                    src="/black_text_logo.png"
+                    alt=""
+                    width={280}
+                    height={280}
+                    className="h-auto w-[280px] opacity-[0.04]"
+                  />
+                </div>
               </div>
             </div>
 
