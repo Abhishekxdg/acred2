@@ -68,9 +68,9 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-1 flex-col">
-        <div className="h-20 shrink-0 sm:h-24" />
+        <div className="h-14 shrink-0 sm:h-20 lg:h-24" />
 
-        <div className="mt-auto container-acred pb-12 sm:pb-16 lg:pb-24">
+        <div className="flex flex-1 flex-col justify-center container-acred pb-10 translate-y-[12%] sm:mt-auto sm:flex-none sm:translate-y-0 sm:pb-16 lg:pb-24">
           <div className="grid items-end gap-8 lg:grid-cols-12 lg:gap-16">
 
             {/* Headline */}
@@ -78,14 +78,14 @@ export function Hero() {
               <div className="space-y-0">
                 <div className="overflow-hidden pb-[0.08em]">
                   <div ref={line1Ref}>
-                    <span className="block font-sans text-[clamp(2.85rem,11vw,10rem)] font-bold leading-[0.95] tracking-normal text-white">
+                    <span className="block font-sans text-[clamp(3.25rem,10vw,10rem)] font-bold leading-[0.95] tracking-normal text-white">
                       Building
                     </span>
                   </div>
                 </div>
                 <div className="overflow-hidden">
                   <div ref={line2Ref}>
-                    <span className="block font-serif text-[clamp(2.85rem,11vw,10rem)] italic leading-[1.05] tracking-normal text-white/85">
+                    <span className="block font-serif text-[clamp(3.25rem,10vw,10rem)] italic leading-[1.05] tracking-normal text-white/85">
                       beyond.
                     </span>
                   </div>
@@ -101,19 +101,13 @@ export function Hero() {
                 </p>
               </div>
 
-              <div ref={ctaRef} className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10">
+              <div ref={ctaRef} className="mt-8 sm:mt-10">
                 <Link
                   href="/contact"
                   className="group inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-6 py-3 font-sans text-[13px] font-medium text-white backdrop-blur-sm transition-all hover:bg-white hover:text-night hover:border-transparent cursor-hover sm:px-7 sm:py-3.5"
                 >
                   Contact us
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </Link>
-                <Link
-                  href="/interiors"
-                  className="font-mono text-[10px] uppercase tracking-widest2 text-white/40 transition-colors hover:text-white/70 cursor-hover"
-                >
-                  Explore interiors
                 </Link>
               </div>
             </div>
