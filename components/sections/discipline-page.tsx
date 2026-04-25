@@ -48,7 +48,7 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
 
   return (
     <>
-      <section ref={heroRef} className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24 lg:pt-40 lg:pb-28">
+      <section ref={heroRef} className="relative overflow-hidden min-h-screen pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24 lg:pt-40 lg:pb-28 flex items-center">
         <div className="container-acred grid gap-8 lg:grid-cols-12 lg:gap-16">
           <div className="gsap-reveal lg:col-span-7">
             <p className="section-label mb-4 sm:mb-6">{discipline.label}</p>
@@ -81,7 +81,7 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
         </div>
       </section>
 
-      <section ref={introRef} className="container-acred py-16 md:py-20 lg:py-28">
+      <section ref={introRef} className="container-acred min-h-screen py-16 md:py-20 lg:py-28 flex items-center">
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-16">
           <div className="gsap-reveal lg:col-span-5">
             <p className="section-label">How we work</p>
@@ -113,7 +113,7 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
         </div>
       </section>
 
-      <section ref={processRef} className="container-acred py-16 md:py-20 lg:py-28">
+      <section ref={processRef} className="container-acred min-h-screen py-16 md:py-20 lg:py-28 flex items-center">
         <div className="gsap-reveal">
           <p className="section-label mb-4">Process</p>
           <h2 className="text-balance">
@@ -140,7 +140,7 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
         </div>
       </section>
 
-      <section ref={relatedRef} className="container-acred py-16 pb-20 md:py-20 md:pb-24 lg:py-28 lg:pb-32">
+      <section ref={relatedRef} className="container-acred min-h-screen py-16 pb-20 md:py-20 md:pb-24 lg:py-28 lg:pb-32 flex items-center">
         <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="gsap-reveal">
             <p className="section-label mb-4">Selected work</p>

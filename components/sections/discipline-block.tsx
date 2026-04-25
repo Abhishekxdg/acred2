@@ -16,7 +16,7 @@ function getYouTubeEmbedUrl(url: string): string | null {
   );
   if (!match) return null;
   const id = match[1];
-  return `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&rel=0&playsinline=1&modestbranding=1&showinfo=0&iv_load_policy=3&fs=0&disablekb=1`;
+  return `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&rel=0&playsinline=1&modestbranding=1&showinfo=0&iv_load_policy=3&fs=0&disablekb=1&vq=hd2160`;
 }
 
 type Props = {
@@ -141,7 +141,7 @@ export function DisciplineBlock({ discipline, reverse }: Props) {
   );
 
   return (
-    <section ref={sectionRef} className="container-acred py-12 sm:py-16 md:py-20 lg:py-28">
+    <section ref={sectionRef} className="container-acred py-10 sm:py-12 md:py-16 lg:py-20">
       <div
         className={cn(
           "grid items-center gap-6 sm:gap-8 lg:grid-cols-12 lg:gap-16",
@@ -154,32 +154,42 @@ export function DisciplineBlock({ discipline, reverse }: Props) {
             ref={mediaWrapRef}
             className={cn(
               "group relative w-full overflow-hidden border-0",
-              heroVideo ? "aspect-[9/15] sm:aspect-[9/16]" : "aspect-[3/4] sm:aspect-[1/1.08]"
+              "aspect-[4/5]"
             )}
           >
             {heroVideo ? (
               youtubeEmbed ? (
                 <iframe
                   src={youtubeEmbed}
-                  allow="autoplay; encrypted-media; picture-in-picture"
+                  allow="autoplay; encrypted-media"
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-0"
                   style={{
                     width: '400%',
                     height: '400%',
-                    pointerEvents: 'auto'
+                    pointerEvents: 'none',
+                    opacity: '0.999'
                   }}
+                  tabIndex={-1}
+                  loading="eager"
                 />
               ) : (
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="absolute inset-0 h-full w-full object-cover"
-                  poster={heroImage}
-                >
-                  <source src={heroVideo} type="video/mp4" />
-                </video>
+                <div className="absolute inset-0 pointer-events-none">
+                  <video
+                    autoPlay
+                    loop
+                    playsInline
+                    webkit-playsinline
+                    preload="auto"
+                    className="absolute inset-0 h-full w-full object-cover"
+                    poster={heroImage}
+                    muted
+                    disablePictureInPicture
+                    controls={false}
+                    controlsList="nodownload nofullscreen noremoteplayback"
+                  >
+                    <source src={heroVideo} type="video/mp4" />
+                  </video>
+                </div>
               )
             ) : (
               <>

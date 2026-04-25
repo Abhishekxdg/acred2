@@ -42,7 +42,7 @@ export function Marquee({ items, duration = 20 }: Props) {
         {repeated.map((item, i) => (
           <span
             key={i}
-            className="font-mono text-[10px] uppercase tracking-widest2 text-bone-muted"
+            className="font-mono text-xs uppercase tracking-widest text-bone-muted"
           >
             {item}
             <span className="ml-16 text-gold">✦</span>
