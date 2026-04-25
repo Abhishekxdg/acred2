@@ -48,19 +48,19 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
 
   return (
     <>
-      <section ref={heroRef} className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
-        <div className="container-acred grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <section ref={heroRef} className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24 lg:pt-40 lg:pb-28">
+        <div className="container-acred grid gap-8 lg:grid-cols-12 lg:gap-16">
           <div className="gsap-reveal lg:col-span-7">
-            <p className="section-label mb-6">{discipline.label}</p>
+            <p className="section-label mb-4 sm:mb-6">{discipline.label}</p>
             <h1 className="whitespace-pre-line text-balance">
-              <span className="block font-sans font-bold text-display-xl leading-[0.95] tracking-tight text-bone">
+              <span className="block font-sans font-bold text-display-lg sm:text-display-xl leading-[0.95] tracking-tight text-bone">
                 {discipline.title.split(" ").slice(0, -1).join(" ")}
               </span>
-              <span className="block font-serif italic text-display-xl leading-[1.05] text-bone/85">
+              <span className="block font-serif italic text-display-lg sm:text-display-xl leading-[1.05] text-bone/85">
                 {discipline.title.split(" ").slice(-1)[0]}
               </span>
             </h1>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-bone-soft">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-bone-soft sm:mt-8 sm:text-lg">
               {discipline.tagline}
             </p>
           </div>
@@ -81,8 +81,8 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
         </div>
       </section>
 
-      <section ref={introRef} className="container-acred py-20 md:py-28">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+      <section ref={introRef} className="container-acred py-16 md:py-20 lg:py-28">
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-16">
           <div className="gsap-reveal lg:col-span-5">
             <p className="section-label">How we work</p>
           </div>
@@ -90,12 +90,12 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
             <p className="font-serif text-display-md text-balance text-bone/90 leading-snug">
               {discipline.detailIntro}
             </p>
-            <p className="mt-8 text-base leading-relaxed text-bone-soft">
+            <p className="mt-6 text-base leading-relaxed text-bone-soft sm:mt-8">
               {discipline.description}
             </p>
 
-            <div className="mt-12 rule" />
-            <p className="mt-8 section-label">Capabilities</p>
+            <div className="mt-10 rule sm:mt-12" />
+            <p className="mt-6 section-label sm:mt-8">Capabilities</p>
             <ul className="mt-4 grid gap-3 md:grid-cols-2">
               {discipline.capabilities.map((c) => (
                 <li
@@ -113,25 +113,25 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
         </div>
       </section>
 
-      <section ref={processRef} className="container-acred py-20 md:py-28">
+      <section ref={processRef} className="container-acred py-16 md:py-20 lg:py-28">
         <div className="gsap-reveal">
           <p className="section-label mb-4">Process</p>
           <h2 className="text-balance">
-            <span className="block font-sans font-bold text-display-lg leading-[0.95] tracking-tight text-bone">Four moves.</span>
-            <span className="block font-serif italic text-display-lg leading-[1.05] text-bone/85">No shortcuts.</span>
+            <span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">Four moves.</span>
+            <span className="block font-serif italic text-display-md sm:text-display-lg leading-[1.05] text-bone/85">No shortcuts.</span>
           </h2>
         </div>
 
-        <div className="mt-16 grid gap-px bg-bone/10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-px bg-bone/10 md:grid-cols-2 lg:grid-cols-4 sm:mt-16">
           {discipline.processSteps.map((step, i) => (
             <div
               key={step.title}
-              className="gsap-reveal border border-ink-line bg-ink-soft p-8 md:p-10"
+              className="gsap-reveal border border-ink-line bg-ink-soft p-6 sm:p-8 md:p-10"
             >
               <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold">
                 0{i + 1}
               </p>
-              <h3 className="mt-4 font-serif text-2xl text-bone">{step.title}</h3>
+              <h3 className="mt-4 font-serif text-xl sm:text-2xl text-bone">{step.title}</h3>
               <p className="mt-4 text-sm leading-relaxed text-bone-soft">
                 {step.body}
               </p>
@@ -140,16 +140,16 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
         </div>
       </section>
 
-      <section ref={relatedRef} className="container-acred py-20 pb-24 md:py-28 md:pb-32">
-        <div className="flex items-end justify-between">
+      <section ref={relatedRef} className="container-acred py-16 pb-20 md:py-20 md:pb-24 lg:py-28 lg:pb-32">
+        <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="gsap-reveal">
             <p className="section-label mb-4">Selected work</p>
             <h2>
-              <span className="block font-sans font-bold text-display-lg leading-[0.95] tracking-tight text-bone">Where this</span>
-              <span className="block font-serif italic text-display-lg leading-[1.05] text-bone/85">shows up.</span>
+              <span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">Where this</span>
+              <span className="block font-serif italic text-display-md sm:text-display-lg leading-[1.05] text-bone/85">shows up.</span>
             </h2>
           </div>
-          <div className="gsap-reveal hidden md:block">
+          <div className="gsap-reveal">
             <Link
               href="/projects"
               className="group inline-flex items-center gap-2.5 rounded-full border border-bone/15 px-5 py-2 font-sans text-sm text-bone-muted transition-all hover:border-bone hover:text-bone cursor-hover"
@@ -160,7 +160,7 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-3 sm:mt-12">
           {featured.map((p) => (
             <div key={p.slug} className="gsap-reveal">
               <Link href={`/projects/${p.slug}`} className="group block cursor-hover">
@@ -178,7 +178,7 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
                   <p className="font-mono text-[10px] uppercase tracking-widest2 text-bone-muted">
                     {p.location} · {p.year}
                   </p>
-                  <h3 className="mt-2 font-serif text-2xl text-bone transition-colors group-hover:text-gold">
+                  <h3 className="mt-2 font-serif text-xl sm:text-2xl text-bone transition-colors group-hover:text-gold">
                     {p.title}
                   </h3>
                 </div>

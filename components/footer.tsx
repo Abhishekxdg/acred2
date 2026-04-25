@@ -72,24 +72,24 @@ export function Footer() {
   );
 
   return (
-    <footer ref={footerRef} className="relative z-50 border-t border-ink-line bg-ink-muted pb-24">
-      <div className="container-acred py-16 sm:py-20">
+    <footer ref={footerRef} className="relative z-50 border-t border-ink-line bg-ink-muted pb-24 sm:pb-28">
+      <div className="container-acred py-12 sm:py-16 md:py-20">
         {/* CTA Section - only on homepage */}
         {isHomepage && (
           <>
-            <div ref={ctaRef} className="mb-16 grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <div ref={ctaRef} className="mb-12 grid items-center gap-8 lg:grid-cols-2 lg:gap-20">
               <div>
-                <p className="eyebrow mb-6">Start your project</p>
+                <p className="eyebrow mb-4 sm:mb-6">Start your project</p>
                 <h2 className="text-balance">
-                  <span className="block font-sans font-bold text-display-lg leading-[0.95] tracking-tight text-bone">Have a vision,</span>
-                  <span className="block font-serif italic text-display-lg leading-[1.05] text-bone/85">a property, or a blueprint?</span>
+                  <span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">Have a vision,</span>
+                  <span className="block font-serif italic text-display-md sm:text-display-lg leading-[1.05] text-bone/85">a property, or a blueprint?</span>
                 </h2>
-                <p className="mt-6 max-w-lg font-serif text-xl text-bone-muted sm:mt-8">
+                <p className="mt-4 max-w-lg font-serif text-lg text-bone-muted sm:mt-6 sm:text-xl">
                   Let&apos;s engineer the reality.
                 </p>
                 <a
                   href={`mailto:${site.contact.email}`}
-                  className="mt-8 inline-flex max-w-full items-center gap-3 break-all font-mono text-[10px] uppercase tracking-widest2 text-bone transition-colors hover:text-gold cursor-hover"
+                  className="mt-6 inline-flex max-w-full items-center gap-3 break-all font-mono text-[10px] uppercase tracking-widest2 text-bone transition-colors hover:text-gold cursor-hover sm:mt-8"
                 >
                   {site.contact.email}
                   <ArrowUpRight className="h-4 w-4" />
@@ -112,8 +112,8 @@ export function Footer() {
           </>
         )}
 
-        <div ref={colsRef} className="grid gap-8 py-10 sm:gap-10 sm:py-12 md:grid-cols-3">
-          <div className="space-y-6">
+        <div ref={colsRef} className="grid gap-6 py-8 sm:gap-8 sm:py-10 md:grid-cols-3">
+          <div className="space-y-4 sm:space-y-6">
             <Image
               src="/black_text_logo.png"
               alt="ACRED"
@@ -121,7 +121,7 @@ export function Footer() {
               height={40}
               className="h-8 w-auto object-contain"
             />
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <p className="eyebrow">Address</p>
               <p className="text-sm leading-relaxed text-bone-soft">
                 {site.contact.address}
@@ -130,9 +130,9 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             <p className="eyebrow">Navigate</p>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5 sm:space-y-2">
               <li>
                 <Link
                   href="/architecture"
@@ -168,9 +168,9 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             <p className="eyebrow">Offices</p>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5 sm:space-y-2">
               {site.offices.map((o) => (
                 <li key={o.city} className="text-sm text-bone-soft">
                   <span className="text-bone">{o.city}</span>{" "}
@@ -183,7 +183,7 @@ export function Footer() {
 
         <div className="rule" />
 
-        <div ref={bottomRef} className="flex flex-col gap-6 pt-8 md:flex-row md:items-center md:justify-between">
+        <div ref={bottomRef} className="flex flex-col gap-4 pt-6 sm:gap-6 sm:pt-8 md:flex-row md:items-center md:justify-between">
           <p className="text-sm leading-relaxed text-bone-muted">
             © {year} {site.name}. All rights reserved.
           </p>

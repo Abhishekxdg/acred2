@@ -141,10 +141,10 @@ export function DisciplineBlock({ discipline, reverse }: Props) {
   );
 
   return (
-    <section ref={sectionRef} className="container-acred py-16 sm:py-20 md:py-28">
+    <section ref={sectionRef} className="container-acred py-12 sm:py-16 md:py-20 lg:py-28">
       <div
         className={cn(
-          "grid items-center gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-16",
+          "grid items-center gap-6 sm:gap-8 lg:grid-cols-12 lg:gap-16",
           reverse ? "lg:[&>div:first-child]:order-2" : "",
         )}
       >
@@ -154,9 +154,9 @@ export function DisciplineBlock({ discipline, reverse }: Props) {
             ref={mediaWrapRef}
             className={cn(
               "group relative w-full overflow-hidden border-0",
-              heroVideo ? "aspect-[9/15]" : "aspect-[1/1.08] sm:aspect-[4/5]"
+              heroVideo ? "aspect-[9/15] sm:aspect-[9/16]" : "aspect-[3/4] sm:aspect-[1/1.08]"
             )}
-            >
+          >
             {heroVideo ? (
               youtubeEmbed ? (
                 <iframe
@@ -206,32 +206,32 @@ export function DisciplineBlock({ discipline, reverse }: Props) {
 
         {/* Text column */}
         <div ref={textWrapRef} className="lg:col-span-6">
-          <p ref={labelRef} className="section-label mb-6">
+          <p ref={labelRef} className="section-label mb-4 sm:mb-6">
             {label}
           </p>
           <h2 ref={titleRef} className="whitespace-pre-line text-balance">
-            <span className="block font-sans font-bold text-display-lg leading-[0.95] tracking-tight text-bone">
+            <span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">
               {title.split(" ").slice(0, -1).join(" ")}
             </span>
-            <span className="block font-serif italic text-display-lg leading-[1.05] text-bone/85">
+            <span className="block font-serif italic text-display-md sm:text-display-lg leading-[1.05] text-bone/85">
               {title.split(" ").slice(-1)[0]}
             </span>
           </h2>
           <p
             ref={taglineRef}
-            className="mt-6 max-w-xl text-sm leading-relaxed text-bone-soft sm:mt-8 sm:text-base"
+            className="mt-4 max-w-xl text-sm leading-relaxed text-bone-soft sm:mt-6 sm:text-base"
           >
             {tagline}
           </p>
 
           <ul
             ref={capsRef}
-            className="mt-8 flex flex-wrap gap-x-4 gap-y-2 font-mono text-[10px] uppercase tracking-widest2 text-bone-muted sm:mt-10 sm:gap-x-6"
+            className="mt-6 flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-widest2 text-bone-muted sm:mt-8 sm:gap-x-6"
           >
             {capabilities.map((c, i) => {
               const capLink = capabilityLinks?.[i];
               return (
-                <li key={c} className="flex items-center gap-4 sm:gap-6">
+                <li key={c} className="flex items-center gap-3 sm:gap-6">
                   {capLink ? (
                     <Link href={capLink} className="hover:text-gold transition-colors opacity-75 hover:opacity-100 cursor-hover">
                       {c}
@@ -250,7 +250,7 @@ export function DisciplineBlock({ discipline, reverse }: Props) {
           <Link
             ref={linkRef}
             href={`/${slug}`}
-            className="group mt-10 inline-flex items-center gap-2.5 rounded-full bg-bone px-6 py-2.5 font-sans text-sm font-medium text-ink-soft transition-all hover:bg-bone/80 hover:gap-3 cursor-hover sm:mt-12"
+            className="group mt-8 inline-flex items-center gap-2.5 rounded-full bg-bone px-5 py-2.5 font-sans text-sm font-medium text-ink-soft transition-all hover:bg-bone/80 hover:gap-3 cursor-hover sm:mt-10 sm:px-6"
           >
             Explore {discipline.slug.replace("-", " ")}
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

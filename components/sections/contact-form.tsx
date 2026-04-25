@@ -23,8 +23,8 @@ export function ContactForm() {
   const [state, action] = useFormState(submitContact, initial);
 
   return (
-    <form action={action} className="space-y-10">
-      <div className="grid gap-10 md:grid-cols-2">
+    <form action={action} className="space-y-8 sm:space-y-10">
+      <div className="grid gap-6 md:grid-cols-2 sm:gap-10">
         <div>
           <Label htmlFor="name">Name</Label>
           <Input id="name" name="name" required autoComplete="name" />

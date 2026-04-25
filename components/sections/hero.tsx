@@ -68,43 +68,43 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-1 flex-col">
-        <div className="h-24 shrink-0" />
+        <div className="h-20 shrink-0 sm:h-24" />
 
-        <div className="mt-auto container-acred pb-16 sm:pb-20 lg:pb-24">
-          <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-16">
+        <div className="mt-auto container-acred pb-12 sm:pb-16 lg:pb-24">
+          <div className="grid items-end gap-8 lg:grid-cols-12 lg:gap-16">
 
             {/* Headline */}
             <div className="lg:col-span-7">
               <div className="space-y-0">
                 <div className="overflow-hidden">
                   <div ref={line1Ref}>
-                    <span className="block font-sans text-[clamp(4rem,13vw,10rem)] font-bold leading-[0.95] tracking-[-0.03em] text-white">
+                    <span className="block font-sans text-[clamp(3rem,11vw,10rem)] font-bold leading-[0.95] tracking-[-0.03em] text-white">
                       Building
                     </span>
                   </div>
                 </div>
                 <div className="overflow-hidden">
                   <div ref={line2Ref}>
-                    <span className="block font-serif text-[clamp(4rem,13vw,10rem)] italic leading-[1.05] tracking-[-0.01em] text-white/85">
+                    <span className="block font-serif text-[clamp(3rem,11vw,10rem)] italic leading-[1.05] tracking-[-0.01em] text-white/85">
                       beyond.
                     </span>
                   </div>
                 </div>
               </div>
 
-              <div ref={descRef} className="mt-8 max-w-lg">
+              <div ref={descRef} className="mt-6 max-w-lg sm:mt-8">
                 <p className="mb-3 font-mono text-[10px] uppercase tracking-widest2 text-white/35">
                   Architecture can mean
                 </p>
-                <p className="text-[13px] leading-[1.75] text-white/50">
+                <p className="text-[13px] leading-[1.75] text-white/50 sm:text-[14px]">
                   {site.description}
                 </p>
               </div>
 
-              <div ref={ctaRef} className="mt-10 flex flex-wrap items-center gap-4 sm:mt-12">
+              <div ref={ctaRef} className="mt-8 flex flex-wrap items-center gap-4 sm:mt-10">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-7 py-3.5 font-sans text-[13px] font-medium text-white backdrop-blur-sm transition-all hover:bg-white hover:text-night hover:border-transparent cursor-hover"
+                  className="group inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-6 py-3 font-sans text-[13px] font-medium text-white backdrop-blur-sm transition-all hover:bg-white hover:text-night hover:border-transparent cursor-hover sm:px-7 sm:py-3.5"
                 >
                   Contact us
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
