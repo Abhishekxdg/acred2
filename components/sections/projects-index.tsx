@@ -56,7 +56,7 @@ export function ProjectsIndex() {
 
       {/* Filter chips */}
       <section className="container-acred">
-        <div className="-mx-6 overflow-x-auto border-y border-ink-line px-6 py-4 sm:mx-0 sm:px-0 sm:py-5">
+        <div className="-mx-6 border-y border-ink-line px-6 py-4 sm:mx-0 sm:px-0 sm:py-5">
           <div className="flex min-w-max gap-2 sm:flex-wrap">
           {(["All", ...categories] as const).map((c) => (
             <button

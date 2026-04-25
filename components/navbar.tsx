@@ -12,15 +12,15 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { label: "Projects", href: "/architecture" },
+  { label: "Interiors", href: "/interiors" },
   { label: "About us", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
 const menuItems = [
   { label: "About", href: "/about" },
-  { label: "Architecture & Design", href: "/architecture" },
-  { label: "Construction", href: "/construction" },
+  { label: "Interiors", href: "/interiors" },
+  { label: "Construction & Architecture", href: "/construction" },
   { label: "Real Estate", href: "/real-estate" },
   { label: "Engineering", href: "/engineering" },
   { label: "Contact Us", href: "/contact" },

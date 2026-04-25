@@ -43,6 +43,7 @@ export function DisciplineBlock({ discipline, reverse }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
   const mediaWrapRef = useRef<HTMLDivElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const textWrapRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLParagraphElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -173,18 +174,27 @@ export function DisciplineBlock({ discipline, reverse }: Props) {
                   loading="eager"
                 />
               ) : (
-                <div className="absolute inset-0">
+                <div
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  style={{ backgroundImage: `url(${heroImage})` }}
+                >
                   <video
+                    ref={videoRef}
                     autoPlay
-                    loop
                     playsInline
-                    preload="metadata"
+                    preload="auto"
                     className="absolute inset-0 h-full w-full object-cover"
-                    poster={heroImage}
                     muted
                     disablePictureInPicture
                     controls={false}
                     controlsList="nodownload nofullscreen noremoteplayback"
+                    onTimeUpdate={() => {
+                      const v = videoRef.current;
+                      if (v && v.duration && v.currentTime >= v.duration - 0.3) {
+                        v.currentTime = 0;
+                        v.play();
+                      }
+                    }}
                   >
                     <source src={heroVideo} type="video/mp4" />
                   </video>

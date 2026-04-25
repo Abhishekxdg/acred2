@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { DisciplinePage } from "@/components/sections/discipline-page";
-import { disciplineBySlug } from "@/lib/content";
-import { notFound } from "next/navigation";
+import { ArchitectureDetailPage } from "@/components/sections/architecture-detail-page";
 
 export const metadata: Metadata = {
-  title: "Architecture",
+  title: "Architecture & Interior Design",
   description:
-    "Master planning, concept, and interior architecture — ACRED reads the site before it draws a line.",
+    "End-to-end architectural design and interior solutions. From modular kitchens to complete home interiors — designed by experts, delivered on time.",
 };
 
 export default function ArchitecturePage() {
-  const discipline = disciplineBySlug("architecture");
-  if (!discipline) notFound();
-  return <DisciplinePage discipline={discipline} />;
+  return <ArchitectureDetailPage />;
 }

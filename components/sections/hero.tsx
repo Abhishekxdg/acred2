@@ -110,10 +110,10 @@ export function Hero() {
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
                 <Link
-                  href="/architecture"
+                  href="/interiors"
                   className="font-mono text-[10px] uppercase tracking-widest2 text-white/40 transition-colors hover:text-white/70 cursor-hover"
                 >
-                  Explore our work
+                  Explore interiors
                 </Link>
               </div>
             </div>

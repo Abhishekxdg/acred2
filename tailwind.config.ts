@@ -79,10 +79,20 @@ const config: Config = {
           "70%": { transform: "translate(7%, 8%)" },
           "90%": { transform: "translate(-3%, 3%)" },
         },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
       },
       animation: {
         "fade-in": "fade-in 0.8s ease-out forwards",
         "grain": "grain 8s steps(6) infinite",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },

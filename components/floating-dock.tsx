@@ -10,14 +10,14 @@ import {
 
 const items = [
   {
-    title: "Architecture",
+    title: "Interiors",
     icon: (
       <IconBuildingSkyscraper className="h-full w-full text-bone-muted" />
     ),
-    href: "/architecture",
+    href: "/interiors",
   },
   {
-    title: "Construction",
+    title: "Construction & Architecture",
     icon: (
       <IconHammer className="h-full w-full text-bone-muted" />
     ),

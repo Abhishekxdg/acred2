@@ -23,49 +23,61 @@ export function Footer() {
     () => {
       if (!footerRef.current) return;
 
+      // Force refresh ScrollTrigger to ensure triggers are calculated correctly
+      ScrollTrigger.refresh();
+
       if (ctaRef.current) {
-        gsap.from(ctaRef.current.children, {
-          y: 40,
-          opacity: 0,
-          stagger: 0.12,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ctaRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        });
+        gsap.fromTo(
+          ctaRef.current.children,
+          { y: 30 },
+          {
+            y: 0,
+            stagger: 0.1,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ctaRef.current,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
       }
 
       if (colsRef.current) {
         const cols = colsRef.current.children;
-        gsap.from(cols, {
-          y: 30,
-          opacity: 0,
-          stagger: 0.1,
-          duration: 0.9,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: colsRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        });
+        gsap.fromTo(
+          cols,
+          { y: 20 },
+          {
+            y: 0,
+            stagger: 0.08,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: colsRef.current,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
       }
 
       if (bottomRef.current) {
-        gsap.from(bottomRef.current, {
-          opacity: 0,
-          y: 12,
-          duration: 0.6,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: bottomRef.current,
-            start: "top 95%",
-            toggleActions: "play none none reverse",
-          },
-        });
+        gsap.fromTo(
+          bottomRef.current,
+          { y: 10 },
+          {
+            y: 0,
+            duration: 0.5,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: bottomRef.current,
+              start: "top 95%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
       }
     },
     { scope: footerRef }
@@ -135,10 +147,10 @@ export function Footer() {
             <ul className="space-y-1.5 sm:space-y-2">
               <li>
                 <Link
-                  href="/architecture"
+                  href="/interiors"
                   className="text-sm text-bone-soft hover:text-gold transition-colors cursor-hover"
                 >
-                  Architecture
+                  Interiors
                 </Link>
               </li>
               <li>
