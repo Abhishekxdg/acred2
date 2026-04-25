@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MotionReveal } from "@/components/motion-reveal";
 import { site, disciplines } from "@/lib/content";
 
@@ -76,6 +77,22 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Hero image */}
+      <section className="container-acred pb-10 sm:pb-12 md:pb-16">
+        <MotionReveal>
+          <div className="relative aspect-[16/7] w-full overflow-hidden rounded-sm">
+            <Image
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80"
+              alt="ACRED studio workspace"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
+            />
+          </div>
+        </MotionReveal>
+      </section>
+
       {/* Manifesto principles */}
       <section className="container-acred py-10 sm:py-16 lg:py-20">
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-14">
@@ -114,6 +131,34 @@ export default function AboutPage() {
             ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Image grid */}
+      <section className="container-acred py-6 sm:py-10 lg:py-12">
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <MotionReveal>
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm">
+              <Image
+                src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+                alt="Concrete and timber detail"
+                fill
+                className="object-cover"
+                sizes="(min-width: 640px) 50vw, 100vw"
+              />
+            </div>
+          </MotionReveal>
+          <MotionReveal delay={0.1}>
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm">
+              <Image
+                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80"
+                alt="Steel structure at dusk"
+                fill
+                className="object-cover"
+                sizes="(min-width: 640px) 50vw, 100vw"
+              />
+            </div>
+          </MotionReveal>
         </div>
       </section>
 
