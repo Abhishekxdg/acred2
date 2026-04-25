@@ -13,9 +13,10 @@ export default function ContactPage() {
     <section className="container-acred pt-32 pb-24 md:pt-40">
       <div className="grid gap-16 lg:grid-cols-12 lg:gap-24">
         <MotionReveal className="lg:col-span-5">
-          <p className="eyebrow mb-6">Start the conversation</p>
-          <h1 className="font-serif text-display-xl text-bone text-balance">
-            Write to the studio.
+          <p className="section-label mb-6">Start the conversation</p>
+          <h1 className="text-balance">
+            <span className="block font-sans font-bold text-display-xl leading-[0.95] tracking-tight text-bone">Write to</span>
+            <span className="block font-serif italic text-display-xl leading-[1.05] text-bone/85">the studio.</span>
           </h1>
           <p className="mt-8 text-base leading-relaxed text-bone-soft">
             Tell us about the site, the brief, or the instinct. We reply within
@@ -24,13 +25,13 @@ export default function ContactPage() {
 
           <div className="mt-16 space-y-10">
             <div>
-              <p className="eyebrow mb-2">Email</p>
+              <p className="section-label mb-2">Email</p>
               <p className="font-serif text-2xl text-bone">
                 {site.contact.email}
               </p>
             </div>
             <div>
-              <p className="eyebrow mb-2">Studio</p>
+              <p className="section-label mb-2">Studio</p>
               <p className="text-base leading-relaxed text-bone-soft">
                 {site.contact.address}
               </p>
@@ -39,7 +40,7 @@ export default function ContactPage() {
               </p>
             </div>
             <div>
-              <p className="eyebrow mb-2">Hours</p>
+              <p className="section-label mb-2">Hours</p>
               <p className="text-base text-bone-soft">
                 Mon–Fri · 10:00 – 19:00 IST
               </p>

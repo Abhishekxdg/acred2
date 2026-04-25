@@ -11,7 +11,7 @@ type Props = {
 /**
  * Infinite horizontal marquee powered by GSAP for butter-smooth motion.
  */
-export function Marquee({ items, duration = 40 }: Props) {
+export function Marquee({ items, duration = 20 }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const repeated = [...items, ...items, ...items];
 
@@ -33,7 +33,7 @@ export function Marquee({ items, duration = 40 }: Props) {
   }, [duration]);
 
   return (
-    <div className="overflow-hidden border-y border-ink-line py-6">
+    <div className="overflow-hidden border-y border-ink-line py-5">
       <div
         ref={trackRef}
         className="flex gap-16 whitespace-nowrap"
@@ -42,7 +42,7 @@ export function Marquee({ items, duration = 40 }: Props) {
         {repeated.map((item, i) => (
           <span
             key={i}
-            className="font-mono text-xs uppercase tracking-widest2 text-bone-muted"
+            className="font-mono text-[10px] uppercase tracking-widest2 text-bone-muted"
           >
             {item}
             <span className="ml-16 text-gold">✦</span>

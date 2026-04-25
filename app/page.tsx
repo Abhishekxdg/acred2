@@ -15,15 +15,16 @@ export default function HomePage() {
           "Construction",
           "Real Estate",
           "Engineering",
-          "Development",
-          "One partner, five disciplines",
+          "One partner, four disciplines",
         ]}
       />
 
-      {/* Five discipline loops, alternating image side */}
-      {disciplines.map((d, i) => (
-        <DisciplineBlock key={d.slug} discipline={d} reverse={i % 2 === 1} />
-      ))}
+      {/* Discipline loops, alternating image side */}
+      {disciplines
+        .filter((d) => d.slug !== "development")
+        .map((d, i) => (
+          <DisciplineBlock key={d.slug} discipline={d} reverse={i % 2 === 1} />
+        ))}
 
       <SignatureProjects />
     </>

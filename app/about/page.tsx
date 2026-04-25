@@ -42,11 +42,10 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="container-acred pt-32 pb-16 md:pt-40 md:pb-24">
         <MotionReveal>
-          <p className="eyebrow mb-6">The studio</p>
-          <h1 className="font-serif text-display-xl text-bone text-balance">
-            One practice.
-            <br />
-            <span className="text-bone-muted">Five disciplines held together by hand.</span>
+          <p className="section-label mb-6">The studio</p>
+          <h1 className="text-balance">
+            <span className="block font-sans font-bold text-display-xl leading-[0.95] tracking-tight text-bone">One practice.</span>
+            <span className="block font-serif italic text-display-xl leading-[1.05] text-bone/85">Five disciplines held together by hand.</span>
           </h1>
         </MotionReveal>
 
@@ -61,12 +60,13 @@ export default function AboutPage() {
       </section>
 
       {/* Manifesto principles */}
-      <section className="border-y border-ink-line bg-ink-soft">
+      <section className="border-y border-ink-line bg-ink-muted">
         <div className="container-acred py-24">
           <MotionReveal>
-            <p className="eyebrow mb-6">✦ The ACRED manifesto</p>
-            <h2 className="font-serif text-display-lg text-bone text-balance">
-              Five things we believe.
+            <p className="section-label mb-6">The ACRED manifesto</p>
+            <h2 className="text-balance">
+              <span className="block font-sans font-bold text-display-lg leading-[0.95] tracking-tight text-bone">Five things</span>
+              <span className="block font-serif italic text-display-lg leading-[1.05] text-bone/85">we believe.</span>
             </h2>
           </MotionReveal>
 
@@ -93,9 +93,10 @@ export default function AboutPage() {
       {/* Disciplines summary */}
       <section className="container-acred py-24">
         <MotionReveal>
-          <p className="eyebrow mb-4">Disciplines</p>
-          <h2 className="font-serif text-display-lg text-bone">
-            What sits under the roof.
+          <p className="section-label mb-4">Disciplines</p>
+          <h2>
+            <span className="block font-sans font-bold text-display-lg leading-[0.95] tracking-tight text-bone">What sits</span>
+            <span className="block font-serif italic text-display-lg leading-[1.05] text-bone/85">under the roof.</span>
           </h2>
         </MotionReveal>
 
@@ -125,7 +126,7 @@ export default function AboutPage() {
       {/* Numbers */}
       <section className="container-acred pb-24">
         <MotionReveal>
-          <div className="grid gap-8 border-y border-bone/10 py-10 md:grid-cols-4">
+          <div className="grid gap-8 border-y border-ink-line py-10 md:grid-cols-4">
             {[
               { n: "12", l: "Years practising" },
               { n: "48", l: "Projects delivered" },

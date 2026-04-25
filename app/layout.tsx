@@ -2,11 +2,12 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import { FloatingDock } from "@/components/floating-dock";
 import { Footer } from "@/components/footer";
-import { CustomCursor } from "@/components/custom-cursor";
 import { AmbientCanvas } from "@/components/ambient-canvas";
 import { GsapProvider } from "@/components/gsap-provider";
 import { site } from "@/lib/content";
+import { cn } from "@/lib/utils";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin"],
@@ -15,12 +16,7 @@ const serif = Cormorant_Garamond({
   display: "swap",
 });
 
-const sans = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  variable: "--font-sans",
-  display: "swap",
-});
+const sans = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],
@@ -35,6 +31,10 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.description,
+  icons: {
+    icon: "/Favicon.png",
+    apple: "/Favicon.png",
+  },
   openGraph: {
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A0A0A",
+  themeColor: "#F8F5EF",
 };
 
 export default function RootLayout({
@@ -54,14 +54,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${serif.variable} ${sans.variable} ${mono.variable}`}
+      className={cn(serif.variable, mono.variable, "font-sans", sans.variable)}
     >
       <body className="grain">
         <GsapProvider>
-          <CustomCursor />
           <AmbientCanvas />
           <Navbar />
           <main className="relative z-[2]">{children}</main>
+          <FloatingDock />
           <Footer />
         </GsapProvider>
       </body>

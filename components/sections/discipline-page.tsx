@@ -51,9 +51,14 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
       <section ref={heroRef} className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
         <div className="container-acred grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="gsap-reveal lg:col-span-7">
-            <p className="eyebrow mb-6">{discipline.label}</p>
-            <h1 className="font-serif text-display-xl text-bone whitespace-pre-line text-balance">
-              {discipline.title}
+            <p className="section-label mb-6">{discipline.label}</p>
+            <h1 className="whitespace-pre-line text-balance">
+              <span className="block font-sans font-bold text-display-xl leading-[0.95] tracking-tight text-bone">
+                {discipline.title.split(" ").slice(0, -1).join(" ")}
+              </span>
+              <span className="block font-serif italic text-display-xl leading-[1.05] text-bone/85">
+                {discipline.title.split(" ").slice(-1)[0]}
+              </span>
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-bone-soft">
               {discipline.tagline}
@@ -70,7 +75,7 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
                 className="object-cover"
                 priority
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             </div>
           </div>
         </div>
@@ -79,10 +84,10 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
       <section ref={introRef} className="container-acred py-20 md:py-28">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="gsap-reveal lg:col-span-5">
-            <p className="eyebrow">How we work</p>
+            <p className="section-label">How we work</p>
           </div>
           <div className="gsap-reveal lg:col-span-7">
-            <p className="font-serif text-display-md text-balance text-bone">
+            <p className="font-serif text-display-md text-balance text-bone/90 leading-snug">
               {discipline.detailIntro}
             </p>
             <p className="mt-8 text-base leading-relaxed text-bone-soft">
@@ -90,12 +95,12 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
             </p>
 
             <div className="mt-12 rule" />
-            <p className="mt-8 eyebrow">Capabilities</p>
+            <p className="mt-8 section-label">Capabilities</p>
             <ul className="mt-4 grid gap-3 md:grid-cols-2">
               {discipline.capabilities.map((c) => (
                 <li
                   key={c}
-                  className="gsap-reveal flex items-start gap-3 border-b border-bone/10 pb-3 text-bone"
+                  className="gsap-reveal flex items-start gap-3 border-b border-ink-line pb-3 text-bone"
                 >
                   <span className="font-mono text-[10px] uppercase tracking-widest2 text-gold">
                     ✦
@@ -110,9 +115,10 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
 
       <section ref={processRef} className="container-acred py-20 md:py-28">
         <div className="gsap-reveal">
-          <p className="eyebrow mb-4">Process</p>
-          <h2 className="font-serif text-display-lg text-bone text-balance">
-            Four moves. No shortcuts.
+          <p className="section-label mb-4">Process</p>
+          <h2 className="text-balance">
+            <span className="block font-sans font-bold text-display-lg leading-[0.95] tracking-tight text-bone">Four moves.</span>
+            <span className="block font-serif italic text-display-lg leading-[1.05] text-bone/85">No shortcuts.</span>
           </h2>
         </div>
 
@@ -120,7 +126,7 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
           {discipline.processSteps.map((step, i) => (
             <div
               key={step.title}
-              className="gsap-reveal bg-ink p-8 md:p-10"
+              className="gsap-reveal border border-ink-line bg-ink-soft p-8 md:p-10"
             >
               <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold">
                 0{i + 1}
@@ -134,18 +140,19 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
         </div>
       </section>
 
-      <section ref={relatedRef} className="container-acred py-20 md:py-28">
+      <section ref={relatedRef} className="container-acred py-20 pb-24 md:py-28 md:pb-32">
         <div className="flex items-end justify-between">
           <div className="gsap-reveal">
-            <p className="eyebrow mb-4">Selected work</p>
-            <h2 className="font-serif text-display-lg text-bone">
-              Where this shows up.
+            <p className="section-label mb-4">Selected work</p>
+            <h2>
+              <span className="block font-sans font-bold text-display-lg leading-[0.95] tracking-tight text-bone">Where this</span>
+              <span className="block font-serif italic text-display-lg leading-[1.05] text-bone/85">shows up.</span>
             </h2>
           </div>
           <div className="gsap-reveal hidden md:block">
             <Link
               href="/projects"
-              className="group inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest2 text-bone hover:text-gold transition-colors"
+              className="group inline-flex items-center gap-2.5 rounded-full border border-bone/15 px-5 py-2 font-sans text-sm text-bone-muted transition-all hover:border-bone hover:text-bone cursor-hover"
             >
               All projects
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -156,8 +163,8 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {featured.map((p) => (
             <div key={p.slug} className="gsap-reveal">
-              <Link href={`/projects/${p.slug}`} className="group block">
-                <div className="relative aspect-[3/4] w-full overflow-hidden bg-ink-soft">
+              <Link href={`/projects/${p.slug}`} className="group block cursor-hover">
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-ink-muted">
                   <Image
                     src={p.heroImage}
                     alt={p.title}
@@ -165,6 +172,7 @@ export function DisciplinePage({ discipline }: { discipline: Discipline }) {
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
                 <div className="mt-4">
                   <p className="font-mono text-[10px] uppercase tracking-widest2 text-bone-muted">

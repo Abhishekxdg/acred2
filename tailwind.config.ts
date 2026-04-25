@@ -17,23 +17,35 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // ACRED palette — deep earth black, warm ivory, muted gold
+        // ACRED palette — light mode (ink = warm white bg, bone = near-black text)
         ink: {
-          DEFAULT: "#0A0A0A",
-          soft: "#101010",
-          line: "#1A1A1A",
-          muted: "#2A2A2A",
+          DEFAULT: "#F8F5EF",
+          soft: "#FFFFFF",
+          line: "#E4DDD4",
+          muted: "#EDE7DE",
         },
         bone: {
-          DEFAULT: "#EDE6D6",
-          soft: "#C9C2B2",
-          muted: "#8A8578",
-          dim: "#5C5A52",
+          DEFAULT: "#0E0D0B",
+          soft: "#3A3732",
+          muted: "#706B62",
+          dim: "#A09891",
         },
         gold: {
           DEFAULT: "#B8925A",
           soft: "#D4B284",
           deep: "#8A6A3E",
+        },
+        forest: {
+          DEFAULT: "#2D4A3E",
+          soft: "#4A6B5C",
+          muted: "#7A9B8C",
+          light: "#D4E0DA",
+          bg: "#1E3329",
+        },
+        night: {
+          DEFAULT: "#0F0F0D",
+          soft: "#1C1C1A",
+          muted: "#2E2E2B",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

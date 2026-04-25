@@ -26,8 +26,8 @@ export function AmbientCanvas() {
         y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.2,
         vy: (Math.random() - 0.5) * 0.2,
-        size: Math.random() * 1.5 + 0.5,
-        alpha: Math.random() * 0.3 + 0.1,
+        size: Math.random() * 2 + 0.8,
+        alpha: Math.random() * 0.5 + 0.25,
       });
     }
 
@@ -91,7 +91,7 @@ export function AmbientCanvas() {
     <canvas
       ref={canvasRef}
       className="pointer-events-none fixed inset-0 z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 0.35 }}
     />
   );
 }

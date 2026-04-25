@@ -47,11 +47,10 @@ export function ProjectsIndex() {
   return (
     <>
       <section ref={headerRef} className="container-acred pt-24 pb-10 sm:pt-28 md:pt-40 md:pb-12">
-        <p className="gsap-reveal eyebrow mb-6">Work index</p>
-        <h1 className="gsap-reveal max-w-5xl font-serif text-[clamp(2.6rem,11vw,6.5rem)] text-bone text-balance">
-          Every project is a contract
-          <br />
-          <span className="text-bone-muted">with a piece of land.</span>
+        <p className="gsap-reveal section-label mb-6">Work index</p>
+        <h1 className="gsap-reveal max-w-5xl text-balance">
+          <span className="block font-sans font-bold text-display-xl leading-[0.95] tracking-tight text-bone">Every project is a contract</span>
+          <span className="block font-serif italic text-display-xl leading-[1.05] text-bone/85">with a piece of land.</span>
         </h1>
       </section>
 
@@ -64,10 +63,10 @@ export function ProjectsIndex() {
               key={c}
               onClick={() => setActive(c)}
               className={cn(
-                "shrink-0 whitespace-nowrap px-3 py-2 font-mono text-[10px] uppercase tracking-[0.22em] transition-colors sm:px-4 sm:tracking-widest2",
+                "shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest2 transition-all cursor-hover sm:px-5",
                 active === c
-                  ? "bg-bone text-ink"
-                  : "text-bone-muted hover:text-bone",
+                  ? "bg-bone text-ink-soft"
+                  : "text-bone-muted hover:text-bone hover:bg-bone/5",
               )}
             >
               {c}
@@ -98,7 +97,7 @@ export function ProjectsIndex() {
                 }}
               >
                 <Link href={`/projects/${p.slug}`} className="group block">
-                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink-soft sm:aspect-[3/4]">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-ink-muted sm:aspect-[3/4]">
                     <Image
                       src={p.heroImage}
                       alt={p.title}
@@ -106,18 +105,18 @@ export function ProjectsIndex() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
-                    <div className="absolute left-3 top-3 font-mono text-[10px] uppercase tracking-[0.22em] text-bone/70 sm:left-4 sm:top-4 sm:tracking-widest2">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute left-3 top-3 font-mono text-[10px] uppercase tracking-widest2 text-white/50 sm:left-4 sm:top-4">
                       [ {p.number} ]
                     </div>
                   </div>
 
                   <div className="mt-4 flex items-start justify-between gap-3 sm:mt-5 sm:gap-4">
                     <div className="min-w-0">
-                      <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.2em] text-bone-muted sm:tracking-widest2">
+                      <p className="font-mono text-[10px] uppercase leading-relaxed tracking-widest2 text-bone-muted">
                         {p.location} · {p.category} · {p.year}
                       </p>
-                      <h3 className="mt-2 font-serif text-[1.65rem] leading-tight text-bone transition-colors group-hover:text-gold sm:text-2xl">
+                      <h3 className="mt-2 font-serif text-2xl leading-tight text-bone transition-colors group-hover:text-gold">
                         {p.title}
                       </h3>
                       <p className="mt-2 text-sm leading-relaxed text-bone-soft line-clamp-3 sm:line-clamp-2">

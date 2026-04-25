@@ -45,20 +45,20 @@ export default function ProjectDetail({ params }: Params) {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-ink/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night via-night/30 to-night/10" />
 
         <div className="container-acred absolute inset-x-0 bottom-0 pb-16">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest2 text-bone-soft hover:text-gold transition-colors"
+            className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest2 text-white/60 hover:text-white transition-colors cursor-hover"
           >
             <ArrowLeft className="h-3 w-3" /> All work
           </Link>
-          <p className="eyebrow mt-8">
+          <p className="mt-8 font-mono text-[10px] uppercase tracking-widest2 text-white/50">
             {project.category} · {project.location} · {project.year}
           </p>
-          <h1 className="mt-4 font-serif text-display-xl text-bone text-balance">
-            {project.title}
+          <h1 className="mt-4 text-balance">
+            <span className="block font-sans font-bold text-display-xl leading-[0.95] tracking-tight text-white">{project.title}</span>
           </h1>
         </div>
       </section>
@@ -79,11 +79,11 @@ export default function ProjectDetail({ params }: Params) {
           </MotionReveal>
 
           <MotionReveal className="lg:col-span-5" delay={0.1}>
-            <div className="border-t border-bone/10">
+            <div className="border-t border-ink-line">
               {project.facts.map((f) => (
                 <div
                   key={f.label}
-                  className="flex items-center justify-between border-b border-bone/10 py-4"
+                  className="flex items-center justify-between border-b border-ink-line py-4"
                 >
                   <span className="font-mono text-[10px] uppercase tracking-widest2 text-bone-muted">
                     {f.label}
@@ -91,13 +91,13 @@ export default function ProjectDetail({ params }: Params) {
                   <span className="font-serif text-lg text-bone">{f.value}</span>
                 </div>
               ))}
-              <div className="flex items-center justify-between border-b border-bone/10 py-4">
+              <div className="flex items-center justify-between border-b border-ink-line py-4">
                 <span className="font-mono text-[10px] uppercase tracking-widest2 text-bone-muted">
                   Role
                 </span>
                 <span className="text-sm text-bone">{project.role}</span>
               </div>
-              <div className="flex items-center justify-between border-b border-bone/10 py-4">
+              <div className="flex items-center justify-between border-b border-ink-line py-4">
                 <span className="font-mono text-[10px] uppercase tracking-widest2 text-bone-muted">
                   Area
                 </span>
@@ -114,7 +114,7 @@ export default function ProjectDetail({ params }: Params) {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {project.gallery.map((src, i) => (
               <MotionReveal key={src} delay={i * 0.08}>
-                <div className="relative aspect-[3/4] w-full overflow-hidden bg-ink-soft">
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-ink-muted">
                   <Image
                     src={src}
                     alt={`${project.title} — image ${i + 1}`}
@@ -133,7 +133,7 @@ export default function ProjectDetail({ params }: Params) {
       <section className="border-t border-ink-line">
         <Link
           href={`/projects/${next.slug}`}
-          className="group block py-20 transition-colors hover:bg-ink-soft"
+          className="group block py-20 pb-24 md:pb-32 transition-colors hover:bg-ink-muted cursor-hover"
         >
           <div className="container-acred flex items-center justify-between gap-6">
             <div>

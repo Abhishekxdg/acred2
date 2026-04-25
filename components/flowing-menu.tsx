@@ -80,9 +80,9 @@ function MenuItem({
     width: number,
     height: number
   ) => {
-    const leftEdgeDist = distMetric(mouseX, mouseY, 0, height / 2);
-    const rightEdgeDist = distMetric(mouseX, mouseY, width, height / 2);
-    return leftEdgeDist < rightEdgeDist ? "left" : "right";
+    const topEdgeDist = distMetric(mouseX, mouseY, width / 2, 0);
+    const bottomEdgeDist = distMetric(mouseX, mouseY, width / 2, height);
+    return topEdgeDist < bottomEdgeDist ? "top" : "bottom";
   };
 
   const distMetric = (x: number, y: number, x2: number, y2: number) => {
@@ -155,9 +155,9 @@ function MenuItem({
 
     gsap
       .timeline({ defaults: animationDefaults })
-      .set(marqueeRef.current, { x: edge === "left" ? "-101%" : "101%" }, 0)
-      .set(marqueeInnerRef.current, { x: edge === "left" ? "101%" : "-101%" }, 0)
-      .to([marqueeRef.current, marqueeInnerRef.current], { x: "0%" }, 0);
+      .set(marqueeRef.current, { y: edge === "top" ? "-101%" : "101%" }, 0)
+      .set(marqueeInnerRef.current, { y: edge === "top" ? "101%" : "-101%" }, 0)
+      .to([marqueeRef.current, marqueeInnerRef.current], { y: "0%" }, 0);
   };
 
   const handleMouseLeave = (ev: React.MouseEvent) => {
@@ -170,8 +170,8 @@ function MenuItem({
 
     gsap
       .timeline({ defaults: animationDefaults })
-      .to(marqueeRef.current, { x: edge === "left" ? "-101%" : "101%" }, 0)
-      .to(marqueeInnerRef.current, { x: edge === "left" ? "101%" : "-101%" }, 0);
+      .to(marqueeRef.current, { y: edge === "top" ? "-101%" : "101%" }, 0)
+      .to(marqueeInnerRef.current, { y: edge === "top" ? "101%" : "-101%" }, 0);
   };
 
   return (
