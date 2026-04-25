@@ -173,13 +173,12 @@ export function DisciplineBlock({ discipline, reverse }: Props) {
                   loading="eager"
                 />
               ) : (
-                <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-0">
                   <video
                     autoPlay
                     loop
                     playsInline
-                    webkit-playsinline
-                    preload="auto"
+                    preload="metadata"
                     className="absolute inset-0 h-full w-full object-cover"
                     poster={heroImage}
                     muted
@@ -189,6 +188,8 @@ export function DisciplineBlock({ discipline, reverse }: Props) {
                   >
                     <source src={heroVideo} type="video/mp4" />
                   </video>
+                  {/* Transparent overlay blocks native browser video controls */}
+                  <div className="absolute inset-0 z-10" />
                 </div>
               )
             ) : (

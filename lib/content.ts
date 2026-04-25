@@ -107,7 +107,7 @@ export const disciplines: Discipline[] = [
     heroImage:
       "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80",
     heroImageAlt: "Steel structural framework at dusk",
-    heroVideo: "https://videos.pexels.com/video-files/2022395/2022395-uhd_2160_4096_25fps.mp4",
+    heroVideo: "https://videos.pexels.com/video-files/2022395/2022395-hd_1920_1080_30fps.mp4",
     detailIntro:
       "Our site team is small and senior. We'd rather move slower with the right hands than faster with the wrong ones.",
     processSteps: [
@@ -175,7 +175,7 @@ export const disciplines: Discipline[] = [
     heroImage:
       "https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=1600&q=80",
     heroImageAlt: "Precise engineered steel joint detail",
-    heroVideo: "https://videos.pexels.com/video-files/3129671/3129671-uhd_2160_4096_25fps.mp4",
+    heroVideo: "https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_30fps.mp4",
     detailIntro:
       "Our engineers are generalists who specialised. They understand architecture, cost, and construction sequencing — not just code compliance.",
     processSteps: [

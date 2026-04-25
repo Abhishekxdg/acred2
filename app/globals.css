@@ -240,4 +240,29 @@
   *::-webkit-media-controls {
     display: none !important;
   }
+
+  /* Hide loading spinner on video */
+  video::-webkit-media-controls-overlay-play-button {
+    display: none !important;
+    opacity: 0 !important;
+  }
+  video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    opacity: 0 !important;
+  }
+  video::-webkit-media-controls-status-display {
+    display: none !important;
+    opacity: 0 !important;
+  }
+  video::-webkit-media-loading-spinner {
+    display: none !important;
+    opacity: 0 !important;
+  }
+  video::-webkit-media-controls-loading-indicator {
+    display: none !important;
+    opacity: 0 !important;
+  }
+  video:-webkit-full-page-media {
+    pointer-events: none !important;
+  }
 }
