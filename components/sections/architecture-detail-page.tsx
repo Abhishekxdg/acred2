@@ -13,37 +13,37 @@ const services = [
   {
     title: "Modular Kitchen",
     desc: "Custom-designed kitchen units with premium finishes, soft-close hardware, and space-optimized layouts.",
-    image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=800",
     href: "#",
   },
   {
     title: "Living Room Interiors",
     desc: "Complete living spaces with TV units, seating arrangements, lighting, and décor curated to your style.",
-    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
     href: "#",
   },
   {
     title: "Wardrobe & Storage",
     desc: "Floor-to-ceiling wardrobes, walk-in closets, and smart storage that maximizes every square foot.",
-    image: "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/2724748/pexels-photo-2724748.jpeg?auto=compress&cs=tinysrgb&w=800",
     href: "#",
   },
   {
     title: "Bedroom Design",
     desc: "Master and guest bedrooms with custom bed frames, side tables, dressing units, and ambient lighting.",
-    image: "https://images.unsplash.com/photo-1616594039964-40891a909d99?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800",
     href: "#",
   },
   {
     title: "Bathroom Interiors",
     desc: "Modern bathrooms with premium fittings, tile layouts, vanity units, and waterproof storage.",
-    image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=800",
     href: "#",
   },
   {
     title: "Pooja & Foyer",
     desc: "Traditional and contemporary prayer units, entryway consoles, and shoe cabinets with aesthetic appeal.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.pexels.com/photos/3097112/pexels-photo-3097112.jpeg?auto=compress&cs=tinysrgb&w=800",
     href: "#",
   },
 ];
@@ -174,7 +174,7 @@ export function InteriorsDetailPage() {
             <div className="gsap-reveal lg:col-span-5">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-ink-soft">
                 <Image
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+                  src="https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   alt="Modern interior living space"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
