@@ -84,12 +84,12 @@ export function Footer() {
   );
 
   return (
-    <footer ref={footerRef} className="relative z-50 border-t border-ink-line bg-ink-muted pb-24 sm:pb-28">
-      <div className="container-acred py-12 sm:py-16 md:py-20">
+    <footer ref={footerRef} className="relative z-50 overflow-hidden border-t border-ink-line bg-ink-muted pb-6 sm:pb-10">
+      <div className="container-acred py-10 sm:py-16 md:py-20">
         {/* CTA Section - only on homepage */}
         {isHomepage && (
           <>
-            <div ref={ctaRef} className="mb-12 grid items-center gap-8 lg:grid-cols-2 lg:gap-20">
+            <div ref={ctaRef} className="mb-10 grid items-center gap-8 sm:mb-12 lg:grid-cols-2 lg:gap-20">
               <div>
                 <p className="eyebrow mb-4 sm:mb-6">Start your project</p>
                 <h2 className="text-balance">
@@ -124,7 +124,7 @@ export function Footer() {
           </>
         )}
 
-        <div ref={colsRef} className="grid gap-6 py-8 sm:gap-8 sm:py-10 md:grid-cols-3">
+        <div ref={colsRef} className="grid gap-8 py-8 sm:gap-8 sm:py-10 md:grid-cols-3">
           <div className="space-y-4 sm:space-y-6">
             <Image
               src="/black_text_logo.png"
@@ -158,7 +158,7 @@ export function Footer() {
                   href="/construction"
                   className="text-sm text-bone-soft hover:text-gold transition-colors cursor-hover"
                 >
-                  Construction
+                  Construction & Architecture
                 </Link>
               </li>
               <li>
@@ -195,7 +195,7 @@ export function Footer() {
 
         <div className="rule" />
 
-        <div ref={bottomRef} className="flex flex-col gap-4 pt-6 sm:gap-6 sm:pt-8 md:flex-row md:items-center md:justify-between">
+        <div ref={bottomRef} className="flex flex-col gap-3 pt-6 sm:gap-6 sm:pt-8 md:flex-row md:items-center md:justify-between">
           <p className="text-sm leading-relaxed text-bone-muted">
             © {year} {site.name}. All rights reserved.
           </p>
@@ -203,6 +203,17 @@ export function Footer() {
             {site.promise}
           </p>
         </div>
+      </div>
+
+      <div className="pointer-events-none relative mx-auto -mt-2 w-full max-w-[1440px] px-0 sm:-mt-8 sm:px-6 md:px-10 lg:px-16">
+        <Image
+          src="/footer_big_text.png"
+          alt=""
+          width={1613}
+          height={512}
+          sizes="100vw"
+          className="mx-auto h-auto w-[150vw] max-w-none -translate-x-[18vw] opacity-85 sm:w-full sm:max-w-[1200px] sm:translate-x-0"
+        />
       </div>
     </footer>
   );

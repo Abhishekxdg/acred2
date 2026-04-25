@@ -155,7 +155,7 @@ export function DisciplineBlock({ discipline, reverse }: Props) {
             ref={mediaWrapRef}
             className={cn(
               "group relative w-full overflow-hidden border-0",
-              "aspect-[4/5]"
+              "aspect-[4/3] sm:aspect-[4/5]"
             )}
           >
             {heroVideo ? (

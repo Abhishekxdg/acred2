@@ -76,16 +76,16 @@ export function Hero() {
             {/* Headline */}
             <div className="lg:col-span-7">
               <div className="space-y-0">
-                <div className="overflow-hidden">
+                <div className="overflow-hidden pb-[0.08em]">
                   <div ref={line1Ref}>
-                    <span className="block font-sans text-[clamp(3rem,11vw,10rem)] font-bold leading-[0.95] tracking-[-0.03em] text-white">
+                    <span className="block font-sans text-[clamp(2.85rem,11vw,10rem)] font-bold leading-[0.95] tracking-normal text-white">
                       Building
                     </span>
                   </div>
                 </div>
                 <div className="overflow-hidden">
                   <div ref={line2Ref}>
-                    <span className="block font-serif text-[clamp(3rem,11vw,10rem)] italic leading-[1.05] tracking-[-0.01em] text-white/85">
+                    <span className="block font-serif text-[clamp(2.85rem,11vw,10rem)] italic leading-[1.05] tracking-normal text-white/85">
                       beyond.
                     </span>
                   </div>

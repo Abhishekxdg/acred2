@@ -37,32 +37,49 @@ const principles = [
 ];
 
 export default function AboutPage() {
+  const visibleDisciplines = disciplines.filter((d) => d.slug !== "development");
+
   return (
     <>
       {/* Hero */}
-      <section className="container-acred pt-32 pb-16 md:pt-40 md:pb-24">
-        <MotionReveal>
-          <p className="section-label mb-6">The studio</p>
-          <h1 className="text-balance">
-            <span className="block font-sans font-bold text-display-xl leading-[0.95] tracking-tight text-bone">One practice.</span>
-            <span className="block font-serif italic text-display-xl leading-[1.05] text-bone/85">Five disciplines held together by hand.</span>
-          </h1>
-        </MotionReveal>
+      <section className="container-acred pt-24 pb-10 sm:pt-28 sm:pb-12 md:pt-32 md:pb-16 lg:pt-36">
+        <div className="grid gap-7 lg:grid-cols-12 lg:gap-14">
+          <MotionReveal className="lg:col-span-8">
+            <p className="section-label mb-5 sm:mb-6">The studio</p>
+            <h1 className="text-balance">
+              <span className="block font-sans font-bold text-display-lg leading-[0.95] tracking-tight text-bone sm:text-display-xl">One practice.</span>
+              <span className="block font-serif italic text-display-lg leading-[1.05] text-bone/85 sm:text-display-xl">Many kinds of ground.</span>
+            </h1>
+          </MotionReveal>
 
-        <MotionReveal delay={0.15} className="mt-12 max-w-3xl">
-          <p className="text-lg leading-relaxed text-bone-soft">
-            {site.description} We&apos;re small on purpose — a senior team of
-            architects, engineers, builders, and advisors who would rather turn
-            down a project than take on one we can&apos;t see through with our own
-            hands.
-          </p>
-        </MotionReveal>
+          <MotionReveal delay={0.15} className="flex flex-col justify-end lg:col-span-4">
+            <p className="text-sm leading-relaxed text-bone-soft sm:text-base">
+              {site.description} We&apos;re small on purpose: architects,
+              engineers, builders, and advisors working close enough that the
+              drawing, the cost, and the site stay in conversation.
+            </p>
+            <div className="mt-5 grid grid-cols-2 gap-4 border-y border-ink-line py-4">
+              <div>
+                <p className="font-serif text-3xl leading-none text-bone">04</p>
+                <p className="mt-2 font-mono text-[10px] uppercase tracking-widest2 text-bone-muted">
+                  Disciplines
+                </p>
+              </div>
+              <div>
+                <p className="font-serif text-3xl leading-none text-bone">01</p>
+                <p className="mt-2 font-mono text-[10px] uppercase tracking-widest2 text-bone-muted">
+                  Accountable team
+                </p>
+              </div>
+            </div>
+          </MotionReveal>
+        </div>
       </section>
 
       {/* Manifesto principles */}
-      <section className="border-y border-ink-line bg-ink-muted">
-        <div className="container-acred py-24">
-          <MotionReveal>
+      <section className="container-acred py-10 sm:py-16 lg:py-20">
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-14">
+          <MotionReveal className="lg:col-span-4">
             <p className="section-label mb-6">The ACRED manifesto</p>
             <h2 className="text-balance">
               <span className="block font-sans font-bold text-display-lg leading-[0.95] tracking-tight text-bone">Five things</span>
@@ -70,49 +87,59 @@ export default function AboutPage() {
             </h2>
           </MotionReveal>
 
-          <div className="mt-16 grid gap-px bg-bone/10 md:grid-cols-2 lg:grid-cols-5">
+          <div className="lg:col-span-8">
+            <div className="divide-y divide-ink-line border-y border-ink-line">
             {principles.map((p, i) => (
               <MotionReveal
                 key={p.n}
                 delay={i * 0.08}
-                className="bg-ink-soft p-8"
+                className="grid gap-3 py-5 sm:grid-cols-12 sm:gap-8 sm:py-6"
               >
-                <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold">
-                  {p.n}
-                </p>
-                <h3 className="mt-4 font-serif text-xl text-bone">{p.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-bone-soft">
-                  {p.body}
-                </p>
+                <div className="sm:col-span-2">
+                  <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold">
+                    {p.n}
+                  </p>
+                </div>
+                <div className="sm:col-span-4">
+                  <h3 className="font-serif text-2xl leading-tight text-bone">
+                    {p.title}
+                  </h3>
+                </div>
+                <div className="sm:col-span-6">
+                  <p className="text-sm leading-relaxed text-bone-soft">
+                    {p.body}
+                  </p>
+                </div>
               </MotionReveal>
             ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Disciplines summary */}
-      <section className="container-acred py-24">
+      <section className="container-acred py-10 sm:py-16 lg:py-20">
         <MotionReveal>
           <p className="section-label mb-4">Disciplines</p>
-          <h2>
+          <h2 className="text-balance">
             <span className="block font-sans font-bold text-display-lg leading-[0.95] tracking-tight text-bone">What sits</span>
             <span className="block font-serif italic text-display-lg leading-[1.05] text-bone/85">under the roof.</span>
           </h2>
         </MotionReveal>
 
-        <div className="mt-12 divide-y divide-bone/10 border-y border-bone/10">
-          {disciplines.map((d, i) => (
+        <div className="mt-8 divide-y divide-bone/10 border-y border-bone/10 sm:mt-12">
+          {visibleDisciplines.map((d, i) => (
             <MotionReveal
               key={d.slug}
               delay={i * 0.05}
-              className="flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between"
+              className="group flex flex-col gap-4 py-7 sm:gap-6 sm:py-10 md:flex-row md:items-center md:justify-between"
             >
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-4 sm:gap-6">
                 <span className="font-mono text-[10px] uppercase tracking-widest2 text-gold">
                   {d.index}
                 </span>
-                <h3 className="font-serif text-3xl text-bone">
-                  {d.slug.replace("-", " ")}
+                <h3 className="font-serif text-2xl text-bone transition-colors group-hover:text-gold sm:text-3xl">
+                  {d.label}
                 </h3>
               </div>
               <p className="max-w-md text-sm leading-relaxed text-bone-soft">
@@ -124,9 +151,9 @@ export default function AboutPage() {
       </section>
 
       {/* Numbers */}
-      <section className="container-acred pb-24">
+      <section className="container-acred pb-14 sm:pb-24">
         <MotionReveal>
-          <div className="grid gap-8 border-y border-ink-line py-10 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-6 border-y border-ink-line py-8 sm:gap-8 sm:py-10 md:grid-cols-4">
             {[
               { n: "12", l: "Years practising" },
               { n: "48", l: "Projects delivered" },

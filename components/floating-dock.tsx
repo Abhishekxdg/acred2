@@ -17,21 +17,21 @@ const items = [
     href: "/interiors",
   },
   {
-    title: "Construction & Architecture",
+    title: "Build",
     icon: (
       <IconHammer className="h-full w-full text-bone-muted" />
     ),
     href: "/construction",
   },
   {
-    title: "Real Estate",
+    title: "Estate",
     icon: (
       <IconHome2 className="h-full w-full text-bone-muted" />
     ),
     href: "/real-estate",
   },
   {
-    title: "Engineering",
+    title: "Engineer",
     icon: (
       <IconSettings2 className="h-full w-full text-bone-muted" />
     ),

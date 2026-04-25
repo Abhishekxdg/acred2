@@ -36,7 +36,7 @@ export default function ProjectDetail({ params }: Params) {
   return (
     <>
       {/* Hero image */}
-      <section className="relative h-[90vh] w-full overflow-hidden">
+      <section className="relative h-[82svh] min-h-[560px] w-full overflow-hidden sm:h-[90vh]">
         <Image
           src={project.heroImage}
           alt={project.title}
@@ -47,14 +47,14 @@ export default function ProjectDetail({ params }: Params) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-night via-night/30 to-night/10" />
 
-        <div className="container-acred absolute inset-x-0 bottom-0 pb-16">
+        <div className="container-acred absolute inset-x-0 bottom-0 pb-12 sm:pb-16">
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest2 text-white/60 hover:text-white transition-colors cursor-hover"
           >
             <ArrowLeft className="h-3 w-3" /> All work
           </Link>
-          <p className="mt-8 font-mono text-[10px] uppercase tracking-widest2 text-white/50">
+          <p className="mt-6 font-mono text-[10px] uppercase tracking-widest2 text-white/55 sm:mt-8">
             {project.category} · {project.location} · {project.year}
           </p>
           <h1 className="mt-4 text-balance">
@@ -64,14 +64,14 @@ export default function ProjectDetail({ params }: Params) {
       </section>
 
       {/* Summary + facts */}
-      <section className="container-acred py-24">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <section className="container-acred py-14 sm:py-20 lg:py-24">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <MotionReveal className="lg:col-span-7">
             <p className="font-serif text-display-md text-bone text-balance">
               {project.summary}
             </p>
 
-            <div className="mt-10 space-y-6 text-base leading-relaxed text-bone-soft">
+            <div className="mt-8 space-y-5 text-base leading-relaxed text-bone-soft sm:mt-10 sm:space-y-6">
               {project.description.map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
@@ -83,21 +83,21 @@ export default function ProjectDetail({ params }: Params) {
               {project.facts.map((f) => (
                 <div
                   key={f.label}
-                  className="flex items-center justify-between border-b border-ink-line py-4"
+                  className="flex items-center justify-between gap-6 border-b border-ink-line py-4"
                 >
                   <span className="font-mono text-[10px] uppercase tracking-widest2 text-bone-muted">
                     {f.label}
                   </span>
-                  <span className="font-serif text-lg text-bone">{f.value}</span>
+                  <span className="text-right font-serif text-lg text-bone">{f.value}</span>
                 </div>
               ))}
-              <div className="flex items-center justify-between border-b border-ink-line py-4">
+              <div className="flex items-center justify-between gap-6 border-b border-ink-line py-4">
                 <span className="font-mono text-[10px] uppercase tracking-widest2 text-bone-muted">
                   Role
                 </span>
-                <span className="text-sm text-bone">{project.role}</span>
+                <span className="text-right text-sm text-bone">{project.role}</span>
               </div>
-              <div className="flex items-center justify-between border-b border-ink-line py-4">
+              <div className="flex items-center justify-between gap-6 border-b border-ink-line py-4">
                 <span className="font-mono text-[10px] uppercase tracking-widest2 text-bone-muted">
                   Area
                 </span>
@@ -110,7 +110,7 @@ export default function ProjectDetail({ params }: Params) {
 
       {/* Gallery */}
       {project.gallery.length > 0 && (
-        <section className="container-acred pb-24">
+        <section className="container-acred pb-14 sm:pb-24">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {project.gallery.map((src, i) => (
               <MotionReveal key={src} delay={i * 0.08}>
@@ -133,19 +133,19 @@ export default function ProjectDetail({ params }: Params) {
       <section className="border-t border-ink-line">
         <Link
           href={`/projects/${next.slug}`}
-          className="group block py-20 pb-24 md:pb-32 transition-colors hover:bg-ink-muted cursor-hover"
+          className="group block py-14 pb-16 transition-colors hover:bg-ink-muted cursor-hover sm:py-20 sm:pb-24 md:pb-32"
         >
-          <div className="container-acred flex items-center justify-between gap-6">
-            <div>
+          <div className="container-acred flex items-center justify-between gap-5">
+            <div className="min-w-0">
               <p className="eyebrow mb-4">Next project</p>
-              <h2 className="font-serif text-display-lg text-bone transition-colors group-hover:text-gold">
+              <h2 className="break-words font-serif text-display-md text-bone transition-colors group-hover:text-gold sm:text-display-lg">
                 {next.title}
               </h2>
               <p className="mt-2 font-mono text-[10px] uppercase tracking-widest2 text-bone-muted">
                 {next.location} · {next.category}
               </p>
             </div>
-            <ArrowUpRight className="h-10 w-10 shrink-0 text-bone transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-gold" />
+            <ArrowUpRight className="h-7 w-7 shrink-0 text-bone transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-gold sm:h-10 sm:w-10" />
           </div>
         </Link>
       </section>

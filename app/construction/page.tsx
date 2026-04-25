@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { DisciplinePage } from "@/components/sections/discipline-page";
-import { disciplineBySlug } from "@/lib/content";
-import { notFound } from "next/navigation";
+import { ConstructionDetailPage } from "@/components/sections/construction-detail-page";
 
 export const metadata: Metadata = {
-  title: "Construction",
+  title: "Construction & Architecture",
   description:
-    "Turnkey construction with in-house quality control — built to the drawing.",
+    "Design-build practice — from master planning to final handover. ACRED architects and builders work as one team.",
 };
 
 export default function ConstructionPage() {
-  const discipline = disciplineBySlug("construction");
-  if (!discipline) notFound();
-  return <DisciplinePage discipline={discipline} />;
+  return <ConstructionDetailPage />;
 }
