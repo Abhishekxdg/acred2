@@ -142,7 +142,7 @@ export function InteriorsDetailPage() {
         <div className="container-acred">
           <div className="grid gap-8 lg:grid-cols-12 lg:gap-16 items-center">
             <div className="gsap-reveal lg:col-span-7">
-              <p className="section-label mb-4 sm:mb-6">Architecture & Interiors</p>
+              <p className="section-label mb-4 sm:mb-6">Interiors</p>
               <h1 className="whitespace-pre-line text-balance">
                 <span className="block font-sans font-bold text-display-lg sm:text-display-xl leading-[0.95] tracking-tight text-bone">
                   <span className="whitespace-nowrap">End-to-end</span> home

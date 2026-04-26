@@ -17,7 +17,7 @@ const linksBySlug: Record<string, string> = {
 };
 
 const labelsBySlug: Record<string, string> = {
-  architecture: "Architecture & Interiors",
+  architecture: "Interiors",
   construction: "Construction & Architecture",
   "real-estate": "Real Estate",
   engineering: "Engineering",
