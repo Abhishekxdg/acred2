@@ -54,7 +54,7 @@ export function Hero() {
       <div className="absolute inset-0 overflow-hidden">
         <div ref={imgRef} className="absolute inset-[-8%]">
           <Image
-            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2400&q=90"
+            src="/hero-house.jpg"
             alt="ACRED — architectural excellence"
             fill
             priority
