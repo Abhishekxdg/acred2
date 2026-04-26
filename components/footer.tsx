@@ -1,9 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,7 +11,6 @@ import Image from "next/image";
 export function Footer() {
   const year = new Date().getFullYear();
   const footerRef = useRef<HTMLElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
   const colsRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -23,24 +20,6 @@ export function Footer() {
 
       // Force refresh ScrollTrigger to ensure triggers are calculated correctly
       ScrollTrigger.refresh();
-
-      if (ctaRef.current) {
-        gsap.fromTo(
-          ctaRef.current.children,
-          { y: 30 },
-          {
-            y: 0,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: ctaRef.current,
-              start: "top 90%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
-      }
 
       if (colsRef.current) {
         const cols = colsRef.current.children;
