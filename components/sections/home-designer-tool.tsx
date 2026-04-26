@@ -27,11 +27,11 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type HomeType = {
+type ServiceType = {
   id: string;
   name: string;
-  area: string;
-  budget: string;
+  range: string;
+  mode: string;
   description: string;
   recommended: string[];
 };
@@ -53,23 +53,23 @@ type PlanningChoice = {
 
 const whatsappNumber = "916361889281";
 
-const homeTypes: HomeType[] = [
+const serviceTypes: ServiceType[] = [
   {
-    id: "compact",
-    name: "Compact urban home",
-    area: "900-1,300 sq ft",
-    budget: "Efficient",
+    id: "architecture",
+    name: "Architecture",
+    range: "Concept to drawings",
+    mode: "Design",
     description:
-      "A lean apartment or city home with flexible rooms, disciplined storage, and one clear daily rhythm.",
-    recommended: ["living", "kitchen", "primary-bed", "bath", "study", "utility"],
+      "Site-led planning, massing, floor plans, elevations, and execution-ready architectural drawings.",
+    recommended: ["site-study", "concept-plan", "floor-plan", "facade", "working-drawings", "courtyard"],
   },
   {
-    id: "family",
-    name: "Family residence",
-    area: "1,800-3,200 sq ft",
-    budget: "Balanced",
+    id: "interiors",
+    name: "Interiors",
+    range: "Rooms to full home",
+    mode: "Finish",
     description:
-      "A full-time family home with privacy, shared spaces, guest capacity, and outdoor breathing room.",
+      "Room layouts, furniture, lighting, wardrobes, kitchens, materials, and on-site interior execution.",
     recommended: [
       "living",
       "dining",
@@ -80,34 +80,53 @@ const homeTypes: HomeType[] = [
       "bath",
       "puja",
       "utility",
-      "courtyard",
+      "material-board",
     ],
   },
   {
-    id: "villa",
-    name: "Villa / independent house",
-    area: "3,500-6,000 sq ft",
-    budget: "Signature",
+    id: "construction",
+    name: "Construction",
+    range: "Foundation to handover",
+    mode: "Build",
     description:
-      "A site-led home with layered living, landscape, arrival, service routes, and generous outdoor rooms.",
+      "Civil work, RCC, masonry, MEP coordination, finishes, site supervision, and handover closure.",
     recommended: [
-      "arrival",
-      "living",
-      "dining",
-      "kitchen",
-      "primary-bed",
-      "kids-bed",
-      "guest-bed",
-      "family-lounge",
-      "bath",
-      "deck",
-      "courtyard",
-      "parking",
+      "excavation",
+      "rcc",
+      "masonry",
+      "mep-site",
+      "waterproofing",
+      "finishes",
+      "quality-checks",
+      "handover",
     ],
+  },
+  {
+    id: "engineering",
+    name: "Engineering",
+    range: "Structure + MEP",
+    mode: "Resolve",
+    description:
+      "Structural systems, MEP routes, technical coordination, quantities, compliance, and buildability checks.",
+    recommended: ["structure", "mep-design", "coordination", "boq", "compliance", "site-inspection"],
+  },
+  {
+    id: "real-estate",
+    name: "Real Estate",
+    range: "Land to transaction",
+    mode: "Develop",
+    description:
+      "Property discovery, feasibility, market fit, development strategy, documentation, and transaction support.",
+    recommended: ["property-search", "feasibility", "market-study", "due-diligence", "development-mix", "transaction"],
   },
 ];
 
 const blocks: Block[] = [
+  { id: "site-study", name: "Site study", zone: "Architecture", area: 120, weight: 2, icon: Map, note: "Orientation, access, setbacks, sun, wind, privacy, and context mapping." },
+  { id: "concept-plan", name: "Concept plan", zone: "Architecture", area: 260, weight: 3, icon: Home, note: "Early room relationships, circulation, massing, and zoning intent." },
+  { id: "floor-plan", name: "Floor plans", zone: "Architecture", area: 320, weight: 4, icon: Layers3, note: "Detailed plans with dimensions, openings, and spatial hierarchy." },
+  { id: "facade", name: "Facade design", zone: "Architecture", area: 220, weight: 3, icon: Building2, note: "Elevation language, openings, shade, materials, and street presence." },
+  { id: "working-drawings", name: "Working drawings", zone: "Architecture", area: 280, weight: 4, icon: Ruler, note: "Execution-ready drawings for site coordination and construction." },
   { id: "arrival", name: "Arrival court", zone: "Entry", area: 180, weight: 2, icon: DoorOpen, note: "A calm threshold before the home opens up." },
   { id: "parking", name: "Parking bay", zone: "Entry", area: 260, weight: 2, icon: Car, note: "Car, bike, drop-off, and entry movement planning." },
   { id: "living", name: "Living room", zone: "Social", area: 280, weight: 3, icon: Sofa, note: "Main gathering space with media and conversation zones." },
@@ -121,11 +140,44 @@ const blocks: Block[] = [
   { id: "kitchen", name: "Kitchen", zone: "Service", area: 180, weight: 3, icon: ChefHat, note: "Modular, island, L-shaped, or parallel kitchen block." },
   { id: "bath", name: "Bathroom core", zone: "Service", area: 90, weight: 1, icon: Bath, note: "Wet area block for plumbing-efficient stacking." },
   { id: "utility", name: "Utility + laundry", zone: "Service", area: 90, weight: 1, icon: Building2, note: "Back-of-house storage, wash, and service support." },
+  { id: "material-board", name: "Material palette", zone: "Interiors", area: 80, weight: 2, icon: Sparkles, note: "Finishes, colors, lighting temperature, hardware, and surface direction." },
   { id: "courtyard", name: "Courtyard", zone: "Outdoor", area: 180, weight: 2, icon: Sun, note: "Light, air, and a visual pause inside the plan." },
   { id: "deck", name: "Deck / terrace", zone: "Outdoor", area: 220, weight: 2, icon: Leaf, note: "Outdoor living connected to social spaces." },
+  { id: "excavation", name: "Excavation + foundation", zone: "Construction", area: 260, weight: 4, icon: Building2, note: "Earthwork, footing strategy, substructure, and plinth planning." },
+  { id: "rcc", name: "RCC frame", zone: "Construction", area: 360, weight: 5, icon: Layers3, note: "Columns, beams, slabs, reinforcement, shuttering, and concrete sequencing." },
+  { id: "masonry", name: "Masonry + plaster", zone: "Construction", area: 260, weight: 3, icon: Home, note: "Walling, plastering, openings, levels, and surface readiness." },
+  { id: "mep-site", name: "Site MEP works", zone: "Construction", area: 220, weight: 3, icon: Ruler, note: "Electrical, plumbing, drainage, sleeves, and site coordination." },
+  { id: "waterproofing", name: "Waterproofing", zone: "Construction", area: 140, weight: 2, icon: Bath, note: "Terraces, wet areas, balconies, and preventive detailing." },
+  { id: "finishes", name: "Finishes package", zone: "Construction", area: 260, weight: 3, icon: Sparkles, note: "Flooring, tiling, ceiling, painting, doors, windows, and final surfaces." },
+  { id: "quality-checks", name: "Quality checks", zone: "Construction", area: 100, weight: 2, icon: Check, note: "Stage-wise inspection points for structure, MEP, finishes, and handover." },
+  { id: "handover", name: "Snag-list handover", zone: "Construction", area: 80, weight: 1, icon: DoorOpen, note: "Final snag closure, documentation, and site handover readiness." },
+  { id: "structure", name: "Structural design", zone: "Engineering", area: 300, weight: 5, icon: Building2, note: "Load path, framing, foundation logic, and structural drawings." },
+  { id: "mep-design", name: "MEP design", zone: "Engineering", area: 260, weight: 4, icon: Ruler, note: "Electrical, plumbing, drainage, HVAC intent, and route planning." },
+  { id: "coordination", name: "Technical coordination", zone: "Engineering", area: 180, weight: 3, icon: Compass, note: "Architecture, structure, MEP, and site teams aligned before execution." },
+  { id: "boq", name: "BOQ + quantities", zone: "Engineering", area: 140, weight: 2, icon: Map, note: "Approximate quantities, scope clarity, and procurement planning." },
+  { id: "compliance", name: "Compliance review", zone: "Engineering", area: 120, weight: 2, icon: Check, note: "Code, safety, feasibility, and documentation checks." },
+  { id: "site-inspection", name: "Site inspection", zone: "Engineering", area: 120, weight: 2, icon: Sun, note: "On-site technical checks for quality, deviations, and buildability." },
+  { id: "property-search", name: "Property search", zone: "Real Estate", area: 160, weight: 2, icon: Map, note: "Location, asset type, access, budget, and shortlist criteria." },
+  { id: "feasibility", name: "Feasibility study", zone: "Real Estate", area: 220, weight: 3, icon: Ruler, note: "Plot potential, yield, risks, timelines, and practical development fit." },
+  { id: "market-study", name: "Market study", zone: "Real Estate", area: 160, weight: 2, icon: Compass, note: "Demand, pricing, competition, buyer profile, and market positioning." },
+  { id: "due-diligence", name: "Due diligence", zone: "Real Estate", area: 180, weight: 3, icon: Check, note: "Documentation, ownership, approvals, legal flags, and transaction readiness." },
+  { id: "development-mix", name: "Development mix", zone: "Real Estate", area: 220, weight: 3, icon: Building2, note: "Use mix, unit planning, amenity logic, and revenue-facing decisions." },
+  { id: "transaction", name: "Transaction support", zone: "Real Estate", area: 120, weight: 2, icon: DoorOpen, note: "Negotiation inputs, documentation flow, and closure support." },
 ];
 
-const zoneOrder = ["Entry", "Social", "Private", "Quiet", "Service", "Outdoor"];
+const zoneOrder = [
+  "Architecture",
+  "Interiors",
+  "Entry",
+  "Social",
+  "Private",
+  "Quiet",
+  "Service",
+  "Outdoor",
+  "Construction",
+  "Engineering",
+  "Real Estate",
+];
 
 const styleOptions: PlanningChoice[] = [
   { label: "Warm minimal", value: "Warm minimal" },
@@ -169,15 +221,26 @@ const plannerRows = [
 ];
 
 export function HomeDesignerTool() {
-  const [homeTypeId, setHomeTypeId] = useState(homeTypes[1].id);
-  const [selected, setSelected] = useState<string[]>(homeTypes[1].recommended);
+  const [serviceId, setServiceId] = useState(serviceTypes[0].id);
+  const [selected, setSelected] = useState<string[]>(serviceTypes[0].recommended);
   const [plot, setPlot] = useState(plotOptions[1].value);
   const [floors, setFloors] = useState(floorOptions[1].value);
   const [orientation, setOrientation] = useState(orientationOptions[1].value);
   const [priority, setPriority] = useState(priorityOptions[0].value);
   const [style, setStyle] = useState(styleOptions[1].value);
 
-  const homeType = homeTypes.find((item) => item.id === homeTypeId) ?? homeTypes[1];
+  const serviceType = serviceTypes.find((item) => item.id === serviceId) ?? serviceTypes[0];
+  const serviceBlockIds = useMemo(() => {
+    const ids = new Set(serviceType.recommended);
+    if (serviceId === "architecture") {
+      ["arrival", "parking", "deck"].forEach((id) => ids.add(id));
+    }
+    if (serviceId === "interiors") {
+      ["study", "puja", "deck"].forEach((id) => ids.add(id));
+    }
+    return ids;
+  }, [serviceId, serviceType.recommended]);
+  const visibleBlocks = blocks.filter((block) => serviceBlockIds.has(block.id));
   const selectedBlocks = blocks.filter((block) => selected.includes(block.id));
   const selectedArea = selectedBlocks.reduce((sum, block) => sum + block.area, 0);
   const designWeight = selectedBlocks.reduce((sum, block) => sum + block.weight, 0);
@@ -199,11 +262,11 @@ export function HomeDesignerTool() {
   const planningNotes = useMemo(() => {
     const ids = new Set(selected);
     const notes = [
-      `Begin with the ${orientation.toLowerCase()} site study so light, heat, and privacy are resolved before room sizing.`,
-      `Use ${priority.toLowerCase()} as the first filter when ACRED develops the schematic plan.`,
+      `Start the ${serviceType.name.toLowerCase()} brief with the ${orientation.toLowerCase()} site or asset study.`,
+      `Use ${priority.toLowerCase()} as the first filter when ACRED develops the scope.`,
     ];
 
-    if (floors !== "Single floor") {
+    if ((serviceId === "architecture" || serviceId === "construction" || serviceId === "engineering") && floors !== "Single floor") {
       notes.push("Fix the stair position early so structure, circulation, and future privacy do not fight each other.");
     }
 
@@ -219,8 +282,20 @@ export function HomeDesignerTool() {
       notes.push("Separate private bedrooms from the louder social zones with a corridor, court, or storage buffer.");
     }
 
+    if (serviceId === "construction") {
+      notes.push("Lock drawings, BOQ, and stage-wise quality checks before major procurement begins.");
+    }
+
+    if (serviceId === "engineering") {
+      notes.push("Coordinate structural and MEP decisions before site work to avoid late-stage clashes.");
+    }
+
+    if (serviceId === "real-estate") {
+      notes.push("Validate title, market demand, development potential, and exit strategy before commitment.");
+    }
+
     return notes.slice(0, 5);
-  }, [floors, orientation, priority, selected]);
+  }, [floors, orientation, priority, selected, serviceId, serviceType.name]);
 
   const whatsappMessage = useMemo(() => {
     const zoneLines = selectedByZone
@@ -232,32 +307,32 @@ export function HomeDesignerTool() {
     return [
       "Hello ACRED, I created a home concept using the Design Your Home tool.",
       "",
-      "HOME TYPE",
-      `- ${homeType.name}`,
+      "SERVICE",
+      `- ${serviceType.name}`,
       `- Style: ${style}`,
-      `- Plot: ${plot}`,
+      `- Site / Asset: ${plot}`,
       `- Floors: ${floors}`,
       `- Orientation: ${orientation}`,
       `- Priority: ${priority}`,
       "",
-      "SPACE BLOCKS",
+      "SCOPE BLOCKS",
       zoneLines || "- No blocks selected yet",
       "",
       "ESTIMATE",
-      `- Approx area: ${selectedArea.toLocaleString()} sq ft`,
-      `- Design complexity: ${complexity}`,
+      `- Approx scope scale: ${selectedArea.toLocaleString()} sq ft`,
+      `- Scope complexity: ${complexity}`,
       `- Planning timeline: ${estimatedTimeline}-${estimatedTimeline + 3} weeks`,
       "",
       "PLANNING NOTES",
       noteLines,
       "",
-      "Please help me turn this into a site-specific plan.",
+      "Please help me turn this into a site-specific scope and next-step plan.",
     ].join("\n");
   }, [
     complexity,
     estimatedTimeline,
     floors,
-    homeType.name,
+    serviceType.name,
     orientation,
     planningNotes,
     plot,
@@ -277,10 +352,10 @@ export function HomeDesignerTool() {
     );
   };
 
-  const chooseHomeType = (id: string) => {
-    const next = homeTypes.find((item) => item.id === id);
+  const chooseService = (id: string) => {
+    const next = serviceTypes.find((item) => item.id === id);
     if (!next) return;
-    setHomeTypeId(id);
+    setServiceId(id);
     setSelected(next.recommended);
   };
 
@@ -304,26 +379,26 @@ export function HomeDesignerTool() {
     <section className="container-acred pt-24 pb-14 sm:pt-28 sm:pb-20 md:pt-32">
       <div className="grid gap-6 border-b border-ink-line pb-7 lg:grid-cols-12 lg:items-end lg:gap-12 lg:pb-9">
         <div className="lg:col-span-7">
-          <p className="section-label mb-4">Design your home</p>
+          <p className="section-label mb-4">ACRED planning tool</p>
           <h1 className="text-balance">
             <span className="block font-sans text-display-md font-bold leading-[0.95] tracking-tight text-bone sm:text-display-lg">
-              Assemble a home
+              Build your brief
             </span>
             <span className="block font-serif text-display-md italic leading-[1.05] text-bone/85 sm:text-display-lg">
-              before the first drawing.
+              across every discipline.
             </span>
           </h1>
         </div>
 
         <div className="lg:col-span-5">
           <p className="max-w-xl text-sm leading-relaxed text-bone-soft">
-            Choose the type of home, the site assumptions, and the room blocks
-            you want. The tool turns it into a structured WhatsApp brief for
-            ACRED.
+            Choose a discipline, set the site assumptions, and select the scope
+            blocks you need. The tool turns it into a structured WhatsApp brief
+            for ACRED.
           </p>
           <div className="mt-5 grid grid-cols-3 gap-px bg-ink-line p-px">
             {[
-              ["Area", `${selectedArea.toLocaleString()} sq ft`],
+              ["Scale", `${selectedArea.toLocaleString()} sq ft`],
               ["Blocks", selectedBlocks.length.toString().padStart(2, "0")],
               ["Timeline", `${estimatedTimeline}-${estimatedTimeline + 3} wk`],
             ].map(([label, value]) => (
@@ -343,14 +418,14 @@ export function HomeDesignerTool() {
       <div className="grid gap-8 py-8 lg:grid-cols-12 lg:gap-10 lg:py-10">
         <div className="lg:col-span-8">
           <div className="grid gap-px bg-ink-line p-px sm:grid-cols-3">
-            {homeTypes.map((type) => {
-              const isActive = homeTypeId === type.id;
+            {serviceTypes.map((type) => {
+              const isActive = serviceId === type.id;
               return (
                 <button
                   key={type.id}
-                  onClick={() => chooseHomeType(type.id)}
+                  onClick={() => chooseService(type.id)}
                   className={cn(
-                    "group flex min-h-[10.5rem] w-full cursor-hover flex-col justify-between bg-ink p-4 text-left transition-colors sm:p-5",
+                    "group flex min-h-[9.5rem] w-full cursor-hover flex-col justify-between bg-ink p-4 text-left transition-colors sm:p-5",
                     isActive ? "bg-ink-soft" : "hover:bg-ink-soft/70"
                   )}
                 >
@@ -369,7 +444,7 @@ export function HomeDesignerTool() {
                   </span>
                   <span className="mt-5 flex items-center justify-between gap-4">
                     <span className="font-mono text-[10px] uppercase tracking-widest2 text-bone-muted">
-                      {type.area}
+                      {type.range}
                     </span>
                     <span
                       className={cn(
@@ -430,13 +505,13 @@ export function HomeDesignerTool() {
 
           <div className="mt-7">
             <div className="mb-4 flex items-end justify-between gap-4">
-              <p className="section-label">Space blocks</p>
+              <p className="section-label">Scope blocks</p>
               <p className="font-mono text-[9px] uppercase tracking-widest2 text-bone-muted">
                 {selectedBlocks.length} selected
               </p>
             </div>
             <div className="grid gap-px bg-ink-line p-px sm:grid-cols-2 xl:grid-cols-3">
-              {blocks.map((block) => {
+              {visibleBlocks.map((block) => {
                 const Icon = block.icon;
                 const isActive = selected.includes(block.id);
                 return (
@@ -483,17 +558,17 @@ export function HomeDesignerTool() {
               <div className="p-5">
                 <p className="section-label mb-3">Planning brief</p>
                 <h2 className="font-serif text-2xl leading-tight text-bone sm:text-3xl">
-                  {homeType.name}
+                  {serviceType.name}
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-bone-soft">
-                  {style} language for a {plot.toLowerCase()}, {orientation.toLowerCase()} site.
+                  {serviceType.mode} scope with a {style.toLowerCase()} language for a {plot.toLowerCase()}.
                 </p>
               </div>
 
               <div className="space-y-3 border-y border-ink-line p-5">
                 {[
-                  ["Estimated area", `${selectedArea.toLocaleString()} sq ft`],
-                  ["Design complexity", complexity],
+                  ["Scope scale", `${selectedArea.toLocaleString()} sq ft`],
+                  ["Scope complexity", complexity],
                   ["Planning timeline", `${estimatedTimeline}-${estimatedTimeline + 3} weeks`],
                   ["Primary priority", priority],
                 ].map(([label, value]) => (
@@ -525,7 +600,7 @@ export function HomeDesignerTool() {
 
                 <div className="mt-4 border-y border-ink-line py-3">
                   <p className="font-mono text-[10px] uppercase tracking-widest2 text-bone-muted">
-                    Selected blocks
+                    Selected scope
                   </p>
                   <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-bone-soft">
                     {selectedBlocks.length
