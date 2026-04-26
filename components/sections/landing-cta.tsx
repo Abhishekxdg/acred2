@@ -62,19 +62,19 @@ export function LandingCTA() {
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
-                  href="/contact"
+                  href="/design-home"
                   className="group inline-flex cursor-hover items-center justify-center gap-2.5 rounded-full bg-white px-7 py-3.5 font-sans text-sm font-medium text-night transition-all hover:bg-gold hover:gap-3"
                 >
-                  Start a conversation
+                  Design your home
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
-                <a
-                  href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
+                <Link
+                  href="/contact"
                   className="group inline-flex cursor-hover items-center justify-center gap-2.5 rounded-full border border-white/20 px-7 py-3.5 font-sans text-sm font-medium text-white transition-all hover:border-white hover:bg-white/10"
                 >
                   <Phone className="h-4 w-4" />
-                  Call studio
-                </a>
+                  Talk to studio
+                </Link>
               </div>
             </div>
           </div>

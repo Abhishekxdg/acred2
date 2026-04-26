@@ -13,11 +13,18 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "Interiors", href: "/interiors" },
+  { label: "Design tool", href: "/design-home" },
   { label: "About us", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
 const menuItems = [
+  {
+    link: "/design-home",
+    text: "Design Tool",
+    image:
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80",
+  },
   {
     link: "/projects",
     text: "Work",
@@ -156,7 +163,7 @@ export function Navbar() {
         {/* CTA + Hamburger */}
         <div className="flex shrink-0 items-center gap-2">
           <Link
-            href="/contact"
+            href="/design-home"
             className={cn(
               "hidden items-center gap-2 rounded-full px-5 py-2 font-sans text-[13px] font-medium transition-all cursor-hover sm:inline-flex",
               useLightAssets
@@ -164,7 +171,7 @@ export function Navbar() {
                 : "bg-bone text-ink-soft hover:bg-bone/80",
             )}
           >
-            Get started
+            Design home
             <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
 
@@ -197,10 +204,10 @@ export function Navbar() {
                     />
                   </Link>
                   <a
-                    href="/contact"
+                    href="/design-home"
                     className="mr-12 hidden cursor-hover items-center gap-2 rounded-full bg-white px-5 py-2 font-sans text-sm font-medium text-night transition-colors hover:bg-white/90 sm:inline-flex"
                   >
-                    Get started
+                    Design home
                     <ArrowUpRight className="h-3.5 w-3.5" />
                   </a>
                 </div>

@@ -97,6 +97,14 @@ export function Footer() {
             <ul className="space-y-1.5 sm:space-y-2">
               <li>
                 <Link
+                  href="/design-home"
+                  className="text-sm text-bone-soft hover:text-gold transition-colors cursor-hover"
+                >
+                  Design your home
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/interiors"
                   className="text-sm text-bone-soft hover:text-gold transition-colors cursor-hover"
                 >
