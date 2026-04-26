@@ -67,20 +67,15 @@
     color: theme("colors.night.DEFAULT");
   }
 
-  /* Hide scrollbar chrome but keep functionality */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+  /* Hide scrollbar everywhere but keep functionality */
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
-  ::-webkit-scrollbar-track {
-    background: theme("colors.ink.DEFAULT");
-  }
-  ::-webkit-scrollbar-thumb {
-    background: theme("colors.ink.line");
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: theme("colors.bone.dim");
+  *::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
   .theme {
     --font-heading: var(--font-sans);

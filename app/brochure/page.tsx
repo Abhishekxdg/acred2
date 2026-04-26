@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { MotionReveal } from "@/components/motion-reveal";
 import { AcredLogo } from "@/components/acred-logo";
+import { HeroSlider } from "@/components/hero-slider";
 
 export const metadata: Metadata = {
   title: "Brochure",
@@ -88,7 +89,7 @@ export default function BrochurePage() {
     <div className="bg-ink text-bone">
       {/* ═════════════════ P1 — COVER ═════════════════ */}
       <section className="relative min-h-[100dvh] overflow-hidden">
-        <Image src={I.p1} alt="" fill className="object-cover" priority sizes="100vw" />
+        <HeroSlider />
         <div className="absolute inset-0 bg-gradient-to-r from-night/90 via-night/50 to-transparent" />
 
         <div className="relative z-10 flex h-[100dvh] flex-col justify-between p-6 sm:p-10 md:p-16">

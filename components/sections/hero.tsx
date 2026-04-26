@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
 import { site } from "@/lib/content";
+import { HeroSlider } from "@/components/hero-slider";
 
 const disciplineList = ["Architecture", "Construction", "Real Estate", "Engineering"];
 
@@ -25,22 +26,10 @@ export function Hero() {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl
-        .from(imgRef.current, { scale: 1.06, duration: 2.2, ease: "power2.out" }, 0)
         .from(line1Ref.current, { yPercent: 110, duration: 1.2, ease: "power4.out" }, 0.15)
         .from(line2Ref.current, { yPercent: 110, duration: 1.2, ease: "power4.out" }, 0.3)
         .from(descRef.current, { opacity: 0, y: 20, duration: 0.9 }, 0.75)
         .from(ctaRef.current, { opacity: 0, y: 14, duration: 0.7 }, 0.95);
-
-      gsap.to(imgRef.current, {
-        yPercent: 14,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
     },
     { scope: sectionRef }
   );
@@ -52,16 +41,7 @@ export function Hero() {
     >
       {/* Background image with parallax wrapper */}
       <div className="absolute inset-0 overflow-hidden">
-        <div ref={imgRef} className="absolute inset-[-8%]">
-          <Image
-            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2400&q=90"
-            alt="ACRED — architectural excellence"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-        </div>
+        <HeroSlider />
         <div className="absolute inset-0 bg-gradient-to-t from-night via-night/60 to-night/30" />
         <div className="absolute inset-0 bg-gradient-to-r from-night/75 via-night/40 to-night/25" />
       </div>
