@@ -4,11 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useEffect, useState } from "react";
-import { Menu, Mail, Phone, ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { Menu, ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { site } from "@/lib/content";
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import FlowingMenu from "@/components/flowing-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -18,12 +18,48 @@ const navLinks = [
 ];
 
 const menuItems = [
-  { label: "About", href: "/about" },
-  { label: "Interiors", href: "/interiors" },
-  { label: "Construction & Architecture", href: "/construction" },
-  { label: "Real Estate", href: "/real-estate" },
-  { label: "Engineering", href: "/engineering" },
-  { label: "Contact Us", href: "/contact" },
+  {
+    link: "/projects",
+    text: "Work",
+    image:
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    link: "/interiors",
+    text: "Interiors",
+    image:
+      "https://images.pexels.com/photos/1648776/pexels-photo-1648776.jpeg?auto=compress&cs=tinysrgb&w=900",
+  },
+  {
+    link: "/construction",
+    text: "Construction & Architecture",
+    image:
+      "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=900",
+  },
+  {
+    link: "/real-estate",
+    text: "Real Estate",
+    image:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    link: "/engineering",
+    text: "Engineering",
+    image:
+      "https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    link: "/about",
+    text: "About",
+    image:
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    link: "/contact",
+    text: "Contact",
+    image:
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80",
+  },
 ];
 
 export function Navbar() {
@@ -66,12 +102,12 @@ export function Navbar() {
       ref={headerRef}
       className={cn(
         "fixed inset-x-0 top-0 z-40 flex justify-center transition-all duration-500",
-        scrolled ? "px-4 pt-3 sm:px-6" : "px-4 pt-5 sm:px-6",
+        scrolled ? "px-3 pt-3 sm:px-6" : "px-3 pt-4 sm:px-6 sm:pt-5",
       )}
     >
       <div
         className={cn(
-          "flex w-full max-w-[1000px] items-center justify-between gap-4 rounded-full px-5 py-2.5 transition-all duration-500",
+          "flex w-full max-w-[1000px] items-center justify-between gap-3 rounded-full px-4 py-2.5 transition-all duration-500 sm:gap-4 sm:px-5",
           scrolled
             ? "bg-ink/96 shadow-[0_2px_24px_rgba(14,13,11,0.07)] border border-ink-line backdrop-blur-xl"
             : onDark
@@ -86,11 +122,11 @@ export function Navbar() {
           aria-label={`${site.name} — home`}
         >
           <Image
-            src={useLightAssets ? "/white_textlogo.png" : "/black_text_logo.png"}
+            src={useLightAssets ? "/white_text_logo.png" : "/black_text_logo.png"}
             alt={`${site.name} — home`}
             width={88}
             height={28}
-            className="h-10 w-auto object-contain transition-opacity duration-500"
+            className="h-[1.7rem] w-auto object-contain transition-opacity duration-500 sm:h-[2.15rem]"
             priority
           />
         </Link>
@@ -144,42 +180,40 @@ export function Navbar() {
             >
               <Menu className="h-4 w-4" />
             </SheetTrigger>
-            <SheetContent className="overflow-y-auto">
-              <div className="mt-14 flex flex-col gap-5">
-                <p className="eyebrow">Navigation</p>
-                {menuItems.map((item, i) => (
-                  <SheetClose asChild key={item.href}>
-                    <motion.div
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, delay: i * 0.06 }}
-                    >
-                      <Link
-                        href={item.href}
-                        className="group flex items-center justify-between font-serif text-[1.85rem] leading-none text-bone transition-colors hover:text-gold"
-                      >
-                        {item.label}
-                        <ArrowUpRight className="h-4 w-4 text-bone-muted opacity-0 transition-all group-hover:opacity-100 group-hover:text-gold" />
-                      </Link>
-                    </motion.div>
-                  </SheetClose>
-                ))}
-                <div className="mt-6 space-y-3 border-t border-ink-line pt-6">
-                  <p className="eyebrow">Studio</p>
-                  <a
-                    href={`mailto:${site.contact.email}`}
-                    className="flex items-center gap-2 text-sm text-bone-muted transition-colors hover:text-gold"
+            <SheetContent className="max-w-none overflow-hidden border-l-0 bg-night p-0 shadow-none [&>button]:right-6 [&>button]:top-6 [&>button]:z-20 [&>button]:text-white/60 [&>button:hover]:text-white">
+              <div className="flex h-full flex-col bg-night">
+                <div className="flex items-center justify-between border-b border-white/10 px-6 py-5 sm:px-8">
+                  <Link
+                    href="/"
+                    className="cursor-hover"
+                    aria-label={`${site.name} — home`}
                   >
-                    <Mail className="h-3.5 w-3.5" />
-                    {site.contact.email}
-                  </a>
+                    <Image
+                      src="/white_text_logo.png"
+                      alt={`${site.name} — home`}
+                      width={104}
+                      height={34}
+                      className="h-9 w-auto object-contain"
+                    />
+                  </Link>
                   <a
-                    href={`tel:${site.contact.phone.replace(/\s/g, "")}`}
-                    className="flex items-center gap-2 text-sm text-bone-muted transition-colors hover:text-gold"
+                    href="/contact"
+                    className="mr-12 hidden cursor-hover items-center gap-2 rounded-full bg-white px-5 py-2 font-sans text-sm font-medium text-night transition-colors hover:bg-white/90 sm:inline-flex"
                   >
-                    <Phone className="h-3.5 w-3.5" />
-                    {site.contact.phone}
+                    Get started
+                    <ArrowUpRight className="h-3.5 w-3.5" />
                   </a>
+                </div>
+                <div className="min-h-0 flex-1">
+                  <FlowingMenu
+                    items={menuItems}
+                    speed={18}
+                    bgColor="#0F0F0D"
+                    textColor="#F8F5EF"
+                    marqueeBgColor="#B8925A"
+                    marqueeTextColor="#0F0F0D"
+                    borderColor="#2E2E2B"
+                  />
                 </div>
               </div>
             </SheetContent>

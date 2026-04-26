@@ -13,7 +13,13 @@ const initial: ContactState = null;
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" variant="gold" size="lg" disabled={pending}>
+    <Button
+      type="submit"
+      variant="gold"
+      size="lg"
+      disabled={pending}
+      className="w-full sm:w-auto"
+    >
       {pending ? "Sending…" : "Send enquiry"}
     </Button>
   );
@@ -23,8 +29,8 @@ export function ContactForm() {
   const [state, action] = useFormState(submitContact, initial);
 
   return (
-    <form action={action} className="space-y-8 sm:space-y-10">
-      <div className="grid gap-6 md:grid-cols-2 sm:gap-10">
+    <form action={action} className="space-y-5 sm:space-y-7">
+      <div className="grid gap-5 sm:gap-7 md:grid-cols-2">
         <div>
           <Label htmlFor="name">Name</Label>
           <Input id="name" name="name" required autoComplete="name" />
@@ -69,7 +75,7 @@ export function ContactForm() {
         </p>
       )}
 
-      <div className="pt-4">
+      <div className="pt-2">
         <SubmitButton />
       </div>
     </form>

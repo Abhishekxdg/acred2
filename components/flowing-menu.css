@@ -101,3 +101,26 @@
   background-position: 50% 50%;
   flex-shrink: 0;
 }
+
+@media (max-width: 640px) {
+  .menu__item-link {
+    font-size: clamp(1.45rem, 9vw, 2.35rem);
+    letter-spacing: 0.08em;
+    padding-inline: 1rem;
+    white-space: normal;
+    text-wrap: balance;
+    line-height: 1.05;
+  }
+
+  .marquee span {
+    font-size: clamp(1.25rem, 8vw, 2rem);
+    letter-spacing: 0.08em;
+    padding: 0 4vw;
+  }
+
+  .marquee__img {
+    width: 120px;
+    height: 6vh;
+    margin: 1em 3vw;
+  }
+}

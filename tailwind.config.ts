@@ -59,9 +59,9 @@ const config: Config = {
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       fontSize: {
-        "display-xl": ["clamp(3rem, 7vw, 6.5rem)", { lineHeight: "1.02", letterSpacing: "-0.02em" }],
-        "display-lg": ["clamp(2.25rem, 5vw, 4.5rem)", { lineHeight: "1.05", letterSpacing: "-0.015em" }],
-        "display-md": ["clamp(1.75rem, 3.5vw, 3rem)", { lineHeight: "1.1", letterSpacing: "-0.01em" }],
+        "display-xl": ["clamp(2.55rem, 7vw, 6.5rem)", { lineHeight: "1.02", letterSpacing: "0" }],
+        "display-lg": ["clamp(2.05rem, 5vw, 4.5rem)", { lineHeight: "1.05", letterSpacing: "0" }],
+        "display-md": ["clamp(1.65rem, 3.5vw, 3rem)", { lineHeight: "1.1", letterSpacing: "0" }],
       },
       letterSpacing: {
         widest2: "0.3em",

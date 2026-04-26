@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { DisciplinePage } from "@/components/sections/discipline-page";
-import { disciplineBySlug } from "@/lib/content";
-import { notFound } from "next/navigation";
+import { EngineeringDetailPage } from "@/components/sections/engineering-detail-page";
 
 export const metadata: Metadata = {
   title: "Engineering",
@@ -10,7 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function EngineeringPage() {
-  const discipline = disciplineBySlug("engineering");
-  if (!discipline) notFound();
-  return <DisciplinePage discipline={discipline} />;
+  return <EngineeringDetailPage />;
 }

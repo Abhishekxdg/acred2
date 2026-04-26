@@ -43,18 +43,19 @@ const FloatingDockMobile = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("fixed bottom-4 left-1/2 -translate-x-1/2 z-50 block md:hidden", className)}>
+    <div className={cn("fixed bottom-[calc(0.75rem+env(safe-area-inset-bottom))] left-1/2 z-50 block w-[calc(100vw-1.5rem)] max-w-sm -translate-x-1/2 md:hidden", className)}>
       <motion.div
-        className="flex items-center gap-4 rounded-3xl border border-ink-line bg-ink/95 px-6 py-2 backdrop-blur-xl shadow-2xl"
+        className="flex items-center justify-around gap-1 rounded-full border border-ink-line bg-ink/95 px-2 py-2 backdrop-blur-xl shadow-2xl"
       >
         {items.map((item) => (
           <a
             key={item.title}
             href={item.href}
-            className="group relative flex h-10 w-14 flex-col items-center justify-center gap-1 rounded-2xl backdrop-blur-sm transition-all active:scale-95"
+            aria-label={item.title}
+            className="group relative flex h-11 min-w-0 flex-1 flex-col items-center justify-center gap-1 rounded-full backdrop-blur-sm transition-all active:scale-95"
           >
             <div className="h-5 w-5 text-bone">{item.icon}</div>
-            <span className="text-[9px] text-bone-muted">{item.title}</span>
+            <span className="max-w-full truncate px-1 text-[9px] leading-none text-bone-muted">{item.title}</span>
           </a>
         ))}
       </motion.div>

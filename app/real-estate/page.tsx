@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { DisciplinePage } from "@/components/sections/discipline-page";
-import { disciplineBySlug } from "@/lib/content";
-import { notFound } from "next/navigation";
+import { RealEstateDetailPage } from "@/components/sections/real-estate-detail-page";
 
 export const metadata: Metadata = {
-  title: "Real Estate",
+  title: "Real Estate Advisory",
   description:
-    "Advisory and transactions for buyers, sellers, and investors — due diligence past the brochure.",
+    "Real estate advisory for buyers, sellers, landowners, and investors — market mapping, diligence, negotiation, and asset strategy.",
 };
 
 export default function RealEstatePage() {
-  const discipline = disciplineBySlug("real-estate");
-  if (!discipline) notFound();
-  return <DisciplinePage discipline={discipline} />;
+  return <RealEstateDetailPage />;
 }
