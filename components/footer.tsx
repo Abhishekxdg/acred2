@@ -11,9 +11,7 @@ import { site } from "@/lib/content";
 import Image from "next/image";
 
 export function Footer() {
-  const pathname = usePathname();
-  const isHomepage = pathname === "/";
-  const year = 2025;
+  const year = new Date().getFullYear();
   const footerRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const colsRef = useRef<HTMLDivElement>(null);
@@ -86,54 +84,6 @@ export function Footer() {
   return (
     <footer ref={footerRef} className="relative z-50 overflow-hidden border-t border-ink-line bg-ink-muted pb-6 sm:pb-10">
       <div className="container-acred py-10 sm:py-16 md:py-20">
-        {/* CTA Section - only on homepage */}
-        {isHomepage && (
-          <>
-            <div ref={ctaRef} className="mb-10 sm:mb-12">
-              <div className="relative overflow-hidden rounded-sm border border-ink-line bg-ink-soft p-8 sm:p-12 md:p-16 lg:p-20">
-                <div className="relative z-10 max-w-3xl">
-                  <p className="eyebrow mb-4 sm:mb-6">Start your project</p>
-                  <h2 className="text-balance">
-                    <span className="block font-sans font-bold text-display-lg sm:text-display-xl leading-[0.95] tracking-tight text-bone">Have a vision,</span>
-                    <span className="block font-serif italic text-display-lg sm:text-display-xl leading-[1.05] text-bone/85">a property, or a blueprint?</span>
-                  </h2>
-                  <p className="mt-5 max-w-lg font-serif text-lg text-bone-muted sm:mt-7 sm:text-xl">
-                    Tell us what you are building. We will map the path from site to handover.
-                  </p>
-                  <div className="mt-8 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:items-center">
-                    <Link
-                      href="/contact"
-                      className="group inline-flex items-center gap-2.5 rounded-full border border-bone/20 bg-bone px-7 py-3.5 font-sans text-[13px] font-medium text-night backdrop-blur-sm transition-all hover:bg-gold hover:text-night hover:border-gold cursor-hover"
-                    >
-                      Start your project
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                    </Link>
-                    <a
-                      href={`mailto:${site.contact.email}`}
-                      className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest2 text-bone-muted transition-colors hover:text-gold cursor-hover"
-                    >
-                      {site.contact.email}
-                    </a>
-                  </div>
-                </div>
-
-                {/* Accent logo watermark */}
-                <div className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 lg:block">
-                  <Image
-                    src="/black_text_logo.png"
-                    alt=""
-                    width={280}
-                    height={280}
-                    className="h-auto w-[280px] opacity-[0.04]"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="rule" />
-          </>
-        )}
-
         <div ref={colsRef} className="grid gap-8 py-8 sm:gap-8 sm:py-10 md:grid-cols-3">
           <div className="space-y-4 sm:space-y-6">
             <Image
