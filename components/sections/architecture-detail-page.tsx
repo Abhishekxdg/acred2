@@ -172,9 +172,9 @@ export function InteriorsDetailPage() {
               </div>
             </div>
             <div className="gsap-reveal lg:col-span-5">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-ink-soft sm:aspect-[4/5]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-ink-soft">
                 <Image
-                  src="/A_real_photograph_202604261852.jpeg"
+                  src="/A_real_photograph_202604261852 copy.jpeg"
                   alt="Modern interior living space"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Phone } from "lucide-react";
 import { MotionReveal } from "@/components/motion-reveal";
-import { site } from "@/lib/content";
 
 export function LandingCTA() {
   return (
