@@ -15,6 +15,7 @@ const navLinks = [
   { label: "Interiors", href: "/interiors" },
   { label: "Design tool", href: "/design-home" },
   { label: "About us", href: "/about" },
+  { label: "Testimonials", href: "/testimonials" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -60,6 +61,12 @@ const menuItems = [
     text: "About",
     image:
       "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    link: "/testimonials",
+    text: "Testimonials",
+    image:
+      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80",
   },
   {
     link: "/contact",

@@ -293,56 +293,40 @@ export function ModularKitchenPage() {
             ))}
           </div>
         </div>
-        <div className="grid gap-4 grid-flow-dense sm:grid-cols-2 lg:grid-cols-3">
-          {filteredImages.map((img, i) => {
-            const isWide = i % 5 === 0 && i < 15;
-            const isFull = filteredImages.length === 16 && i === 15;
-            return (
-              <div
-                key={img.src}
-                className={`gsap-reveal group relative overflow-hidden rounded-xl bg-ink-soft cursor-hover ${
-                  isWide ? "sm:col-span-2 lg:col-span-2" : ""
-                } ${isFull ? "sm:col-span-2 lg:col-span-3" : ""}`}
-                onClick={() => openLightbox(i)}
-              >
-                <div
-                  className={`relative w-full overflow-hidden ${
-                    isWide || isFull ? "aspect-[16/9]" : "aspect-[4/3]"
-                  }`}
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    sizes={
-                      isFull
-                        ? "100vw"
-                        : isWide
-                        ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 66vw"
-                        : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    }
-                    className="gallery-img object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                    <div className="flex items-center justify-between gap-4">
-                      <div>
-                        <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold mb-1">
-                          {img.category}
-                        </p>
-                        <p className="font-sans text-sm font-medium text-white leading-snug max-w-[80%]">
-                          {img.alt}
-                        </p>
-                      </div>
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm">
-                        <Eye className="h-4 w-4 text-white" />
-                      </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredImages.map((img, i) => (
+            <div
+              key={img.src}
+              className="gsap-reveal group relative overflow-hidden rounded-xl bg-ink-soft cursor-hover"
+              onClick={() => openLightbox(i)}
+            >
+              <div className="relative w-full overflow-hidden aspect-[4/3]">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="gallery-img object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold mb-1">
+                        {img.category}
+                      </p>
+                      <p className="font-sans text-sm font-medium text-white leading-snug max-w-[80%]">
+                        {img.alt}
+                      </p>
+                    </div>
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm">
+                      <Eye className="h-4 w-4 text-white" />
                     </div>
                   </div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </section>
 
