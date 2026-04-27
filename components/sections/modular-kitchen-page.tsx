@@ -8,22 +8,22 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const galleryImages = [
-  { src: "/modular/Modular 1.webp", alt: "Modern white modular kitchen with island counter" },
-  { src: "/modular/modular 2.webp", alt: "Sleek contemporary modular kitchen design" },
-  { src: "/modular/modular 3.webp", alt: "Elegant modular kitchen with premium finishes" },
-  { src: "/modular/modular 4.webp", alt: "Spacious modular kitchen layout" },
-  { src: "/modular/modular 5.webp", alt: "Modular kitchen with smart storage solutions" },
-  { src: "/modular/modular 6.webp", alt: "Custom modular kitchen cabinetry" },
-  { src: "/modular/image 9.jpeg", alt: "Modular kitchen interior detail" },
-  { src: "/modular/image 10.jpeg", alt: "Contemporary kitchen design by ACRED" },
-  { src: "/modular/image 11.webp", alt: "Premium modular kitchen installation" },
-  { src: "/modular/image 13.webp", alt: "Designer modular kitchen space" },
   { src: "/modular/image 14.webp", alt: "Modern kitchen with optimized workflow" },
-  { src: "/modular/image 16.webp", alt: "Luxury modular kitchen finish" },
-  { src: "/modular/image 17.webp", alt: "Polished modular kitchen with accent lighting" },
+  { src: "/modular/Modular 1.webp", alt: "Modern white modular kitchen with island counter" },
   { src: "/modular/image 18.webp", alt: "Warm-toned modular kitchen design" },
-  { src: "/modular/image 19.webp", alt: "Compact city apartment kitchen layout" },
+  { src: "/modular/modular 5.webp", alt: "Modular kitchen with smart storage solutions" },
+  { src: "/modular/image 16.webp", alt: "Luxury modular kitchen finish" },
+  { src: "/modular/modular 3.webp", alt: "Elegant modular kitchen with premium finishes" },
   { src: "/modular/image 20.webp", alt: "Grand island kitchen for entertaining" },
+  { src: "/modular/image 10.jpeg", alt: "Contemporary kitchen design by ACRED" },
+  { src: "/modular/modular 4.webp", alt: "Spacious modular kitchen layout" },
+  { src: "/modular/image 11.webp", alt: "Premium modular kitchen installation" },
+  { src: "/modular/image 17.webp", alt: "Polished modular kitchen with accent lighting" },
+  { src: "/modular/modular 2.webp", alt: "Sleek contemporary modular kitchen design" },
+  { src: "/modular/image 19.webp", alt: "Compact city apartment kitchen layout" },
+  { src: "/modular/image 9.jpeg", alt: "Modular kitchen interior detail" },
+  { src: "/modular/modular 6.webp", alt: "Custom modular kitchen cabinetry" },
+  { src: "/modular/image 13.webp", alt: "Designer modular kitchen space" },
 ];
 
 const features = [

@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import Image from "next/image";
-import { ArrowUpRight, DoorOpen, Hand, Palette, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, DoorOpen, Hand, Palette, ShieldCheck, Eye, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -43,6 +43,35 @@ export function PoojaFoyerPage() {
   const processRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLElement>(null);
   useReveal([heroRef, introRef, galleryRef, featuresRef, processRef, ctaRef]);
+
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const openLightbox = useCallback((index: number) => {
+    setLightboxIndex(index);
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxIndex(null);
+  }, []);
+
+  const prevImage = useCallback(() => {
+    setLightboxIndex((prev) => (prev === null || prev === 0 ? galleryImages.length - 1 : prev - 1));
+  }, []);
+
+  const nextImage = useCallback(() => {
+    setLightboxIndex((prev) => (prev === null || prev === galleryImages.length - 1 ? 0 : prev + 1));
+  }, []);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "ArrowRight") nextImage();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightboxIndex, closeLightbox, prevImage, nextImage]);
 
   return (
     <>
@@ -89,10 +118,21 @@ export function PoojaFoyerPage() {
         {galleryImages.length > 0 ? (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {galleryImages.map((img, i) => (
-              <div key={i} className="gsap-reveal group relative overflow-hidden rounded-xl bg-ink-soft">
+              <div key={img.src} className="gsap-reveal group relative overflow-hidden rounded-xl bg-ink-soft cursor-hover" onClick={() => openLightbox(i)}>
                 <div className="relative w-full aspect-[4/3]">
                   <Image src={img.src} alt={img.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                    <div className="flex items-center justify-between gap-4">
+                      <div>
+                        <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold mb-1">Pooja & Foyer</p>
+                        <p className="font-sans text-sm font-medium text-white leading-snug max-w-[80%]">{img.alt}</p>
+                      </div>
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm">
+                        <Eye className="h-4 w-4 text-white" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -151,6 +191,22 @@ export function PoojaFoyerPage() {
           </div>
         </div>
       </section>
+
+      {lightboxIndex !== null && galleryImages[lightboxIndex] && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm" onClick={closeLightbox}>
+          <button onClick={(e) => { e.stopPropagation(); closeLightbox(); }} className="absolute top-5 right-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 cursor-hover" aria-label="Close"><X className="h-5 w-5" /></button>
+          <button onClick={(e) => { e.stopPropagation(); prevImage(); }} className="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 cursor-hover sm:left-6" aria-label="Previous"><ChevronLeft className="h-5 w-5" /></button>
+          <button onClick={(e) => { e.stopPropagation(); nextImage(); }} className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 cursor-hover sm:right-6" aria-label="Next"><ChevronRight className="h-5 w-5" /></button>
+          <div className="relative mx-16 aspect-[4/3] w-full max-w-5xl sm:mx-20" onClick={(e) => e.stopPropagation()}>
+            <Image src={galleryImages[lightboxIndex].src} alt={galleryImages[lightboxIndex].alt} fill sizes="100vw" className="object-contain" priority />
+          </div>
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
+            <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold">Pooja & Foyer</p>
+            <p className="mt-1 font-sans text-sm font-medium text-white/90">{galleryImages[lightboxIndex].alt}</p>
+            <p className="mt-1 font-mono text-[10px] text-white/50">{lightboxIndex + 1} / {galleryImages.length}</p>
+          </div>
+        </div>
+      )}
     </>
   );
 }
