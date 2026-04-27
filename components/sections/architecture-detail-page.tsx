@@ -14,7 +14,7 @@ const services = [
     title: "Modular Kitchen",
     desc: "Custom-designed kitchen units with premium finishes, soft-close hardware, and space-optimized layouts.",
     image: "https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=800",
-    href: "#",
+    href: "/interiors/modular-kitchen",
   },
   {
     title: "Living Room Interiors",
@@ -224,26 +224,41 @@ export function InteriorsDetailPage() {
           </h2>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <div key={s.title} className="gsap-reveal group cursor-hover">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-ink-soft">
-                <Image
-                  src={s.image}
-                  alt={s.title}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+          {services.map((s) => {
+            const CardBody = (
+              <>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-ink-soft">
+                  <Image
+                    src={s.image}
+                    alt={s.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                </div>
+                <div className="mt-4">
+                  <h3 className="font-sans text-base font-medium text-bone transition-colors group-hover:text-gold">
+                    {s.title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-relaxed text-bone-muted">{s.desc}</p>
+                </div>
+              </>
+            );
+            return s.href && s.href !== "#" ? (
+              <Link
+                key={s.title}
+                href={s.href}
+                className="gsap-reveal group cursor-hover block"
+              >
+                {CardBody}
+              </Link>
+            ) : (
+              <div key={s.title} className="gsap-reveal group cursor-hover">
+                {CardBody}
               </div>
-              <div className="mt-4">
-                <h3 className="font-sans text-base font-medium text-bone transition-colors group-hover:text-gold">
-                  {s.title}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-bone-muted">{s.desc}</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
