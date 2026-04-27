@@ -189,7 +189,7 @@ export function PackagesPage() {
                 )}
 
                 {/* Price header */}
-                <div className={cn("px-6 pt-6 pb-5 border-b sm:px-8 sm:pt-8 sm:pb-6", pkg.popular ? "border-ink-line" : "border-ink-line")}>
+                <div className="px-6 pt-6 pb-5 border-b border-ink-line sm:px-8 sm:pt-8 sm:pb-6">
                   <h3 className="font-sans text-xl font-semibold text-bone sm:text-2xl">{pkg.name}</h3>
                   <p className="mt-1 text-sm leading-relaxed text-bone-muted">{pkg.tagline}</p>
                   <div className="mt-5 flex items-end gap-2">
