@@ -89,8 +89,8 @@ export function PoojaFoyerPage() {
         {galleryImages.length > 0 ? (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {galleryImages.map((img, i) => (
-              <div key={i} className={`gsap-reveal group relative overflow-hidden rounded-xl bg-ink-soft ${i === 0 || i === 5 ? "sm:col-span-2 lg:col-span-2" : ""}`}>
-                <div className={`relative w-full ${i === 0 || i === 5 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
+              <div key={i} className="gsap-reveal group relative overflow-hidden rounded-xl bg-ink-soft">
+                <div className="relative w-full aspect-[4/3]">
                   <Image src={img.src} alt={img.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>

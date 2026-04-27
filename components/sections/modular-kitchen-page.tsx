@@ -7,25 +7,23 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-type Category = "All" | "Contemporary" | "Classic" | "Island" | "Compact";
-
 const galleryImages = [
-  { src: "/modular/Modular 1.jpeg", alt: "Modern white modular kitchen with island counter", category: "Contemporary" as Category },
-  { src: "/modular/modular 2.jpeg", alt: "Sleek contemporary modular kitchen design", category: "Contemporary" as Category },
-  { src: "/modular/modular 3.jpeg", alt: "Elegant modular kitchen with premium finishes", category: "Classic" as Category },
-  { src: "/modular/modular 4.jpeg", alt: "Spacious modular kitchen layout", category: "Island" as Category },
-  { src: "/modular/modular 5.jpeg", alt: "Modular kitchen with smart storage solutions", category: "Compact" as Category },
-  { src: "/modular/modular 6.jpeg", alt: "Custom modular kitchen cabinetry", category: "Classic" as Category },
-  { src: "/modular/image 9.jpeg", alt: "Modular kitchen interior detail", category: "Contemporary" as Category },
-  { src: "/modular/image 10.jpeg", alt: "Contemporary kitchen design by ACRED", category: "Contemporary" as Category },
-  { src: "/modular/image 11.jpeg", alt: "Premium modular kitchen installation", category: "Island" as Category },
-  { src: "/modular/image 13.jpeg", alt: "Designer modular kitchen space", category: "Classic" as Category },
-  { src: "/modular/image 14.jpeg", alt: "Modern kitchen with optimized workflow", category: "Compact" as Category },
-  { src: "/modular/image 16.jpeg", alt: "Luxury modular kitchen finish", category: "Island" as Category },
-  { src: "/modular/image 17.jpeg", alt: "Polished modular kitchen with accent lighting", category: "Contemporary" as Category },
-  { src: "/modular/image 18.jpeg", alt: "Warm-toned modular kitchen design", category: "Classic" as Category },
-  { src: "/modular/image 19.jpeg", alt: "Compact city apartment kitchen layout", category: "Compact" as Category },
-  { src: "/modular/image 20.jpeg", alt: "Grand island kitchen for entertaining", category: "Island" as Category },
+  { src: "/modular/Modular 1.webp", alt: "Modern white modular kitchen with island counter" },
+  { src: "/modular/modular 2.webp", alt: "Sleek contemporary modular kitchen design" },
+  { src: "/modular/modular 3.webp", alt: "Elegant modular kitchen with premium finishes" },
+  { src: "/modular/modular 4.webp", alt: "Spacious modular kitchen layout" },
+  { src: "/modular/modular 5.webp", alt: "Modular kitchen with smart storage solutions" },
+  { src: "/modular/modular 6.webp", alt: "Custom modular kitchen cabinetry" },
+  { src: "/modular/image 9.jpeg", alt: "Modular kitchen interior detail" },
+  { src: "/modular/image 10.jpeg", alt: "Contemporary kitchen design by ACRED" },
+  { src: "/modular/image 11.webp", alt: "Premium modular kitchen installation" },
+  { src: "/modular/image 13.webp", alt: "Designer modular kitchen space" },
+  { src: "/modular/image 14.webp", alt: "Modern kitchen with optimized workflow" },
+  { src: "/modular/image 16.webp", alt: "Luxury modular kitchen finish" },
+  { src: "/modular/image 17.webp", alt: "Polished modular kitchen with accent lighting" },
+  { src: "/modular/image 18.webp", alt: "Warm-toned modular kitchen design" },
+  { src: "/modular/image 19.webp", alt: "Compact city apartment kitchen layout" },
+  { src: "/modular/image 20.webp", alt: "Grand island kitchen for entertaining" },
 ];
 
 const features = [
@@ -92,12 +90,7 @@ export function ModularKitchenPage() {
   const processRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLElement>(null);
 
-  const [activeCategory, setActiveCategory] = useState<Category>("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-
-  const filteredImages = activeCategory === "All"
-    ? galleryImages
-    : galleryImages.filter((img) => img.category === activeCategory);
 
   const openLightbox = useCallback((index: number) => {
     setLightboxIndex(index);
@@ -108,12 +101,12 @@ export function ModularKitchenPage() {
   }, []);
 
   const prevImage = useCallback(() => {
-    setLightboxIndex((prev) => (prev === null || prev === 0 ? filteredImages.length - 1 : prev - 1));
-  }, [filteredImages.length]);
+    setLightboxIndex((prev) => (prev === null || prev === 0 ? galleryImages.length - 1 : prev - 1));
+  }, []);
 
   const nextImage = useCallback(() => {
-    setLightboxIndex((prev) => (prev === null || prev === filteredImages.length - 1 ? 0 : prev + 1));
-  }, [filteredImages.length]);
+    setLightboxIndex((prev) => (prev === null || prev === galleryImages.length - 1 ? 0 : prev + 1));
+  }, []);
 
   useEffect(() => {
     if (lightboxIndex === null) return;
@@ -125,8 +118,6 @@ export function ModularKitchenPage() {
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [lightboxIndex, closeLightbox, prevImage, nextImage]);
-
-  const categories: Category[] = ["All", "Contemporary", "Classic", "Island", "Compact"];
 
   useGSAP(
     () => {
@@ -229,7 +220,7 @@ export function ModularKitchenPage() {
             <div className="gsap-reveal lg:col-span-5">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-ink-soft">
                 <Image
-                  src="/modular/Modular 1.jpeg"
+                  src="/modular/Modular 1.webp"
                   alt="ACRED modular kitchen showcase"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -268,33 +259,16 @@ export function ModularKitchenPage() {
 
       {/* Gallery */}
       <section ref={galleryRef} id="gallery" className="container-acred py-16 md:py-20 lg:py-28">
-        <div className="gsap-reveal mb-10 sm:mb-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="section-label mb-4">Portfolio</p>
-            <h2 className="text-balance">
-              <span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">
-                Kitchens we have crafted.
-              </span>
-            </h2>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`rounded-full px-4 py-2 font-sans text-xs font-medium uppercase tracking-widest transition-all cursor-hover ${
-                  activeCategory === cat
-                    ? "bg-bone text-ink"
-                    : "border border-ink-line text-bone-muted hover:border-bone/40 hover:text-bone"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+        <div className="gsap-reveal mb-10 sm:mb-12">
+          <p className="section-label mb-4">Portfolio</p>
+          <h2 className="text-balance">
+            <span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">
+              Kitchens we have crafted.
+            </span>
+          </h2>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredImages.map((img, i) => (
+          {galleryImages.map((img, i) => (
             <div
               key={img.src}
               className="gsap-reveal group relative overflow-hidden rounded-xl bg-ink-soft cursor-hover"
@@ -313,7 +287,7 @@ export function ModularKitchenPage() {
                   <div className="flex items-center justify-between gap-4">
                     <div>
                       <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold mb-1">
-                        {img.category}
+                        Kitchen
                       </p>
                       <p className="font-sans text-sm font-medium text-white leading-snug max-w-[80%]">
                         {img.alt}
@@ -420,7 +394,7 @@ export function ModularKitchenPage() {
       </section>
 
       {/* Lightbox */}
-      {lightboxIndex !== null && filteredImages[lightboxIndex] && (
+      {lightboxIndex !== null && galleryImages[lightboxIndex] && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
           onClick={closeLightbox}
@@ -454,8 +428,8 @@ export function ModularKitchenPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <Image
-              src={filteredImages[lightboxIndex].src}
-              alt={filteredImages[lightboxIndex].alt}
+              src={galleryImages[lightboxIndex].src}
+              alt={galleryImages[lightboxIndex].alt}
               fill
               sizes="100vw"
               className="object-contain"
@@ -465,13 +439,13 @@ export function ModularKitchenPage() {
 
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
             <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold">
-              {filteredImages[lightboxIndex].category}
+              Kitchen
             </p>
             <p className="mt-1 font-sans text-sm font-medium text-white/90">
-              {filteredImages[lightboxIndex].alt}
+              {galleryImages[lightboxIndex].alt}
             </p>
             <p className="mt-1 font-mono text-[10px] text-white/50">
-              {lightboxIndex + 1} / {filteredImages.length}
+              {lightboxIndex + 1} / {galleryImages.length}
             </p>
           </div>
         </div>

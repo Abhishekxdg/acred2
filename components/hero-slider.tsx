@@ -4,10 +4,10 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 const SLIDES = [
-  "/hero/Cinematic_architectural_photograph_202604261757.jpeg",
+  "/hero/Cinematic_architectural_photograph_202604261757.webp",
   "/hero/Cinematic_architectural_photograph_202604261757 (1).jpeg",
-  "/hero/Award-winning_architectural_photography_202604261803.jpeg",
-  "/hero/Hyper-realistic_architectural_twilight_202604261757.jpeg",
+  "/hero/Award-winning_architectural_photography_202604261803.webp",
+  "/hero/Hyper-realistic_architectural_twilight_202604261757.webp",
 ];
 
 const INTERVAL = 3000;

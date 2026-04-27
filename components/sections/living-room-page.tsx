@@ -7,7 +7,29 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const galleryImages: { src: string; alt: string }[] = [];
+const galleryImages = [
+  { src: "/living-room/image 1.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 2.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 3.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 4.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 5.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 6.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 7.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 8.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 9.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 10.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 11.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 12.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 13.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 14.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 15.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 16.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 17.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 18.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 19.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 20.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 21.webp", alt: "Living room interior by ACRED" },
+];
 
 const features = [
   { icon: Sofa, title: "Custom Seating", desc: "Tailored sofas, sectionals, and lounge chairs built to your dimensions and fabric preferences." },
@@ -89,8 +111,8 @@ export function LivingRoomPage() {
         {galleryImages.length > 0 ? (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {galleryImages.map((img, i) => (
-              <div key={i} className={`gsap-reveal group relative overflow-hidden rounded-xl bg-ink-soft ${i === 0 || i === 5 ? "sm:col-span-2 lg:col-span-2" : ""}`}>
-                <div className={`relative w-full ${i === 0 || i === 5 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
+              <div key={i} className="gsap-reveal group relative overflow-hidden rounded-xl bg-ink-soft">
+                <div className="relative w-full aspect-[4/3]">
                   <Image src={img.src} alt={img.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
