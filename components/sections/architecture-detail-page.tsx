@@ -20,31 +20,31 @@ const services = [
     title: "Living Room Interiors",
     desc: "Complete living spaces with TV units, seating arrangements, lighting, and décor curated to your style.",
     image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
-    href: "#",
+    href: "/interiors/living-room",
   },
   {
     title: "Wardrobe & Storage",
     desc: "Floor-to-ceiling wardrobes, walk-in closets, and smart storage that maximizes every square foot.",
     image: "https://images.pexels.com/photos/2724748/pexels-photo-2724748.jpeg?auto=compress&cs=tinysrgb&w=800",
-    href: "#",
+    href: "/interiors/wardrobe",
   },
   {
     title: "Bedroom Design",
     desc: "Master and guest bedrooms with custom bed frames, side tables, dressing units, and ambient lighting.",
     image: "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800",
-    href: "#",
+    href: "/interiors/bedroom",
   },
   {
     title: "Bathroom Interiors",
     desc: "Modern bathrooms with premium fittings, tile layouts, vanity units, and waterproof storage.",
     image: "https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=800",
-    href: "#",
+    href: "/interiors/bathroom",
   },
   {
     title: "Pooja & Foyer",
     desc: "Traditional and contemporary prayer units, entryway consoles, and shoe cabinets with aesthetic appeal.",
     image: "https://images.pexels.com/photos/3097112/pexels-photo-3097112.jpeg?auto=compress&cs=tinysrgb&w=800",
-    href: "#",
+    href: "/interiors/pooja-foyer",
   },
 ];
 

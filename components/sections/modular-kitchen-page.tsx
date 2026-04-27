@@ -1,25 +1,31 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Ruler, Palette, ShieldCheck, Clock } from "lucide-react";
+import { ArrowUpRight, Ruler, Palette, ShieldCheck, Clock, X, ChevronLeft, ChevronRight, Eye } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+type Category = "All" | "Contemporary" | "Classic" | "Island" | "Compact";
+
 const galleryImages = [
-  { src: "/modular/Modular 1.jpeg", alt: "Modern white modular kitchen with island counter" },
-  { src: "/modular/modular 2.jpeg", alt: "Sleek contemporary modular kitchen design" },
-  { src: "/modular/modular 3.jpeg", alt: "Elegant modular kitchen with premium finishes" },
-  { src: "/modular/modular 4.jpeg", alt: "Spacious modular kitchen layout" },
-  { src: "/modular/modular 5.jpeg", alt: "Modular kitchen with smart storage solutions" },
-  { src: "/modular/modular 6.jpeg", alt: "Custom modular kitchen cabinetry" },
-  { src: "/modular/image 9.jpeg", alt: "Modular kitchen interior detail" },
-  { src: "/modular/image 10.jpeg", alt: "Contemporary kitchen design by ACRED" },
-  { src: "/modular/image 11.jpeg", alt: "Premium modular kitchen installation" },
-  { src: "/modular/image 13.jpeg", alt: "Designer modular kitchen space" },
-  { src: "/modular/image 14.jpeg", alt: "Modern kitchen with optimized workflow" },
-  { src: "/modular/image 16.jpeg", alt: "Luxury modular kitchen finish" },
+  { src: "/modular/Modular 1.jpeg", alt: "Modern white modular kitchen with island counter", category: "Contemporary" as Category },
+  { src: "/modular/modular 2.jpeg", alt: "Sleek contemporary modular kitchen design", category: "Contemporary" as Category },
+  { src: "/modular/modular 3.jpeg", alt: "Elegant modular kitchen with premium finishes", category: "Classic" as Category },
+  { src: "/modular/modular 4.jpeg", alt: "Spacious modular kitchen layout", category: "Island" as Category },
+  { src: "/modular/modular 5.jpeg", alt: "Modular kitchen with smart storage solutions", category: "Compact" as Category },
+  { src: "/modular/modular 6.jpeg", alt: "Custom modular kitchen cabinetry", category: "Classic" as Category },
+  { src: "/modular/image 9.jpeg", alt: "Modular kitchen interior detail", category: "Contemporary" as Category },
+  { src: "/modular/image 10.jpeg", alt: "Contemporary kitchen design by ACRED", category: "Contemporary" as Category },
+  { src: "/modular/image 11.jpeg", alt: "Premium modular kitchen installation", category: "Island" as Category },
+  { src: "/modular/image 13.jpeg", alt: "Designer modular kitchen space", category: "Classic" as Category },
+  { src: "/modular/image 14.jpeg", alt: "Modern kitchen with optimized workflow", category: "Compact" as Category },
+  { src: "/modular/image 16.jpeg", alt: "Luxury modular kitchen finish", category: "Island" as Category },
+  { src: "/modular/image 17.jpeg", alt: "Polished modular kitchen with accent lighting", category: "Contemporary" as Category },
+  { src: "/modular/image 18.jpeg", alt: "Warm-toned modular kitchen design", category: "Classic" as Category },
+  { src: "/modular/image 19.jpeg", alt: "Compact city apartment kitchen layout", category: "Compact" as Category },
+  { src: "/modular/image 20.jpeg", alt: "Grand island kitchen for entertaining", category: "Island" as Category },
 ];
 
 const features = [
@@ -86,9 +92,45 @@ export function ModularKitchenPage() {
   const processRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLElement>(null);
 
+  const [activeCategory, setActiveCategory] = useState<Category>("All");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const filteredImages = activeCategory === "All"
+    ? galleryImages
+    : galleryImages.filter((img) => img.category === activeCategory);
+
+  const openLightbox = useCallback((index: number) => {
+    setLightboxIndex(index);
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxIndex(null);
+  }, []);
+
+  const prevImage = useCallback(() => {
+    setLightboxIndex((prev) => (prev === null || prev === 0 ? filteredImages.length - 1 : prev - 1));
+  }, [filteredImages.length]);
+
+  const nextImage = useCallback(() => {
+    setLightboxIndex((prev) => (prev === null || prev === filteredImages.length - 1 ? 0 : prev + 1));
+  }, [filteredImages.length]);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "ArrowRight") nextImage();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightboxIndex, closeLightbox, prevImage, nextImage]);
+
+  const categories: Category[] = ["All", "Contemporary", "Classic", "Island", "Compact"];
+
   useGSAP(
     () => {
-      const sections = [heroRef, introRef, galleryRef, featuresRef, processRef, ctaRef];
+      const sections = [heroRef, introRef, featuresRef, processRef, ctaRef];
       sections.forEach((ref) => {
         if (!ref.current) return;
         const items = ref.current.querySelectorAll(".gsap-reveal");
@@ -105,6 +147,44 @@ export function ModularKitchenPage() {
           },
         });
       });
+
+      // Gallery grid entrance
+      if (galleryRef.current) {
+        const items = galleryRef.current.querySelectorAll(".gsap-reveal");
+        gsap.from(items, {
+          y: 50,
+          opacity: 0,
+          scale: 0.96,
+          stagger: {
+            each: 0.1,
+            from: "start",
+          },
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: galleryRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        });
+
+        // Parallax on gallery images
+        items.forEach((item) => {
+          const img = item.querySelector(".gallery-img");
+          if (img) {
+            gsap.to(img, {
+              yPercent: -6,
+              ease: "none",
+              scrollTrigger: {
+                trigger: item,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
+            });
+          }
+        });
+      }
     },
     {}
   );
@@ -188,34 +268,81 @@ export function ModularKitchenPage() {
 
       {/* Gallery */}
       <section ref={galleryRef} id="gallery" className="container-acred py-16 md:py-20 lg:py-28">
-        <div className="gsap-reveal mb-10 sm:mb-12">
-          <p className="section-label mb-4">Portfolio</p>
-          <h2 className="text-balance">
-            <span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">
-              Kitchens we have crafted.
-            </span>
-          </h2>
+        <div className="gsap-reveal mb-10 sm:mb-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="section-label mb-4">Portfolio</p>
+            <h2 className="text-balance">
+              <span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">
+                Kitchens we have crafted.
+              </span>
+            </h2>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`rounded-full px-4 py-2 font-sans text-xs font-medium uppercase tracking-widest transition-all cursor-hover ${
+                  activeCategory === cat
+                    ? "bg-bone text-ink"
+                    : "border border-ink-line text-bone-muted hover:border-bone/40 hover:text-bone"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {galleryImages.map((img, i) => (
-            <div
-              key={i}
-              className={`gsap-reveal group relative overflow-hidden rounded-xl bg-ink-soft ${
-                i === 0 || i === 5 ? "sm:col-span-2 lg:col-span-2" : ""
-              }`}
-            >
-              <div className={`relative w-full ${i === 0 || i === 5 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="grid gap-4 grid-flow-dense sm:grid-cols-2 lg:grid-cols-3">
+          {filteredImages.map((img, i) => {
+            const isWide = i % 5 === 0 && i < 15;
+            const isFull = filteredImages.length === 16 && i === 15;
+            return (
+              <div
+                key={img.src}
+                className={`gsap-reveal group relative overflow-hidden rounded-xl bg-ink-soft cursor-hover ${
+                  isWide ? "sm:col-span-2 lg:col-span-2" : ""
+                } ${isFull ? "sm:col-span-2 lg:col-span-3" : ""}`}
+                onClick={() => openLightbox(i)}
+              >
+                <div
+                  className={`relative w-full overflow-hidden ${
+                    isWide || isFull ? "aspect-[16/9]" : "aspect-[4/3]"
+                  }`}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes={
+                      isFull
+                        ? "100vw"
+                        : isWide
+                        ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 66vw"
+                        : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    }
+                    className="gallery-img object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                    <div className="flex items-center justify-between gap-4">
+                      <div>
+                        <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold mb-1">
+                          {img.category}
+                        </p>
+                        <p className="font-sans text-sm font-medium text-white leading-snug max-w-[80%]">
+                          {img.alt}
+                        </p>
+                      </div>
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm">
+                        <Eye className="h-4 w-4 text-white" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -307,6 +434,64 @@ export function ModularKitchenPage() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox */}
+      {lightboxIndex !== null && filteredImages[lightboxIndex] && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          onClick={closeLightbox}
+        >
+          <button
+            onClick={(e) => { e.stopPropagation(); closeLightbox(); }}
+            className="absolute top-5 right-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 cursor-hover"
+            aria-label="Close"
+          >
+            <X className="h-5 w-5" />
+          </button>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); prevImage(); }}
+            className="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 cursor-hover sm:left-6"
+            aria-label="Previous"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); nextImage(); }}
+            className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 cursor-hover sm:right-6"
+            aria-label="Next"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+
+          <div
+            className="relative mx-16 aspect-[4/3] w-full max-w-5xl sm:mx-20"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={filteredImages[lightboxIndex].src}
+              alt={filteredImages[lightboxIndex].alt}
+              fill
+              sizes="100vw"
+              className="object-contain"
+              priority
+            />
+          </div>
+
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
+            <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold">
+              {filteredImages[lightboxIndex].category}
+            </p>
+            <p className="mt-1 font-sans text-sm font-medium text-white/90">
+              {filteredImages[lightboxIndex].alt}
+            </p>
+            <p className="mt-1 font-mono text-[10px] text-white/50">
+              {lightboxIndex + 1} / {filteredImages.length}
+            </p>
+          </div>
+        </div>
+      )}
     </>
   );
 }
