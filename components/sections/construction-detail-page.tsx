@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, ShieldCheck, Clock, Users, Wrench } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -18,6 +19,7 @@ const services = [
     title: "Turnkey Residential",
     desc: "Complete home construction from foundation to finish — one contract, one partner, zero handoff gaps.",
     image: "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800",
+    href: "/packages",
   },
   {
     title: "Commercial Build-outs",
@@ -263,28 +265,44 @@ export function ConstructionDetailPage() {
           </h2>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <div key={s.title} className="gsap-reveal group cursor-hover">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-ink-soft">
-                <Image
-                  src={s.image}
-                  alt={s.title}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+          {services.map((s) => {
+            const CardBody = (
+              <>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-ink-soft">
+                  <Image
+                    src={s.image}
+                    alt={s.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  {s.href && (
+                    <div className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-gold opacity-0 transition-opacity group-hover:opacity-100">
+                      <ArrowUpRight className="h-4 w-4 text-bone" />
+                    </div>
+                  )}
+                </div>
+                <div className="mt-4">
+                  <h3 className="font-sans text-base font-medium text-bone transition-colors group-hover:text-gold">
+                    {s.title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-relaxed text-bone-muted">
+                    {s.desc}
+                  </p>
+                </div>
+              </>
+            );
+            return s.href ? (
+              <Link key={s.title} href={s.href} className="gsap-reveal group cursor-hover block">
+                {CardBody}
+              </Link>
+            ) : (
+              <div key={s.title} className="gsap-reveal group cursor-hover">
+                {CardBody}
               </div>
-              <div className="mt-4">
-                <h3 className="font-sans text-base font-medium text-bone transition-colors group-hover:text-gold">
-                  {s.title}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-bone-muted">
-                  {s.desc}
-                </p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 

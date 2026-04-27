@@ -46,6 +46,7 @@ export const navigation = [
   { label: "About", href: "/about" },
   { label: "Interiors", href: "/interiors" },
   { label: "Construction", href: "/construction" },
+  { label: "Packages", href: "/packages" },
   { label: "Real Estate", href: "/real-estate" },
   { label: "Engineering", href: "/engineering" },
   { label: "Contact Us", href: "/contact" },
