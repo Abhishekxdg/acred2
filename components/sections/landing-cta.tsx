@@ -18,7 +18,7 @@ export function LandingCTA() {
           <div className="absolute inset-0 bg-gradient-to-r from-night via-night/80 to-night/25" />
           <div className="absolute inset-0 bg-gradient-to-t from-night/80 via-transparent to-transparent" />
 
-          <div className="relative z-10 grid min-h-[520px] gap-10 p-6 sm:min-h-[560px] sm:p-10 md:p-12 lg:grid-cols-12 lg:p-16">
+          <div className="relative z-10 grid min-h-[420px] gap-10 p-6 sm:min-h-[560px] sm:p-10 md:p-12 lg:grid-cols-12 lg:p-16">
             <div className="flex flex-col justify-between lg:col-span-7">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-widest2 text-white/55">

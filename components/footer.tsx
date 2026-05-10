@@ -81,14 +81,6 @@ export function Footer() {
               >
                 {site.contact.email}
               </a>
-              <a
-                href={`https://${site.contact.website}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-bone-soft hover:text-gold transition-colors cursor-hover"
-              >
-                {site.contact.website}
-              </a>
             </div>
           </div>
 

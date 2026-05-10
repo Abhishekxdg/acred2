@@ -90,7 +90,7 @@ export default function AboutPage() {
       {/* Hero image */}
       <section className="container-acred pb-10 sm:pb-12 md:pb-16">
         <MotionReveal>
-          <div className="relative aspect-[16/7] w-full overflow-hidden rounded-sm">
+          <div className="relative aspect-[16/9] sm:aspect-[16/7] w-full overflow-hidden rounded-sm">
             <Image
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80"
               alt="ACRED studio workspace"

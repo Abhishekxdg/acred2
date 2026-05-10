@@ -207,7 +207,7 @@ export function ConstructionDetailPage() {
       {/* Stats */}
       <section ref={statsRef} className="border-y border-ink-line bg-ink-muted">
         <div className="container-acred py-10 sm:py-12">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4">
             {[
               {
                 icon: ShieldCheck,

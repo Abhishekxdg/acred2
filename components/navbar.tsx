@@ -192,7 +192,7 @@ export function Navbar() {
             <SheetTrigger
               aria-label="Open navigation"
               className={cn(
-                "inline-flex h-8 w-8 items-center justify-center rounded-full transition-colors cursor-hover",
+                "inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors cursor-hover sm:h-8 sm:w-8",
                 useLightAssets
                   ? "text-white/65 hover:bg-white/10 hover:text-white"
                   : "text-bone-muted hover:bg-bone/8 hover:text-bone",

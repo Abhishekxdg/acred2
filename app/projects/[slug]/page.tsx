@@ -60,7 +60,7 @@ export default function ProjectDetail({ params }: Params) {
   return (
     <>
       {/* Hero image */}
-      <section className="relative h-[82svh] min-h-[560px] w-full overflow-hidden sm:h-[90vh]">
+      <section className="relative h-[70svh] min-h-[440px] w-full overflow-hidden sm:h-[90vh] sm:min-h-[560px]">
         <Image
           src={project.heroImage}
           alt={project.title}

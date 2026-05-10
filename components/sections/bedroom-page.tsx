@@ -143,7 +143,7 @@ export function BedroomPage() {
             ))}
           </div>
         ) : (
-          <div className="gsap-reveal rounded-xl border border-ink-line bg-ink-soft p-12 text-center">
+          <div className="gsap-reveal rounded-xl border border-ink-line bg-ink-soft p-8 sm:p-12 text-center">
             <p className="text-bone-muted">Images coming soon. Add your bedroom photos to <code className="font-mono text-sm text-gold">/public/bedroom/</code>.</p>
           </div>
         )}
