@@ -30,7 +30,7 @@ export const site = {
     "ACRED is an integrated studio spanning architecture, construction, real estate, engineering, and development. We read the site before we draw a line.",
   contact: {
     email: "hello@acredinteriors.in",
-    phone: "+91 98765 43210",
+    phone: "+91 63618 89281",
     website: "www.acredinteriors.in",
     address: "Bengaluru, Karnataka",
     instagram: "@acred.studio",

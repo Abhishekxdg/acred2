@@ -242,6 +242,11 @@ export function InteriorsDetailPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-ink-soft opacity-0 backdrop-blur-sm transition-all duration-500 group-hover:opacity-100 group-hover:scale-110">
+                      <ArrowUpRight className="h-4 w-4" />
+                    </div>
+                  </div>
                 </div>
                 <div className="mt-4">
                   <h3 className="font-sans text-base font-medium text-bone transition-colors group-hover:text-gold">

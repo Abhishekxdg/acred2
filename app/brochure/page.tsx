@@ -647,7 +647,7 @@ export default function BrochurePage() {
               <div className="mt-8 space-y-4">
                 <div>
                   <p className="font-mono text-[9px] uppercase tracking-widest text-gold">Phone</p>
-                  <p className="mt-1 font-serif text-lg text-bone">+91 98765 43210</p>
+                  <p className="mt-1 font-serif text-lg text-bone">+91 63618 89281</p>
                 </div>
                 <div>
                   <p className="font-mono text-[9px] uppercase tracking-widest text-gold">Email</p>
