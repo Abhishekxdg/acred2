@@ -95,7 +95,7 @@ export function organizationJsonLd() {
     ],
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+91-98765-43210",
+      telephone: "+91-63618-89281",
       contactType: "customer service",
       areaServed: "IN",
       availableLanguage: ["English", "Hindi", "Kannada"],
@@ -130,7 +130,7 @@ export function localBusinessJsonLd() {
     name: "ACRED",
     image: `${siteUrl}/A_real_photograph_202604261852.webp`,
     url: siteUrl,
-    telephone: "+91-98765-43210",
+    telephone: "+91-63618-89281",
     priceRange: "$$$$",
     address: {
       "@type": "PostalAddress",

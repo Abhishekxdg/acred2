@@ -282,46 +282,83 @@ export function PackagesPage() {
               </span>
             </h2>
           </div>
-          <div className="gsap-reveal overflow-x-auto">
-            <table className="w-full min-w-[520px] border-collapse">
-              <thead>
-                <tr className="border-b border-ink-line">
-                  <th className="pb-4 text-left font-sans text-xs font-medium uppercase tracking-widest2 text-bone-muted w-[44%]">Category</th>
-                  <th className="pb-4 text-left font-sans text-xs font-medium uppercase tracking-widest2 text-bone-muted w-[28%]">
-                    Standard
-                    <span className="block mt-0.5 font-sans text-sm font-bold normal-case tracking-normal text-gold">₹2,300 / sqft</span>
-                  </th>
-                  <th className="pb-4 text-left font-sans text-xs font-medium uppercase tracking-widest2 text-bone-muted w-[28%]">
-                    Premium
-                    <span className="block mt-0.5 font-sans text-sm font-bold normal-case tracking-normal text-gold">₹3,200 / sqft</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ["Architectural design", "Floor plan & 3D elevation", "Custom design with unlimited revisions"],
-                  ["Structure", "Standard RCC", "M25 concrete with FE-500 steel"],
-                  ["Electrical", "Basic layout & fittings", "Legrand / Anchor modular switches"],
-                  ["Plumbing", "PVC pipes, standard fittings", "Concealed CPVC with Jaquar"],
-                  ["Flooring", "Standard vitrified tiles", "Double-charged vitrified + designer tiles"],
-                  ["Doors", "Flush doors with laminate", "Teakwood frame with veneer & polish"],
-                  ["Windows", "UPVC with mosquito mesh", "Premium aluminium, toughened glass"],
-                  ["Paint", "Standard emulsion", "Asian Paints Royale or equivalent"],
-                  ["Kitchen", "Granite platform", "Full modular (Hettich / Blum hardware)"],
-                  ["False ceiling", "—", "Living + dining rooms"],
-                  ["Sanitaryware", "Hindware / Parryware", "Kohler / Roca / Grohe"],
-                  ["Smart wiring", "—", "Conduit + basic automation"],
-                  ["Landscaping", "—", "Walkway & garden lighting"],
-                  ["Warranty", "5 years structural", "10 years structural"],
-                ].map(([category, std, prem], i) => (
-                  <tr key={i} className="border-b border-ink-line">
-                    <td className="py-3.5 pr-4 font-sans text-sm font-medium text-bone">{category}</td>
-                    <td className="py-3.5 pr-4 text-sm text-bone-muted">{std}</td>
-                    <td className="py-3.5 text-sm font-medium text-bone-soft">{prem}</td>
+          <div className="gsap-reveal">
+            {/* Desktop: horizontal-scroll table */}
+            <div className="hidden sm:block overflow-x-auto">
+              <table className="w-full min-w-[520px] border-collapse">
+                <thead>
+                  <tr className="border-b border-ink-line">
+                    <th className="pb-4 text-left font-sans text-xs font-medium uppercase tracking-widest2 text-bone-muted w-[44%]">Category</th>
+                    <th className="pb-4 text-left font-sans text-xs font-medium uppercase tracking-widest2 text-bone-muted w-[28%]">
+                      Standard
+                      <span className="block mt-0.5 font-sans text-sm font-bold normal-case tracking-normal text-gold">₹2,300 / sqft</span>
+                    </th>
+                    <th className="pb-4 text-left font-sans text-xs font-medium uppercase tracking-widest2 text-bone-muted w-[28%]">
+                      Premium
+                      <span className="block mt-0.5 font-sans text-sm font-bold normal-case tracking-normal text-gold">₹3,200 / sqft</span>
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {[
+                    ["Architectural design", "Floor plan & 3D elevation", "Custom design with unlimited revisions"],
+                    ["Structure", "Standard RCC", "M25 concrete with FE-500 steel"],
+                    ["Electrical", "Basic layout & fittings", "Legrand / Anchor modular switches"],
+                    ["Plumbing", "PVC pipes, standard fittings", "Concealed CPVC with Jaquar"],
+                    ["Flooring", "Standard vitrified tiles", "Double-charged vitrified + designer tiles"],
+                    ["Doors", "Flush doors with laminate", "Teakwood frame with veneer & polish"],
+                    ["Windows", "UPVC with mosquito mesh", "Premium aluminium, toughened glass"],
+                    ["Paint", "Standard emulsion", "Asian Paints Royale or equivalent"],
+                    ["Kitchen", "Granite platform", "Full modular (Hettich / Blum hardware)"],
+                    ["False ceiling", "—", "Living + dining rooms"],
+                    ["Sanitaryware", "Hindware / Parryware", "Kohler / Roca / Grohe"],
+                    ["Smart wiring", "—", "Conduit + basic automation"],
+                    ["Landscaping", "—", "Walkway & garden lighting"],
+                    ["Warranty", "5 years structural", "10 years structural"],
+                  ].map(([category, std, prem], i) => (
+                    <tr key={i} className="border-b border-ink-line">
+                      <td className="py-3.5 pr-4 font-sans text-sm font-medium text-bone">{category}</td>
+                      <td className="py-3.5 pr-4 text-sm text-bone-muted">{std}</td>
+                      <td className="py-3.5 text-sm font-medium text-bone-soft">{prem}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile: stacked cards */}
+            <div className="sm:hidden space-y-3">
+              {[
+                ["Architectural design", "Floor plan & 3D elevation", "Custom design with unlimited revisions"],
+                ["Structure", "Standard RCC", "M25 concrete with FE-500 steel"],
+                ["Electrical", "Basic layout & fittings", "Legrand / Anchor modular switches"],
+                ["Plumbing", "PVC pipes, standard fittings", "Concealed CPVC with Jaquar"],
+                ["Flooring", "Standard vitrified tiles", "Double-charged vitrified + designer tiles"],
+                ["Doors", "Flush doors with laminate", "Teakwood frame with veneer & polish"],
+                ["Windows", "UPVC with mosquito mesh", "Premium aluminium, toughened glass"],
+                ["Paint", "Standard emulsion", "Asian Paints Royale or equivalent"],
+                ["Kitchen", "Granite platform", "Full modular (Hettich / Blum hardware)"],
+                ["False ceiling", "—", "Living + dining rooms"],
+                ["Sanitaryware", "Hindware / Parryware", "Kohler / Roca / Grohe"],
+                ["Smart wiring", "—", "Conduit + basic automation"],
+                ["Landscaping", "—", "Walkway & garden lighting"],
+                ["Warranty", "5 years structural", "10 years structural"],
+              ].map(([category, std, prem], i) => (
+                <div key={i} className="rounded-xl border border-ink-line bg-ink p-4">
+                  <p className="font-sans text-sm font-medium text-bone">{category}</p>
+                  <div className="mt-2 grid grid-cols-2 gap-3">
+                    <div>
+                      <p className="font-mono text-[9px] uppercase tracking-widest text-bone-muted">Standard</p>
+                      <p className="mt-0.5 text-sm text-bone-muted">{std}</p>
+                    </div>
+                    <div>
+                      <p className="font-mono text-[9px] uppercase tracking-widest text-bone-muted">Premium</p>
+                      <p className="mt-0.5 text-sm font-medium text-bone-soft">{prem}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

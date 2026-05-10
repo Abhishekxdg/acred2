@@ -115,12 +115,12 @@ export function PoojaPage() {
         </div>
       </section>
 
-      <section ref={galleryRef} id="gallery" className="container-acred py-16 md:py-20 lg:py-28">
-        <div className="gsap-reveal mb-10 sm:mb-12">
-          <p className="section-label mb-4">Portfolio</p>
-          <h2 className="text-balance"><span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">Sacred spaces we have crafted.</span></h2>
-        </div>
-        {galleryImages.length > 0 ? (
+      {galleryImages.length > 0 && (
+        <section ref={galleryRef} id="gallery" className="container-acred py-16 md:py-20 lg:py-28">
+          <div className="gsap-reveal mb-10 sm:mb-12">
+            <p className="section-label mb-4">Portfolio</p>
+            <h2 className="text-balance"><span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">Sacred spaces we have crafted.</span></h2>
+          </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {galleryImages.map((img, i) => (
               <div key={img.src} className="gsap-reveal group relative overflow-hidden rounded-xl bg-ink-soft cursor-hover" onClick={() => openLightbox(i)}>
@@ -142,12 +142,8 @@ export function PoojaPage() {
               </div>
             ))}
           </div>
-        ) : (
-          <div className="gsap-reveal rounded-xl border border-ink-line bg-ink-soft p-8 sm:p-12 text-center">
-            <p className="text-bone-muted">Images coming soon. Add your pooja photos to <code className="font-mono text-sm text-gold">/public/pooja/</code>.</p>
-          </div>
-        )}
-      </section>
+        </section>
+      )}
 
       <section ref={featuresRef} className="border-y border-ink-line bg-ink-muted">
         <div className="container-acred py-16 md:py-20 lg:py-28">
