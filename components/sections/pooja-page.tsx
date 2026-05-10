@@ -8,7 +8,20 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const galleryImages: { src: string; alt: string }[] = [];
+const galleryImages: { src: string; alt: string }[] = [
+  { src: "/pooja/IMAGE 1.webp", alt: "Pooja Design 1" },
+  { src: "/pooja/IMAGE 2 .webp", alt: "Pooja Design 2" },
+  { src: "/pooja/IMAGE 3.webp", alt: "Pooja Design 3" },
+  { src: "/pooja/IMAGE 4.webp", alt: "Pooja Design 4" },
+  { src: "/pooja/IMAGE 5.webp", alt: "Pooja Design 5" },
+  { src: "/pooja/IMAGE 6.webp", alt: "Pooja Design 6" },
+  { src: "/pooja/IMAGE 7.webp", alt: "Pooja Design 7" },
+  { src: "/pooja/IMAGE 8.webp", alt: "Pooja Design 8" },
+  { src: "/pooja/IMAGE 9.webp", alt: "Pooja Design 9" },
+  { src: "/pooja/IMAGE 10.webp", alt: "Pooja Design 10" },
+  { src: "/pooja/IMAGE 11.webp", alt: "Pooja Design 11" },
+  { src: "/pooja/IMAGE 12.webp", alt: "Pooja Design 12" },
+];
 
 const features = [
   { icon: Hand, title: "Sacred Geometry", desc: "Pooja units designed with Vastu-aware placement and serene materials." },
