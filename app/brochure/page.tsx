@@ -651,7 +651,7 @@ export default function BrochurePage() {
                 </div>
                 <div>
                   <p className="font-mono text-[9px] uppercase tracking-widest text-gold">Email</p>
-                  <p className="mt-1 font-serif text-lg text-bone">hello@acred.in</p>
+                  <p className="mt-1 font-serif text-lg text-bone">info@acred.in</p>
                 </div>
                 <div>
                   <p className="font-mono text-[9px] uppercase tracking-widest text-gold">Website</p>
