@@ -31,7 +31,7 @@ const services = [
   {
     title: "Bedroom Design",
     desc: "Master and guest bedrooms with custom bed frames, side tables, dressing units, and ambient lighting.",
-    image: "/bedroom/hero.webp",
+    image: "/bedroom/IMAGE 15.webp",
     href: "/interiors/bedroom",
   },
   {
