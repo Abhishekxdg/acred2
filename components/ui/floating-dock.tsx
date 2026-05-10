@@ -15,6 +15,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import Link from "next/link";
 
 import { useRef, useState } from "react";
 
@@ -48,7 +49,7 @@ const FloatingDockMobile = ({
         className="flex items-center justify-around gap-1 rounded-full border border-ink-line bg-ink/95 px-2 py-2 backdrop-blur-xl shadow-2xl"
       >
         {items.map((item) => (
-          <a
+          <Link
             key={item.title}
             href={item.href}
             aria-label={item.title}
@@ -56,7 +57,7 @@ const FloatingDockMobile = ({
           >
             <div className="h-5 w-5 text-bone">{item.icon}</div>
             <span className="max-w-full truncate px-1 text-[9px] leading-none text-bone-muted">{item.title}</span>
-          </a>
+          </Link>
         ))}
       </motion.div>
     </div>
@@ -141,7 +142,7 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <a href={href}>
+    <Link href={href}>
       <motion.div
         ref={ref}
         style={{ width, height }}
@@ -168,6 +169,6 @@ function IconContainer({
           {icon}
         </motion.div>
       </motion.div>
-    </a>
+    </Link>
   );
 }

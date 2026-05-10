@@ -758,18 +758,18 @@ export function ModularKitchenPage() {
       {/* Design Detail Popup */}
       {activeDesign && (
         <div
-          className="fixed inset-0 z-[100] flex items-start justify-center bg-black/85 backdrop-blur-sm p-4 sm:p-6 overflow-y-auto"
+          className="fixed inset-0 z-[100] flex items-start justify-center bg-black/85 backdrop-blur-sm p-0 sm:p-6 overflow-y-auto"
           onClick={closePopup}
         >
           <div
-            className="relative mt-8 sm:mt-12 mb-8 w-full max-w-4xl overflow-hidden rounded-2xl border border-ink-line bg-ink"
+            className="relative mt-0 sm:mt-12 mb-0 sm:mb-8 w-full max-w-4xl overflow-hidden rounded-none sm:rounded-2xl border-0 sm:border border-ink-line bg-ink"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div className="sticky top-0 z-10 flex items-center justify-between border-b border-ink-line bg-ink/95 backdrop-blur-sm px-5 py-4 sm:px-8">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold">Modular Kitchen</p>
-                <h3 className="mt-1 font-sans text-base font-medium text-bone sm:text-lg">
+                <h3 className="mt-1 font-sans text-sm font-medium text-bone sm:text-lg max-w-[calc(100%-3rem)]">
                   {activeDesign.title}
                   {activeDesign.subtitle && <span className="text-bone/60"> — {activeDesign.subtitle}</span>}
                 </h3>
@@ -784,9 +784,9 @@ export function ModularKitchenPage() {
             </div>
 
             {/* Content */}
-            <div className="space-y-8 p-5 sm:p-8">
+            <div className="space-y-6 sm:space-y-8 p-4 sm:p-8">
               {/* Main Image */}
-              <div className="relative w-full overflow-hidden rounded-xl aspect-[4/3] bg-ink-soft">
+              <div className="relative w-full overflow-hidden rounded-lg sm:rounded-xl aspect-[3/4] sm:aspect-[4/3] bg-ink-soft">
                 <Image
                   src={activeDesign.mainImage}
                   alt={activeDesign.title}
@@ -799,7 +799,7 @@ export function ModularKitchenPage() {
               </div>
 
               {/* Storage Features */}
-              <div className="rounded-xl border border-ink-line bg-ink-soft p-5 sm:p-7">
+              <div className="rounded-lg sm:rounded-xl border border-ink-line bg-ink-soft p-4 sm:p-7">
                 <p className="section-label mb-5">Storage Features</p>
                 <ul className="space-y-3">
                   {activeDesign.storageFeatures.map((feature, i) => (

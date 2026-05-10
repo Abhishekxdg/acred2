@@ -12,7 +12,7 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       {!isBrochure && <Navbar />}
-      <main className="relative z-[2] flex-1">{children}</main>
+      <main className="relative z-[2] flex-1 pb-20 md:pb-0">{children}</main>
       {!isBrochure && <FloatingDock />}
       {!isBrochure && <Footer />}
     </>

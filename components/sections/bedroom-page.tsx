@@ -48,10 +48,14 @@ export function BedroomPage() {
 
   const openLightbox = useCallback((index: number) => {
     setLightboxIndex(index);
+    document.body.style.overflow = "hidden";
+    window.dispatchEvent(new CustomEvent("popupOpen"));
   }, []);
 
   const closeLightbox = useCallback(() => {
     setLightboxIndex(null);
+    document.body.style.overflow = "";
+    window.dispatchEvent(new CustomEvent("popupClose"));
   }, []);
 
   const prevImage = useCallback(() => {
@@ -193,12 +197,12 @@ export function BedroomPage() {
       </section>
 
       {lightboxIndex !== null && galleryImages[lightboxIndex] && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm" onClick={closeLightbox}>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm" onClick={closeLightbox}>
           <button onClick={(e) => { e.stopPropagation(); closeLightbox(); }} className="absolute top-5 right-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 cursor-hover" aria-label="Close"><X className="h-5 w-5" /></button>
           <button onClick={(e) => { e.stopPropagation(); prevImage(); }} className="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 cursor-hover sm:left-6" aria-label="Previous"><ChevronLeft className="h-5 w-5" /></button>
           <button onClick={(e) => { e.stopPropagation(); nextImage(); }} className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 cursor-hover sm:right-6" aria-label="Next"><ChevronRight className="h-5 w-5" /></button>
-          <div className="relative mx-16 aspect-[4/3] w-full max-w-5xl sm:mx-20" onClick={(e) => e.stopPropagation()}>
-            <Image src={galleryImages[lightboxIndex].src} alt={galleryImages[lightboxIndex].alt} fill sizes="100vw" className="object-contain" priority />
+          <div className="relative mx-4 aspect-[3/4] sm:aspect-[4/3] w-full max-w-5xl sm:mx-20" onClick={(e) => e.stopPropagation()}>
+            <Image src={galleryImages[lightboxIndex].src} alt={galleryImages[lightboxIndex].alt} fill sizes="100vw" className="object-contain" priority loading="eager" />
           </div>
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
             <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold">Bedroom</p>
