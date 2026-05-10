@@ -19,32 +19,38 @@ const services = [
   {
     title: "Living Room Interiors",
     desc: "Complete living spaces with TV units, seating arrangements, lighting, and décor curated to your style.",
-    image: "/living-room/hero.jpeg",
+    image: "/living-room/hero.webp",
     href: "/interiors/living-room",
   },
   {
     title: "Wardrobe & Storage",
     desc: "Floor-to-ceiling wardrobes, walk-in closets, and smart storage that maximizes every square foot.",
-    image: "/wardrobe/hero.jpeg",
+    image: "/wardrobe/hero.webp",
     href: "/interiors/wardrobe",
   },
   {
     title: "Bedroom Design",
     desc: "Master and guest bedrooms with custom bed frames, side tables, dressing units, and ambient lighting.",
-    image: "/bedroom/hero.jpeg",
+    image: "/bedroom/hero.webp",
     href: "/interiors/bedroom",
   },
   {
     title: "Bathroom Interiors",
     desc: "Modern bathrooms with premium fittings, tile layouts, vanity units, and waterproof storage.",
-    image: "/bathroom/hero.jpeg",
+    image: "/bathroom/hero.webp",
     href: "/interiors/bathroom",
   },
   {
-    title: "Pooja & Foyer",
-    desc: "Traditional and contemporary prayer units, entryway consoles, and shoe cabinets with aesthetic appeal.",
-    image: "/pooja-foyer/hero.jpeg",
-    href: "/interiors/pooja-foyer",
+    title: "Pooja Room",
+    desc: "Traditional and contemporary prayer units and mandirs designed with Vastu awareness and serene materials.",
+    image: "/pooja-foyer/hero.webp",
+    href: "/interiors/pooja",
+  },
+  {
+    title: "Foyer Design",
+    desc: "Entryway consoles, shoe cabinets, and welcome spaces that make a lasting first impression.",
+    image: "/pooja-foyer/hero.webp",
+    href: "/interiors/foyer",
   },
 ];
 
@@ -174,7 +180,7 @@ export function InteriorsDetailPage() {
             <div className="gsap-reveal lg:col-span-5">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-ink-soft">
                 <Image
-                  src="/hero-interior.jpeg"
+                  src="/hero-interior.webp"
                   alt="Modern interior living space"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"

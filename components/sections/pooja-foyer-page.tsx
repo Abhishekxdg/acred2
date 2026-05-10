@@ -92,7 +92,7 @@ export function PoojaFoyerPage() {
             </div>
             <div className="gsap-reveal lg:col-span-5">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-ink-soft">
-                <Image src="/pooja-foyer/hero.jpeg" alt="ACRED pooja and foyer interior showcase" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" priority />
+                <Image src="/pooja-foyer/hero.webp" alt="ACRED pooja and foyer interior showcase" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" priority />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </div>
             </div>

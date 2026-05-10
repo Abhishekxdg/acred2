@@ -9,26 +9,26 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const galleryImages = [
   { src: "/living-room/image 13.webp", alt: "Living room interior by ACRED" },
-  { src: "/living-room/image 4.jpeg", alt: "Living room interior by ACRED" },
-  { src: "/living-room/image 19.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 4.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 19.webp", alt: "Living room interior by ACRED" },
   { src: "/living-room/image 2.webp", alt: "Living room interior by ACRED" },
   { src: "/living-room/image 15.webp", alt: "Living room interior by ACRED" },
-  { src: "/living-room/image 8.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 8.webp", alt: "Living room interior by ACRED" },
   { src: "/living-room/image 21.webp", alt: "Living room interior by ACRED" },
-  { src: "/living-room/image 6.jpeg", alt: "Living room interior by ACRED" },
-  { src: "/living-room/image 11.jpeg", alt: "Living room interior by ACRED" },
-  { src: "/living-room/image 1.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 6.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 11.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 1.webp", alt: "Living room interior by ACRED" },
   { src: "/living-room/image 18.webp", alt: "Living room interior by ACRED" },
-  { src: "/living-room/image 5.jpeg", alt: "Living room interior by ACRED" },
-  { src: "/living-room/image 14.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 5.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 14.webp", alt: "Living room interior by ACRED" },
   { src: "/living-room/image 3.webp", alt: "Living room interior by ACRED" },
   { src: "/living-room/image 20.webp", alt: "Living room interior by ACRED" },
-  { src: "/living-room/image 7.jpeg", alt: "Living room interior by ACRED" },
-  { src: "/living-room/image 16.jpeg", alt: "Living room interior by ACRED" },
-  { src: "/living-room/image 10.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 7.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 16.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 10.webp", alt: "Living room interior by ACRED" },
   { src: "/living-room/image 9.webp", alt: "Living room interior by ACRED" },
-  { src: "/living-room/image 17.jpeg", alt: "Living room interior by ACRED" },
-  { src: "/living-room/image 12.jpeg", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 17.webp", alt: "Living room interior by ACRED" },
+  { src: "/living-room/image 12.webp", alt: "Living room interior by ACRED" },
 ];
 
 const features = [
@@ -114,7 +114,7 @@ export function LivingRoomPage() {
             </div>
             <div className="gsap-reveal lg:col-span-5">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-ink-soft">
-                <Image src="/living-room/hero.jpeg" alt="ACRED living room interior showcase" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" priority />
+                <Image src="/living-room/hero.webp" alt="ACRED living room interior showcase" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" priority />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </div>
             </div>

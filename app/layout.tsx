@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   },
   description: site.description,
   icons: {
-    icon: "/Favicon.png",
-    apple: "/Favicon.png",
+    icon: "/Favicon.webp",
+    apple: "/Favicon.webp",
   },
   openGraph: {
     title: `${site.name} — ${site.tagline}`,

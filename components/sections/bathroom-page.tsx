@@ -7,7 +7,27 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const galleryImages: { src: string; alt: string }[] = [];
+const galleryImages: { src: string; alt: string }[] = [
+  { src: "/bathroom/IMAGE%201.webp", alt: "Bathroom design 1" },
+  { src: "/bathroom/IMAGE%202.webp", alt: "Bathroom design 2" },
+  { src: "/bathroom/IMAGE%203.webp", alt: "Bathroom design 3" },
+  { src: "/bathroom/IMAGE%205.webp", alt: "Bathroom design 5" },
+  { src: "/bathroom/IMAGE%206.webp", alt: "Bathroom design 6" },
+  { src: "/bathroom/IMAGE%207.webp", alt: "Bathroom design 7" },
+  { src: "/bathroom/IMAGE%208.webp", alt: "Bathroom design 8" },
+  { src: "/bathroom/IMAGE%209.webp", alt: "Bathroom design 9" },
+  { src: "/bathroom/IMAGE%2010.webp", alt: "Bathroom design 10" },
+  { src: "/bathroom/IMAGE%2011.webp", alt: "Bathroom design 11" },
+  { src: "/bathroom/IMAGE%2012.webp", alt: "Bathroom design 12" },
+  { src: "/bathroom/IMAGE%2013.webp", alt: "Bathroom design 13" },
+  { src: "/bathroom/IMAGE%2014.webp", alt: "Bathroom design 14" },
+  { src: "/bathroom/IMAGE%2015.webp", alt: "Bathroom design 15" },
+  { src: "/bathroom/IMAGE%2016.webp", alt: "Bathroom design 16" },
+  { src: "/bathroom/IMAGE%2017.webp", alt: "Bathroom design 17" },
+  { src: "/bathroom/IMAGE%2018.webp", alt: "Bathroom design 18" },
+  { src: "/bathroom/IMAGE%2019.webp", alt: "Bathroom design 19" },
+  { src: "/bathroom/IMAGE%2020.webp", alt: "Bathroom design 20" },
+];
 
 const features = [
   { icon: Droplets, title: "Waterproof Finishes", desc: "Marble, tiles, and wall panels selected for humidity resistance and long-term durability." },
@@ -92,7 +112,7 @@ export function BathroomPage() {
             </div>
             <div className="gsap-reveal lg:col-span-5">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-ink-soft">
-                <Image src="/bathroom/hero.jpeg" alt="ACRED bathroom interior showcase" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" priority />
+                <Image src="/bathroom/hero.webp" alt="ACRED bathroom interior showcase" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" priority />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </div>
             </div>

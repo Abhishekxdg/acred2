@@ -66,7 +66,7 @@ export function Footer() {
         <div ref={colsRef} className="grid gap-8 py-8 sm:gap-8 sm:py-10 md:grid-cols-3">
           <div className="space-y-4 sm:space-y-6">
             <Image
-              src="/black_text_logo.png"
+              src="/black_text_logo.webp"
               alt="ACRED"
               width={120}
               height={40}
@@ -165,7 +165,7 @@ export function Footer() {
 
       <div className="pointer-events-none relative mx-auto -mt-2 w-full max-w-[1440px] overflow-hidden px-0 sm:-mt-8 sm:px-6 md:px-10 lg:px-16">
         <Image
-          src="/footer_big_text.png"
+          src="/footer_big_text.webp"
           alt=""
           width={1613}
           height={512}

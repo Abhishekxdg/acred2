@@ -72,11 +72,23 @@ const menuItems = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [pastHero, setPastHero] = useState(false);
+  const [popupOpen, setPopupOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const lastScrollY = useRef(0);
   const hidden = useRef(false);
   const pathname = usePathname();
   const isHeroPage = pathname === "/";
+
+  useEffect(() => {
+    const onPopupOpen = () => setPopupOpen(true);
+    const onPopupClose = () => setPopupOpen(false);
+    window.addEventListener("popupOpen", onPopupOpen);
+    window.addEventListener("popupClose", onPopupClose);
+    return () => {
+      window.removeEventListener("popupOpen", onPopupOpen);
+      window.removeEventListener("popupClose", onPopupClose);
+    };
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -110,6 +122,7 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-40 flex justify-center transition-all duration-500",
         scrolled ? "px-3 pt-3 sm:px-6" : "px-3 pt-4 sm:px-6 sm:pt-5",
+        popupOpen && "pointer-events-none opacity-0",
       )}
     >
       <div
@@ -129,7 +142,7 @@ export function Navbar() {
           aria-label={`${site.name} — home`}
         >
           <Image
-            src={useLightAssets ? "/white_text_logo.png" : "/black_text_logo.png"}
+            src={useLightAssets ? "/white_text_logo.webp" : "/black_text_logo.webp"}
             alt={`${site.name} — home`}
             width={88}
             height={28}
@@ -196,7 +209,7 @@ export function Navbar() {
                     aria-label={`${site.name} — home`}
                   >
                     <Image
-                      src="/white_text_logo.png"
+                      src="/white_text_logo.webp"
                       alt={`${site.name} — home`}
                       width={104}
                       height={34}

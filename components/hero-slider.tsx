@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const SLIDES = [
   "/hero/Cinematic_architectural_photograph_202604261757.webp",
-  "/hero/Cinematic_architectural_photograph_202604261757 (1).jpeg",
+  "/hero/Cinematic_architectural_photograph_202604261757 (1).webp",
   "/hero/Award-winning_architectural_photography_202604261803.webp",
   "/hero/Hyper-realistic_architectural_twilight_202604261757.webp",
 ];

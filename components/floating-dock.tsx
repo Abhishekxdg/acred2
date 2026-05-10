@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { FloatingDock as FloatingDockUI } from "@/components/ui/floating-dock";
 import {
   IconBuildingSkyscraper,
@@ -7,6 +8,7 @@ import {
   IconHome2,
   IconSettings2,
 } from "@tabler/icons-react";
+import { cn } from "@/lib/utils";
 
 const items = [
   {
@@ -40,8 +42,21 @@ const items = [
 ];
 
 export function FloatingDock() {
+  const [popupOpen, setPopupOpen] = useState(false);
+
+  useEffect(() => {
+    const onPopupOpen = () => setPopupOpen(true);
+    const onPopupClose = () => setPopupOpen(false);
+    window.addEventListener("popupOpen", onPopupOpen);
+    window.addEventListener("popupClose", onPopupClose);
+    return () => {
+      window.removeEventListener("popupOpen", onPopupOpen);
+      window.removeEventListener("popupClose", onPopupClose);
+    };
+  }, []);
+
   return (
-    <div className="fixed bottom-6 left-1/2 z-40 -translate-x-1/2">
+    <div className={cn("fixed bottom-6 left-1/2 z-40 -translate-x-1/2 transition-opacity duration-300", popupOpen && "pointer-events-none opacity-0")}>
       <FloatingDockUI
         items={items}
         desktopClassName="backdrop-blur-xl"

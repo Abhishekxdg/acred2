@@ -6,7 +6,7 @@ import { MotionReveal } from "@/components/motion-reveal";
 
 const visibleDisciplines = disciplines.filter((d) => d.slug !== "development");
 
-const leadImage = "/remove_the_bowl_with_flowers_202605101241.jpeg";
+const leadImage = "/remove_the_bowl_with_flowers_202605101241.webp";
 
 const linksBySlug: Record<string, string> = {
   architecture: "/interiors",

@@ -7,7 +7,7 @@ interface AcredLogoProps {
 }
 
 export function AcredLogo({ className, variant = "white" }: AcredLogoProps) {
-  const src = variant === "white" ? "/white_text_logo.png" : "/black_text_logo.png";
+  const src = variant === "white" ? "/white_text_logo.webp" : "/black_text_logo.webp";
   
   return (
     <Image
