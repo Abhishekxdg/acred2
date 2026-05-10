@@ -242,9 +242,9 @@ export function InteriorsDetailPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-ink-soft opacity-0 backdrop-blur-sm transition-all duration-500 group-hover:opacity-100 group-hover:scale-110">
-                      <ArrowUpRight className="h-4 w-4" />
+                  <div className="pointer-events-none absolute top-3 right-3 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-500">
+                    <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white/90 text-black backdrop-blur-sm transition-transform duration-500 sm:group-hover:scale-110">
+                      <ArrowUpRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                     </div>
                   </div>
                 </div>
