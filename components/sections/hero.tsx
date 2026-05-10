@@ -55,7 +55,7 @@ export function Hero() {
 
             {/* Headline */}
             <div className="lg:col-span-7">
-              <div className="space-y-0">
+              <h1 className="space-y-0">
                 <div className="overflow-hidden pb-[0.08em]">
                   <div ref={line1Ref}>
                     <span className="block font-sans text-[clamp(3.25rem,10vw,10rem)] font-bold leading-[0.95] tracking-normal text-white">
@@ -70,7 +70,7 @@ export function Hero() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </h1>
 
               <div ref={descRef} className="mt-6 max-w-xl sm:mt-8">
                 <p className="font-mono text-[10px] uppercase tracking-widest2 text-white/35 leading-relaxed whitespace-nowrap">

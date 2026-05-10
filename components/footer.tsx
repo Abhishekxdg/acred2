@@ -172,6 +172,7 @@ export function Footer() {
           sizes="100vw"
           style={{ width: '100%', height: 'auto' }}
           className="mx-auto opacity-85 sm:max-w-[1200px]"
+          priority
         />
       </div>
     </footer>

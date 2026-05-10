@@ -67,6 +67,11 @@
     color: theme("colors.night.DEFAULT");
   }
 
+  *:focus-visible {
+    outline: 2px solid theme("colors.gold.DEFAULT");
+    outline-offset: 2px;
+  }
+
   /* Hide scrollbar everywhere but keep functionality */
   * {
     scrollbar-width: none;
