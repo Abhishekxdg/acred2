@@ -43,7 +43,7 @@ const services = [
   {
     title: "Pooja Room",
     desc: "Traditional and contemporary prayer units and mandirs designed with Vastu awareness and serene materials.",
-    image: "/pooja-foyer/hero.webp",
+    image: "/pooja/hero.webp",
     href: "/interiors/pooja",
   },
   {
