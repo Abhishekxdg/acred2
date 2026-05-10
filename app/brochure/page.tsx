@@ -651,15 +651,15 @@ export default function BrochurePage() {
                 </div>
                 <div>
                   <p className="font-mono text-[9px] uppercase tracking-widest text-gold">Email</p>
-                  <p className="mt-1 font-serif text-lg text-bone">hello@acredinteriors.in</p>
+                  <p className="mt-1 font-serif text-lg text-bone">hello@acred.in</p>
                 </div>
                 <div>
                   <p className="font-mono text-[9px] uppercase tracking-widest text-gold">Website</p>
-                  <p className="mt-1 font-serif text-lg text-bone">www.acredinteriors.in</p>
+                  <p className="mt-1 font-serif text-lg text-bone">www.acred.in</p>
                 </div>
               </div>
 
-              <p className="mt-10 font-serif text-sm text-bone/40">© 2025 ACRED Interiors</p>
+              <p className="mt-10 font-serif text-sm text-bone/40">© 2025 ACRED</p>
             </div>
           </div>
         </div>
