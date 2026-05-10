@@ -127,6 +127,22 @@ export function Footer() {
                   Engineering
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="text-sm text-bone-soft hover:text-gold transition-colors cursor-hover"
+                >
+                  About us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-sm text-bone-soft hover:text-gold transition-colors cursor-hover"
+                >
+                  Contact us
+                </Link>
+              </li>
             </ul>
           </div>
 
