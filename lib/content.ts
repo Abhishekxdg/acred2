@@ -25,7 +25,7 @@ export const site = {
   tagline: "Imagined with art. Engineered with truth. Forged in earth.",
   subtagline: "Scaled for the future — the total mastery of space and value.",
   manifesto: "Imagined with art. Engineered with truth. Forged in earth. Scaled for the future. The total mastery of space and value.",
-  promise: "One partner · Four disciplines · From land to legacy",
+  promise: "One partner · Five disciplines · From land to legacy",
   description:
     "ACRED is an integrated studio spanning architecture, construction, real estate, engineering, and development. We read the site before we draw a line.",
   contact: {
