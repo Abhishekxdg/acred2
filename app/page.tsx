@@ -1,5 +1,4 @@
 import { Hero } from "@/components/sections/hero";
-import { SignatureProjects } from "@/components/sections/signature-projects";
 import { PracticeOverview } from "@/components/sections/practice-overview";
 import { LandingCTA } from "@/components/sections/landing-cta";
 
@@ -9,8 +8,6 @@ export default function HomePage() {
       <Hero />
 
       <PracticeOverview />
-
-      <SignatureProjects />
 
       <LandingCTA />
     </>
