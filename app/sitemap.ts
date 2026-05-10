@@ -6,7 +6,6 @@ const staticRoutes = [
   "/",
   "/about",
   "/architecture",
-  "/brochure",
   "/construction",
   "/contact",
   "/design-home",
