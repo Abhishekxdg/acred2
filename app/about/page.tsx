@@ -2,12 +2,22 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { MotionReveal } from "@/components/motion-reveal";
 import { site, disciplines } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Studio",
+export const metadata: Metadata = buildMetadata({
+  title: "Studio · ACRED",
   description:
-    "ACRED is an integrated studio spanning architecture, construction, real estate, engineering, and development.",
-};
+    "ACRED is an integrated studio spanning architecture, construction, real estate, engineering, and development. 12 years · 48 projects · 3.1M sq ft built.",
+  path: "/about",
+  keywords: [
+    "about ACRED",
+    "studio",
+    "architecture firm",
+    "design studio Bangalore",
+    "team",
+    "manifesto",
+  ],
+});
 
 const principles = [
   {

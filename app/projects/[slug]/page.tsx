@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { projects, projectBySlug } from "@/lib/projects";
 import { MotionReveal } from "@/components/motion-reveal";
+import { siteUrl } from "@/lib/seo";
 
 type Params = { params: { slug: string } };
 
@@ -14,12 +15,35 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: Params): Metadata {
   const p = projectBySlug(params.slug);
-  if (!p) return { title: "Project" };
+  if (!p)
+    return {
+      title: "Project",
+      robots: { index: false, follow: false },
+    };
+  const url = `${siteUrl}/projects/${p.slug}`;
   return {
-    title: p.title,
+    title: `${p.title} · ACRED`,
     description: p.summary,
+    alternates: { canonical: url },
     openGraph: {
-      title: p.title,
+      title: `${p.title} · ACRED`,
+      description: p.summary,
+      type: "article",
+      url,
+      siteName: "ACRED",
+      locale: "en_IN",
+      images: [
+        {
+          url: p.heroImage,
+          width: 1600,
+          height: 900,
+          alt: p.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${p.title} · ACRED`,
       description: p.summary,
       images: [p.heroImage],
     },

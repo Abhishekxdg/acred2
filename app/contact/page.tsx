@@ -2,11 +2,20 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/sections/contact-form";
 import { MotionReveal } from "@/components/motion-reveal";
 import { site } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Write to the ACRED studio with a site, a brief, or an instinct.",
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Contact · ACRED",
+  description:
+    "Write to the ACRED studio with a site, a brief, or an instinct. Bengaluru studio. We reply within two business days.",
+  path: "/contact",
+  keywords: [
+    "contact",
+    "get in touch",
+    "Bangalore interior designer contact",
+    "architecture enquiry",
+  ],
+});
 
 export default function ContactPage() {
   return (

@@ -5,11 +5,20 @@ import { ArrowUpRight } from "lucide-react";
 import { MotionReveal } from "@/components/motion-reveal";
 import { AcredLogo } from "@/components/acred-logo";
 import { HeroSlider } from "@/components/hero-slider";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Brochure",
-  description: "ACRED Interiors — Design is not decoration. It is intention.",
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Brochure · ACRED Interiors",
+  description:
+    "Download the ACRED Interiors brochure. Design is not decoration — it is intention. End-to-end home interiors, modular kitchens, living rooms, and complete home design.",
+  path: "/brochure",
+  keywords: [
+    "brochure",
+    "interiors brochure",
+    "home design brochure",
+    "ACRED brochure",
+  ],
+});
 
 /* ─────────────── helpers ─────────────── */
 
