@@ -171,19 +171,19 @@ export function ConstructionDetailPage() {
                 translation. No finger-pointing.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <a
+                <Link
                   href="/contact"
                   className="group inline-flex items-center gap-2.5 rounded-full bg-bone px-6 py-3 font-sans text-sm font-medium text-ink-soft transition-all hover:bg-bone/80 hover:gap-3 cursor-hover"
                 >
                   Start a project
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#services"
                   className="group inline-flex items-center gap-2.5 rounded-full border border-bone/20 px-6 py-3 font-sans text-sm font-medium text-bone transition-all hover:border-bone hover:text-bone cursor-hover"
                 >
                   Explore services
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -389,13 +389,13 @@ export function ConstructionDetailPage() {
               your needs, and deliver a detailed plan with a transparent quote.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <a
+              <Link
                 href="/contact"
                 className="group inline-flex items-center gap-2.5 rounded-full bg-bone px-7 py-3 font-sans text-sm font-medium text-ink-soft transition-all hover:bg-bone/80 hover:gap-3 cursor-hover"
               >
                 Book free consultation
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
+              </Link>
               <a
                 href="tel:+916361889281"
                 className="group inline-flex items-center gap-2.5 rounded-full border border-bone/20 px-7 py-3 font-sans text-sm font-medium text-bone transition-all hover:border-bone hover:text-bone cursor-hover"

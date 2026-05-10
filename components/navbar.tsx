@@ -216,13 +216,13 @@ export function Navbar() {
                       className="h-9 w-auto object-contain"
                     />
                   </Link>
-                  <a
+                  <Link
                     href="/design-home"
                     className="mr-12 hidden cursor-hover items-center gap-2 rounded-full bg-white px-5 py-2 font-sans text-sm font-medium text-night transition-colors hover:bg-white/90 sm:inline-flex"
                   >
                     Design home
                     <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
+                  </Link>
                 </div>
                 <div className="min-h-0 flex-1">
                   <FlowingMenu

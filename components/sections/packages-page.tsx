@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, Check, X, ChevronDown } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -120,9 +121,9 @@ export function PackagesPage() {
                   View packages
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
-                <a href="/contact" className="group inline-flex items-center gap-2.5 rounded-full border border-bone/20 px-6 py-3 font-sans text-sm font-medium text-bone transition-all hover:border-bone hover:text-bone cursor-hover">
+                <Link href="/contact" className="group inline-flex items-center gap-2.5 rounded-full border border-bone/20 px-6 py-3 font-sans text-sm font-medium text-bone transition-all hover:border-bone hover:text-bone cursor-hover">
                   Talk to an architect
-                </a>
+                </Link>
               </div>
             </div>
             <div className="gsap-reveal lg:col-span-5">
@@ -248,7 +249,7 @@ export function PackagesPage() {
 
                 {/* CTA */}
                 <div className="px-6 pb-6 sm:px-8 sm:pb-8">
-                  <a
+                  <Link
                     href="/contact"
                     className={cn(
                       "group flex w-full items-center justify-center gap-2.5 rounded-full py-3 font-sans text-sm font-medium transition-all cursor-hover",
@@ -259,7 +260,7 @@ export function PackagesPage() {
                   >
                     Get a quote
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             );
@@ -342,10 +343,10 @@ export function PackagesPage() {
               Share your plot area and we will send you a detailed scope and cost estimate — at no charge. Our architects will walk you through every line item.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <a href="/contact" className="group inline-flex items-center gap-2.5 rounded-full bg-bone px-7 py-3 font-sans text-sm font-medium text-ink-soft transition-all hover:bg-bone/80 hover:gap-3 cursor-hover">
+              <Link href="/contact" className="group inline-flex items-center gap-2.5 rounded-full bg-bone px-7 py-3 font-sans text-sm font-medium text-ink-soft transition-all hover:bg-bone/80 hover:gap-3 cursor-hover">
                 Get a free estimate
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
+              </Link>
               <a href="tel:+916361889281" className="group inline-flex items-center gap-2.5 rounded-full border border-bone/20 px-7 py-3 font-sans text-sm font-medium text-bone transition-all hover:border-bone hover:text-bone cursor-hover">
                 Call +91 63618 89281
               </a>

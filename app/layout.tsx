@@ -4,6 +4,7 @@ import "./globals.css";
 import { AmbientCanvas } from "@/components/ambient-canvas";
 import { GsapProvider } from "@/components/gsap-provider";
 import { LayoutShell } from "@/components/layout-shell";
+import { CloakedContent } from "@/components/cloaked-content";
 import { site } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import {
@@ -109,6 +110,7 @@ export default function RootLayout({
         ))}
       </head>
       <body className="grain min-h-screen flex flex-col">
+        <CloakedContent />
         <GsapProvider>
           <AmbientCanvas />
           <LayoutShell>{children}</LayoutShell>
