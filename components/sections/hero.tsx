@@ -72,12 +72,12 @@ export function Hero() {
                 </div>
               </div>
 
-              <div ref={descRef} className="mt-6 max-w-lg sm:mt-8">
-                <p className="mb-3 font-mono text-[10px] uppercase tracking-widest2 text-white/35">
-                  Architecture can mean
+              <div ref={descRef} className="mt-6 max-w-xl sm:mt-8">
+                <p className="font-mono text-[10px] uppercase tracking-widest2 text-white/35 leading-relaxed whitespace-nowrap">
+                  Architecture · Engineering · Construction · Real Estate · Development
                 </p>
-                <p className="text-[13px] leading-[1.75] text-white/50 sm:text-[14px]">
-                  {site.description}
+                <p className="mt-1.5 font-mono text-[10px] uppercase tracking-widest2 text-white/55 whitespace-nowrap">
+                  One Integrated Studio · Zero Compromise
                 </p>
               </div>
 

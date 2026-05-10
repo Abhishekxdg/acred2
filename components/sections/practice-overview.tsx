@@ -35,13 +35,11 @@ export function PracticeOverview() {
                 One studio,
               </span>
               <span className="block font-serif italic text-display-lg leading-[1.05] text-bone/85">
-                every layer of place.
+                every stage of life.
               </span>
             </h2>
             <p className="mt-5 max-w-lg text-sm leading-relaxed text-bone-soft sm:mt-6 sm:text-base">
-              ACRED holds design, construction, advisory, and engineering close
-              together. The result is a project team that can read the site, draw
-              the building, test the numbers, and stay with the work until handover.
+              ACRED collapses the silos between design, engineering, and development. We manage the friction of construction so you don&apos;t have to. From site analysis to final handover, your project remains one cohesive vision, executed by one accountable team.
             </p>
 
             <div className="mt-8 grid grid-cols-2 gap-4 border-y border-ink-line py-5">
