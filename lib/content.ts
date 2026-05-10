@@ -31,7 +31,6 @@ export const site = {
   contact: {
     email: "hello@acred.in",
     phone: "+91 63618 89281",
-    website: "www.acredinteriors.in",
     address: "Bengaluru, Karnataka",
     instagram: "@acred.studio",
     linkedin: "company/acred",
