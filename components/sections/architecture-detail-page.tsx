@@ -35,12 +35,6 @@ const services = [
     href: "/interiors/bedroom",
   },
   {
-    title: "Kids Bedroom",
-    desc: "Fun, safe, and functional kids rooms with study nooks, playful storage, and durable finishes.",
-    image: "/kids-bedroom/hero.webp",
-    href: "/interiors/kids-bedroom",
-  },
-  {
     title: "Bathroom Interiors",
     desc: "Modern bathrooms with premium fittings, tile layouts, vanity units, and waterproof storage.",
     image: "/bathroom/hero.webp",
