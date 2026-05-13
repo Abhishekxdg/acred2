@@ -1,268 +1,284 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight, Palette, BookOpen, Shield, Smile, Eye, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Sparkles, Layers, ShieldCheck, Wrench } from "lucide-react";
+import { InteriorDesignPage, type DesignItem, type FeatureItem, type ProcessStep } from "./interior-design-template";
 
-const galleryImages: { src: string; alt: string }[] = [
-  { src: "/kids-bedroom/hero.webp", alt: "Kids Bedroom Design 1" },
-  { src: "/kids-bedroom/image1.webp", alt: "Kids Bedroom Design 2" },
-  { src: "/kids-bedroom/image2.webp", alt: "Kids Bedroom Design 3" },
-  { src: "/kids-bedroom/image3.webp", alt: "Kids Bedroom Design 4" },
-  { src: "/kids-bedroom/image4.webp", alt: "Kids Bedroom Design 5" },
-  { src: "/kids-bedroom/image5.webp", alt: "Kids Bedroom Design 6" },
-  { src: "/kids-bedroom/image6.webp", alt: "Kids Bedroom Design 7" },
-  { src: "/kids-bedroom/image7.webp", alt: "Kids Bedroom Design 8" },
-  { src: "/kids-bedroom/image8.webp", alt: "Kids Bedroom Design 9" },
+const designs: DesignItem[] = [
+  {
+    id: "design-1",
+    title: "Boy's Bedroom: Navy Blue & Walnut",
+    subtitle: "with Brass Constellations",
+    mainImage: "/kids-bedroom/image 1/Design 1.webp",
+    features: [
+      "4-shutter sliding wardrobe in matte navy with antique brass slim handles",
+      "Hydraulic-lift storage under the bed",
+      "Open walnut bookshelf with three shelves above headboard",
+      "Built-in study desk in walnut veneer with single drawer",
+      "Floating walnut bedside drawer",
+    ],
+    specs: [
+      { label: "Size", value: "12ft x 10ft" },
+      { label: "Layout", value: "Single bed against long wall, study desk under window" },
+      { label: "Colour Story", value: "Deep Navy + Warm Walnut + Cream + Brass" },
+      { label: "Wardrobe Finish", value: "Matte navy laminate, push-to-open" },
+      { label: "Headboard Wall", value: "Cream PU with hand-painted brass constellations" },
+      { label: "Flooring", value: "Wide-plank pale oak engineered wood" },
+      { label: "Bed Size", value: "Single (3.5ft x 6.5ft)" },
+      { label: "Bunk Bed", value: "No" },
+    ],
+  },
+  {
+    id: "design-2",
+    title: "Girl's Bedroom: Soft Pink & Cream",
+    subtitle: "with Cane Headboard",
+    mainImage: "/kids-bedroom/image 2/Design 2.webp",
+    features: [
+      "4-shutter sliding wardrobe in matte cream PU with cane inlay on three shutters",
+      "Hydraulic-lift storage under bed",
+      "Bedside drawer in walnut with cane drawer front",
+      "Built-in study nook with cane-back chair",
+      "Open walnut bookshelf above bed",
+    ],
+    specs: [
+      { label: "Size", value: "12ft x 10ft" },
+      { label: "Layout", value: "Single bed centred on long wall" },
+      { label: "Colour Story", value: "Soft Blush Pink + Cream + Natural Cane + Walnut" },
+      { label: "Wardrobe Finish", value: "Matte cream PU with cane inlay panels" },
+      { label: "Headboard", value: "Round cane archway in walnut frame" },
+      { label: "Flooring", value: "Wide-plank pale oak engineered wood" },
+      { label: "Bed Size", value: "Single (3.5ft x 6.5ft)" },
+      { label: "Bunk Bed", value: "No" },
+    ],
+  },
+  {
+    id: "design-3",
+    title: "Twin Boys' Bunk Bedroom",
+    subtitle: "Sage Green & Walnut",
+    mainImage: "/kids-bedroom/image 3/Design 3.webp",
+    features: [
+      "Solid walnut bunk bed with built-in safety rail and integrated ladder",
+      "Side-mounted reading lights on each bunk with brass swing arms",
+      "4-shutter sliding wardrobe in matte sage green laminate",
+      "Built-in shared walnut study desk under window with two integrated drawers",
+      "Two cane-back chairs at study desk",
+      "Open walnut wall-mounted bookshelves between wardrobe and bunk",
+    ],
+    specs: [
+      { label: "Size", value: "12ft x 11ft" },
+      { label: "Layout", value: "Bunk bed against long wall, shared study desk under window" },
+      { label: "Colour Story", value: "Soft Sage Green + Warm Walnut + Cream" },
+      { label: "Wardrobe Finish", value: "Matte sage green laminate" },
+      { label: "Bed Type", value: "Solid walnut bunk bed with side ladder & safety rail" },
+      { label: "Flooring", value: "Wide-plank pale oak engineered wood" },
+      { label: "Bed Size", value: "Two singles (3.5ft x 6.5ft each)" },
+      { label: "Bunk Bed", value: "Yes" },
+    ],
+  },
+  {
+    id: "design-4",
+    title: "Compact 2BHK Boy's Bedroom",
+    subtitle: "Smoky Blue & Walnut",
+    mainImage: "/kids-bedroom/image 4/Design 4.webp",
+    features: [
+      "3-shutter sliding wardrobe in matte smoky blue laminate",
+      "Drawer-storage bed with three deep drawers along one side",
+      "Floating walnut bedside drawer",
+      "Compact built-in study desk integrated at end of wardrobe",
+      "Open walnut wall-mounted shelf above headboard",
+    ],
+    specs: [
+      { label: "Size", value: "11ft x 9ft" },
+      { label: "Layout", value: "Single bed against long wall, compact study desk" },
+      { label: "Colour Story", value: "Smoky Blue + Warm Walnut + Cream" },
+      { label: "Wardrobe Finish", value: "Matte smoky blue laminate" },
+      { label: "Headboard Wall", value: "Vertical fluted walnut accent panel behind bed" },
+      { label: "Flooring", value: "Vitrified tile in warm beige" },
+      { label: "Bed Size", value: "Single with drawer storage (3.5ft x 6.5ft)" },
+      { label: "Bunk Bed", value: "No" },
+    ],
+  },
+  {
+    id: "design-5",
+    title: "Toddler's Bedroom: Cream & Olive",
+    subtitle: "with Mountain Mural",
+    mainImage: "/kids-bedroom/image 5/Design 5.webp",
+    features: [
+      "3-shutter sliding wardrobe in matte cream PU",
+      "Hydraulic-lift storage under bed",
+      "Floating walnut bedside drawer",
+      "Low-height open walnut play-storage with three open cubbies",
+      "Cane reading nook chair with cream cotton cushion",
+    ],
+    specs: [
+      { label: "Size", value: "11ft x 10ft" },
+      { label: "Layout", value: "Single bed against long wall, low-height storage and play zone" },
+      { label: "Colour Story", value: "Soft Cream + Soft Olive + Cane" },
+      { label: "Wardrobe Finish", value: "Matte cream PU" },
+      { label: "Headboard Wall", value: "Hand-painted watercolour mountain mural in muted olive and cream" },
+      { label: "Flooring", value: "Wide-plank pale oak engineered wood" },
+      { label: "Bed Size", value: "Single (3.5ft x 6.5ft)" },
+      { label: "Bunk Bed", value: "No" },
+    ],
+  },
+  {
+    id: "design-6",
+    title: 'Boy\'s Bedroom: Sanderson "Mickey in the Clouds"',
+    subtitle: "Bonbon Blue Wallpaper Feature",
+    mainImage: "/kids-bedroom/image 6/Design 6.webp",
+    features: [
+      "4-shutter sliding wardrobe in matte cream PU with handle-less push-to-open",
+      "Hydraulic-lift storage under bed",
+      "Floating walnut bedside drawer",
+      "Open walnut bookshelf above bed",
+      "Built-in study desk under window",
+    ],
+    specs: [
+      { label: "Size", value: "12ft x 10ft" },
+      { label: "Layout", value: "Single bed against feature wall, study desk under window" },
+      { label: "Wallpaper", value: 'Sanderson "Mickey in the Clouds" — Bonbon Blue with cotton candy clouds' },
+      { label: "Wardrobe Finish", value: "Matte cream PU" },
+      { label: "Flooring", value: "Wide-plank pale oak" },
+      { label: "Bed Size", value: "Single (3.5ft x 6.5ft)" },
+      { label: "Bunk Bed", value: "No" },
+    ],
+  },
+  {
+    id: "design-7",
+    title: 'Girl\'s Bedroom: Sanderson "Bambi"',
+    subtitle: "Whipped Cream Wallpaper Feature",
+    mainImage: "/kids-bedroom/image 7/Design 7.webp",
+    features: [
+      "4-shutter sliding wardrobe in matte sage green PU with cane inlay panels",
+      "Hydraulic-lift storage under bed",
+      "Bedside drawer in walnut with cane drawer front",
+      "Built-in study nook with cane chair",
+      "Open walnut bookshelf above bed",
+    ],
+    specs: [
+      { label: "Size", value: "12ft x 10ft" },
+      { label: "Layout", value: "Single bed against feature wall, study desk under window" },
+      { label: "Wallpaper", value: 'Sanderson "Bambi" — Whipped Cream with woodland deer, rabbits, butterflies' },
+      { label: "Wardrobe Finish", value: "Matte sage green PU with cane inlay" },
+      { label: "Flooring", value: "Wide-plank pale oak" },
+      { label: "Bed Size", value: "Single (3.5ft x 6.5ft)" },
+      { label: "Bunk Bed", value: "No" },
+    ],
+  },
+  {
+    id: "design-8",
+    title: 'Twin Bunk Bedroom: "Hundred Acre Wood"',
+    subtitle: "Sanderson Pooh Wallpaper",
+    mainImage: "/kids-bedroom/image 8/Design 8.webp",
+    features: [
+      "Solid walnut bunk bed with built-in safety rail and integrated side ladder",
+      "Two brass swing-arm reading lights at each bunk",
+      "4-shutter sliding wardrobe in matte botanical green laminate",
+      "Built-in shared walnut study desk under window with two drawers",
+      "Two cane-back chairs at study desk",
+      "Open walnut shelves on the wallpaper feature wall",
+    ],
+    specs: [
+      { label: "Size", value: "13ft x 11ft" },
+      { label: "Layout", value: "Bunk bed against perpendicular wall, shared study desk under window" },
+      { label: "Wallpaper", value: 'Sanderson "Hundred Acre Wood" — Pooh, Piglet, Tigger, Eeyore' },
+      { label: "Wardrobe Finish", value: "Matte botanical green laminate" },
+      { label: "Bed Type", value: "Solid walnut bunk bed with side ladder" },
+      { label: "Flooring", value: "Wide-plank pale oak" },
+      { label: "Bed Size", value: "Two singles (3.5ft x 6.5ft each)" },
+      { label: "Bunk Bed", value: "Yes" },
+    ],
+  },
+  {
+    id: "design-9",
+    title: 'Boy\'s Bedroom: Sanderson "Peter Pan"',
+    subtitle: "Midnight Blue Mural Feature",
+    mainImage: "/kids-bedroom/image 9/Design 9.webp",
+    features: [
+      "4-shutter sliding wardrobe in matte deep navy laminate",
+      "Hydraulic-lift storage under bed",
+      "Floating walnut bedside drawer",
+      "Built-in study desk under window",
+      "Open walnut shelves on perpendicular wall",
+    ],
+    specs: [
+      { label: "Size", value: "12ft x 11ft" },
+      { label: "Layout", value: "Single bed against feature mural wall, study desk perpendicular" },
+      { label: "Wallpaper", value: 'Sanderson "Peter Pan" — Midnight Blue night sky over moonlit London' },
+      { label: "Wardrobe Finish", value: "Matte deep navy laminate with brass handles" },
+      { label: "Flooring", value: "Wide-plank dark engineered oak" },
+      { label: "Bed Size", value: "Single (3.5ft x 6.5ft)" },
+      { label: "Bunk Bed", value: "No" },
+    ],
+  },
+  {
+    id: "design-10",
+    title: 'Twin Bunk Bedroom: "101 Dalmatians"',
+    subtitle: "Sanderson Whipped Cream Wallpaper",
+    mainImage: "/kids-bedroom/image 10/Design 10.webp",
+    features: [
+      "Solid walnut bunk bed with built-in safety rail and integrated side ladder",
+      "Two brass swing-arm reading lights at each bunk",
+      "4-shutter sliding wardrobe in matte cream PU",
+      "Built-in shared walnut study desk under window",
+      "Open walnut shelves on the wallpaper feature wall",
+    ],
+    specs: [
+      { label: "Size", value: "13ft x 11ft" },
+      { label: "Layout", value: "Bunk bed against perpendicular wall, shared study desk under window" },
+      { label: "Wallpaper", value: 'Sanderson "101 Dalmatians" — vintage park scenes with walkers and dogs' },
+      { label: "Wardrobe Finish", value: "Matte cream PU with brass handles" },
+      { label: "Bed Type", value: "Solid walnut bunk bed with side ladder" },
+      { label: "Flooring", value: "Wide-plank pale oak" },
+      { label: "Bed Size", value: "Two singles (3.5ft x 6.5ft each)" },
+      { label: "Bunk Bed", value: "Yes" },
+    ],
+  },
 ];
 
-const features = [
-  { icon: Palette, title: "Playful Themes", desc: "From jungle adventures to space odysseys — themed rooms that spark imagination and creativity." },
-  { icon: BookOpen, title: "Study Nooks", desc: "Built-in desks, bookshelves, and reading corners designed for focus and comfort as they grow." },
-  { icon: Shield, title: "Child-Safe Design", desc: "Rounded edges, non-toxic finishes, and secure storage so parents can relax while kids explore." },
-  { icon: Smile, title: "Grow-With-Me", desc: "Modular furniture that adapts from toddler beds to teen desks — one room, many years." },
+const features: FeatureItem[] = [
+  { icon: Sparkles, title: "Imagination Built-In", desc: "Murals, themed wallpapers and bunk beds that turn the room into a story your child loves to live in." },
+  { icon: Layers, title: "Smart Storage", desc: "Wardrobes, hydraulic beds and toy cubbies sized for actual clothes, books and toys — not generic shells." },
+  { icon: ShieldCheck, title: "Child-Safe Materials", desc: "Low-VOC paints, rounded edges, sturdy ladders and fall-safe rails on every bunk and study desk." },
+  { icon: Wrench, title: "Grow-With-Them Design", desc: "Modular study units and adjustable shelves built to evolve from toddler to teenager." },
 ];
 
-const processSteps = [
-  { step: "01", title: "Child & Family Interview", body: "We ask about your child's age, interests, hobbies, and study habits so the room fits their world." },
-  { step: "02", title: "Safety & Layout Planning", body: "Furniture placement, material selection, and circulation planned with child safety as the top priority." },
-  { step: "03", title: "3D Visualisation", body: "See your child's room in photorealistic renders with their favourite colours and themes before anything is built." },
-  { step: "04", title: "Material & Theme Selection", body: "Fun yet durable materials, colours, and hardware chosen together — tough enough for play, beautiful enough to last." },
-  { step: "05", title: "Precision Fabrication", body: "Beds, storage, study units, and play areas built in our factory with child-safe finishes and strict quality control." },
-  { step: "06", title: "Install & Play", body: "Our crew installs, tests every corner, and hands over a room your child will love from day one." },
+const processSteps: ProcessStep[] = [
+  { step: "01", title: "Family Consultation", body: "We sit with parents and kids — understand age, hobbies, favourite colours and how the room is actually used." },
+  { step: "02", title: "Theme & Layout", body: "Single, twin or bunk; study nook position; play zone; storage volume — drawn together before any joinery starts." },
+  { step: "03", title: "3D Walkthrough", body: "Walk the room virtually with wallpaper, paint and bedding swatches — kids approve the final look themselves." },
+  { step: "04", title: "Material Selection", body: "Pick from curated child-safe laminates, paints, fabrics and Sanderson-grade wallpapers from our studio collection." },
+  { step: "05", title: "Factory Build", body: "Wardrobes, study units and bunk frames are CNC-cut and edge-banded in our quality-controlled factory." },
+  { step: "06", title: "Install & Style", body: "Crew installs everything, dresses the bed, hangs the art and leaves the room ready for bedtime stories." },
 ];
 
 export function KidsBedroomPage() {
-  const heroRef = useRef<HTMLElement>(null);
-  const introRef = useRef<HTMLElement>(null);
-  const galleryRef = useRef<HTMLElement>(null);
-  const featuresRef = useRef<HTMLElement>(null);
-  const processRef = useRef<HTMLElement>(null);
-  const ctaRef = useRef<HTMLElement>(null);
-
-  useGSAP(
-    () => {
-      const sections = [heroRef, introRef, featuresRef, processRef, ctaRef];
-      sections.forEach((ref) => {
-        if (!ref.current) return;
-        const items = ref.current.querySelectorAll(".gsap-reveal");
-        gsap.from(items, {
-          y: 30,
-          opacity: 0,
-          stagger: 0.08,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ref.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        });
-      });
-
-      if (galleryRef.current) {
-        const items = galleryRef.current.querySelectorAll(".gsap-reveal");
-        gsap.from(items, {
-          y: 50,
-          opacity: 0,
-          scale: 0.96,
-          stagger: { each: 0.1, from: "start" },
-          duration: 0.9,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: galleryRef.current,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        });
-
-        items.forEach((item) => {
-          const img = item.querySelector(".gallery-img");
-          if (img) {
-            gsap.to(img, {
-              yPercent: -6,
-              ease: "none",
-              scrollTrigger: {
-                trigger: item,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true,
-              },
-            });
-          }
-        });
-      }
-    },
-    {}
-  );
-
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-
-  const openLightbox = useCallback((index: number) => {
-    setLightboxIndex(index);
-    document.body.style.overflow = "hidden";
-    window.dispatchEvent(new CustomEvent("popupOpen"));
-  }, []);
-
-  const closeLightbox = useCallback(() => {
-    setLightboxIndex(null);
-    document.body.style.overflow = "";
-    window.dispatchEvent(new CustomEvent("popupClose"));
-  }, []);
-
-  const prevImage = useCallback(() => {
-    setLightboxIndex((prev) => (prev === null || prev === 0 ? galleryImages.length - 1 : prev - 1));
-  }, []);
-
-  const nextImage = useCallback(() => {
-    setLightboxIndex((prev) => (prev === null || prev === galleryImages.length - 1 ? 0 : prev + 1));
-  }, []);
-
-  useEffect(() => {
-    if (lightboxIndex === null) return;
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowLeft") prevImage();
-      if (e.key === "ArrowRight") nextImage();
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [lightboxIndex, closeLightbox, prevImage, nextImage]);
-
   return (
-    <>
-      <section ref={heroRef} className="relative overflow-hidden bg-ink pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24 lg:pt-40 lg:pb-28">
-        <div className="container-acred">
-          <div className="grid gap-8 lg:grid-cols-12 lg:gap-16 items-center">
-            <div className="gsap-reveal lg:col-span-7">
-              <p className="section-label mb-4 sm:mb-6">Interiors / Kids Bedroom</p>
-              <h1 className="whitespace-pre-line text-balance">
-                <span className="block font-sans font-bold text-display-lg sm:text-display-xl leading-[0.95] tracking-tight text-bone">A room that grows</span>
-                <span className="block font-serif italic text-display-lg sm:text-display-xl leading-[1.05] text-bone/85">with your little one.</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-bone-soft sm:mt-8 sm:text-lg">ACRED designs kids bedrooms that are fun, safe, and functional. From playful themes and study nooks to grow-with-me furniture — every detail is crafted to inspire creativity and give parents peace of mind.</p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link href="/contact" className="group inline-flex items-center gap-2.5 rounded-full bg-bone px-6 py-3 font-sans text-sm font-medium text-ink-soft transition-all hover:bg-bone/80 hover:gap-3 cursor-hover">Get a free design quote<ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></Link>
-                <a href="#gallery" className="group inline-flex items-center gap-2.5 rounded-full border border-bone/20 px-6 py-3 font-sans text-sm font-medium text-bone transition-all hover:border-bone hover:text-bone cursor-hover">View designs</a>
-              </div>
-            </div>
-            <div className="gsap-reveal lg:col-span-5">
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-ink-soft">
-                <Image src="/kids-bedroom/hero.webp" alt="ACRED kids bedroom interior showcase" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" priority />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section ref={introRef} className="border-y border-ink-line bg-ink-muted">
-        <div className="container-acred py-16 md:py-20 lg:py-28">
-          <div className="gsap-reveal mx-auto max-w-3xl text-center">
-            <p className="section-label mb-4">Why ACRED Kids Bedrooms?</p>
-            <h2 className="text-balance"><span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">Where play meets purpose</span><span className="block font-serif italic text-display-md sm:text-display-lg leading-[1.05] text-bone/85">and safety meets style.</span></h2>
-            <p className="mt-6 text-base leading-relaxed text-bone-soft sm:text-lg">A child&apos;s bedroom is their universe — for play, study, rest, and dreams. We design spaces that spark joy while keeping safety paramount. From rounded furniture edges to non-toxic finishes, and from imaginative themes to practical storage, every element is thoughtfully chosen.</p>
-          </div>
-        </div>
-      </section>
-
-      {galleryImages.length > 0 && (
-        <section ref={galleryRef} id="gallery" className="container-acred py-16 md:py-20 lg:py-28">
-          <div className="gsap-reveal mb-10 sm:mb-12">
-            <p className="section-label mb-4">Portfolio</p>
-            <h2 className="text-balance"><span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">Kids rooms we have designed.</span></h2>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {galleryImages.map((img, i) => (
-              <div key={img.src} className="gsap-reveal group relative overflow-hidden rounded-xl bg-ink-soft cursor-hover" onClick={() => openLightbox(i)}>
-                <div className="relative w-full aspect-[4/3]">
-                  <Image src={img.src} alt={img.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="gallery-img object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                    <div className="flex items-center justify-between gap-4">
-                      <div>
-                        <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold mb-1">Kids Bedroom</p>
-                        <p className="font-sans text-sm font-medium text-white leading-snug max-w-[80%]">{img.alt}</p>
-                      </div>
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm">
-                        <Eye className="h-4 w-4 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      <section ref={featuresRef} className="border-y border-ink-line bg-ink-muted">
-        <div className="container-acred py-16 md:py-20 lg:py-28">
-          <div className="gsap-reveal mb-10 sm:mb-12">
-            <p className="section-label mb-4">What You Get</p>
-            <h2 className="text-balance"><span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">Fun, safe, and functional.</span></h2>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((f) => (
-              <div key={f.title} className="gsap-reveal rounded-xl border border-ink-line bg-ink p-6 sm:p-8">
-                <f.icon className="h-6 w-6 text-gold" />
-                <h3 className="mt-4 font-sans text-base font-medium text-bone">{f.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-bone-muted">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section ref={processRef} className="container-acred py-16 md:py-20 lg:py-28">
-        <div className="gsap-reveal mb-10 sm:mb-12">
-          <p className="section-label mb-4">How It Works</p>
-          <h2 className="text-balance"><span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">From dream room</span><span className="block font-serif italic text-display-md sm:text-display-lg leading-[1.05] text-bone/85">to reality.</span></h2>
-        </div>
-        <div className="grid gap-px bg-bone/10 sm:grid-cols-2 lg:grid-cols-3">
-          {processSteps.map((s) => (
-            <div key={s.step} className="gsap-reveal border border-ink-line bg-ink-soft p-6 sm:p-8">
-              <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold">{s.step}</p>
-              <h3 className="mt-3 font-sans text-base font-medium text-bone">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-bone-muted">{s.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section ref={ctaRef} className="border-t border-ink-line bg-ink-muted">
-        <div className="container-acred py-16 md:py-20 lg:py-28">
-          <div className="gsap-reveal flex flex-col items-center text-center">
-            <p className="section-label mb-4">Start your kids bedroom</p>
-            <h2 className="text-balance max-w-2xl"><span className="block font-sans font-bold text-display-md sm:text-display-lg leading-[0.95] tracking-tight text-bone">Ready to create a room your child will love?</span></h2>
-            <p className="mt-4 max-w-lg text-base leading-relaxed text-bone-soft">Book a free consultation. We will understand your child&apos;s interests, measure your space, and deliver a 3D kids bedroom design with a transparent quote within 48 hours.</p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="group inline-flex items-center gap-2.5 rounded-full bg-bone px-7 py-3 font-sans text-sm font-medium text-ink-soft transition-all hover:bg-bone/80 hover:gap-3 cursor-hover">Book free consultation<ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></Link>
-              <a href="tel:+916361889281" className="group inline-flex items-center gap-2.5 rounded-full border border-bone/20 px-7 py-3 font-sans text-sm font-medium text-bone transition-all hover:border-bone hover:text-bone cursor-hover">Call +91 63618 89281</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {lightboxIndex !== null && galleryImages[lightboxIndex] && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm" onClick={closeLightbox}>
-          <button onClick={(e) => { e.stopPropagation(); closeLightbox(); }} className="absolute top-5 right-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 cursor-hover" aria-label="Close"><X className="h-5 w-5" /></button>
-          <button onClick={(e) => { e.stopPropagation(); prevImage(); }} className="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 cursor-hover sm:left-6" aria-label="Previous"><ChevronLeft className="h-5 w-5" /></button>
-          <button onClick={(e) => { e.stopPropagation(); nextImage(); }} className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 cursor-hover sm:right-6" aria-label="Next"><ChevronRight className="h-5 w-5" /></button>
-          <div className="relative mx-4 aspect-[3/4] sm:aspect-[4/3] w-full max-w-5xl sm:mx-20" onClick={(e) => e.stopPropagation()}>
-            <Image src={galleryImages[lightboxIndex].src} alt={galleryImages[lightboxIndex].alt} fill sizes="100vw" className="object-contain" priority loading="eager" />
-          </div>
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
-            <p className="font-mono text-[10px] uppercase tracking-widest2 text-gold">Kids Bedroom</p>
-            <p className="mt-1 font-sans text-sm font-medium text-white/90">{galleryImages[lightboxIndex].alt}</p>
-            <p className="mt-1 font-mono text-[10px] text-white/50">{lightboxIndex + 1} / {galleryImages.length}</p>
-          </div>
-        </div>
-      )}
-    </>
+    <InteriorDesignPage
+      sectionLabel="Interiors / Kids Bedrooms"
+      heroTitle={{ line1: "Bedrooms built", line2: "around their imagination." }}
+      heroDescription="ACRED designs kids' bedrooms that grow with the child — themed wallpapers, bunk beds with safety rails, study nooks and storage that fits the toys they actually own. Safe materials, smart layouts, and finishes that survive everyday play."
+      heroImage="/kids-bedroom/hero.webp"
+      heroImageAlt="ACRED kids bedroom showcase"
+      intro={{
+        label: "Why ACRED Kids Bedrooms?",
+        line1: "Magical to live in,",
+        line2: "easy to keep tidy.",
+        body: "Every kids bedroom we deliver is planned around the child today — and the teenager they will become. From hand-painted murals and Sanderson wallpapers to hydraulic-lift beds, study desks with cable management and child-height open cubbies, every detail is built to be used, not just admired.",
+      }}
+      designs={designs}
+      galleryHeadline="Kids bedrooms we have created."
+      designTag="Kids Bedroom"
+      featuresSectionTitle="Storage & Features"
+      featuresLabel="What You Get"
+      featuresHeadline="Designed for the way kids actually live."
+      features={features}
+      processLabel="How It Works"
+      processHeadline={{ line1: "From first sketch", line2: "to bedtime story." }}
+      processSteps={processSteps}
+      ctaLabel="Start your kids bedroom"
+      ctaHeadline="Ready to design a room they will love?"
+      ctaBody="Book a free consultation. We will visit, measure, understand your child, and deliver a 3D design with a transparent quote within 48 hours."
+      ctaPrimary={{ label: "Book free consultation", href: "/contact" }}
+    />
   );
 }

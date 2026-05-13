@@ -35,6 +35,30 @@ const services = [
     href: "/interiors/bedroom",
   },
   {
+    title: "Kids Bedroom",
+    desc: "Themed wallpapers, bunk beds with safety rails, study nooks, and storage that grows with your child.",
+    image: "/kids-bedroom/hero.webp",
+    href: "/interiors/kids-bedroom",
+  },
+  {
+    title: "Dining Room",
+    desc: "Solid walnut & marble tables, cane and velvet chairs, sideboards and crockery storage built for hosting.",
+    image: "/dining/hero.webp",
+    href: "/interiors/dining",
+  },
+  {
+    title: "Wall Panels",
+    desc: "Sculptural CNC-carved feature walls — parametric waves, jaali lattice, sacred geometry, gopuram relief.",
+    image: "/wall-panels/hero.webp",
+    href: "/interiors/wall-panels",
+  },
+  {
+    title: "Balcony Design",
+    desc: "Reading nooks, outdoor dining, jhula corners, vertical gardens, and penthouse terraces — weatherproof and lush.",
+    image: "/balcony/hero.webp",
+    href: "/interiors/balcony",
+  },
+  {
     title: "Bathroom Interiors",
     desc: "Modern bathrooms with premium fittings, tile layouts, vanity units, and waterproof storage.",
     image: "/bathroom/hero.webp",
