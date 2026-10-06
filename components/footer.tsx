@@ -165,6 +165,11 @@ export function Footer() {
           <p className="text-sm leading-relaxed text-bone-muted">
             © {year} {site.name}. All rights reserved.
           </p>
+          <nav className="flex gap-5 text-sm text-bone-muted">
+            <Link href="/privacy-policy" className="hover:text-gold transition-colors cursor-hover">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-gold transition-colors cursor-hover">Terms</Link>
+            <Link href="/data-deletion" className="hover:text-gold transition-colors cursor-hover">Data Deletion</Link>
+          </nav>
           <p className="font-mono text-[10px] uppercase leading-relaxed tracking-widest2 text-bone-muted">
             {site.promise}
           </p>
