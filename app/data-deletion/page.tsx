@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/legal/legal-page";
-import { site } from "@/lib/content";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -13,7 +12,7 @@ export const metadata: Metadata = buildMetadata({
 const UPDATED = "6 October 2026";
 
 export default function DataDeletionPage() {
-  const email = site.contact.email;
+  const email = "support@acred.in";
   const subject = encodeURIComponent("Delete my data");
   const body = encodeURIComponent(
     "Hello ACRED,\n\nPlease delete all personal data you hold about me.\n\nName:\nPhone number / platform used (WhatsApp, Messenger, Instagram):\n\nThank you."
