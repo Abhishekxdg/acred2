@@ -8,6 +8,7 @@ const staticRoutes = [
   "/architecture",
   "/construction",
   "/contact",
+  "/data-deletion",
   "/design-home",
   "/engineering",
   "/interiors",
@@ -24,8 +25,10 @@ const staticRoutes = [
   "/interiors/wall-panels",
   "/interiors/wardrobe",
   "/packages",
+  "/privacy-policy",
   "/projects",
   "/real-estate",
+  "/terms",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
